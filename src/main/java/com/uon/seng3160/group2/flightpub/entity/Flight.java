@@ -71,7 +71,6 @@ public class Flight {
         this.departure = departure;
         this.stopOver = stopOver;
         this.destination = destination;
-
         this.arrivalTimeStopOver = arrivalTimeStopOver;
         this.departureTimeStopOver = departureTimeStopOver;
         this.arrivalTime = arrivalTime;
