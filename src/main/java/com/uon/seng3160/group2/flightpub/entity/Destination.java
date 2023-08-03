@@ -22,7 +22,7 @@ public class Destination {
     private String airport;
 
     @ManyToOne
-    @JoinColumn(name = "CountryCode2", referencedColumnName = "CountryCode2", nullable = false)
+    @JoinColumn(name = "CountryCode3", referencedColumnName = "CountryCode3", nullable = false)
     private Country country;
 
     @OneToMany(mappedBy = "departure")
