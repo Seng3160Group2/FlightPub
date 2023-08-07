@@ -28,6 +28,12 @@ public class Airline {
     @OneToMany(mappedBy = "flightId.airline")
     Set<Flight> flights;
 
+    @OneToMany(mappedBy = "availabilityId.airline")
+    Set<Availability> availabilities;
+
+    @OneToMany(mappedBy = "priceId.airline")
+    Set<Price> prices;
+
     public Airline() {
     }
 
@@ -36,6 +42,8 @@ public class Airline {
         this.airlineName = airlineName;
         this.country = country;
         this.flights = new HashSet<Flight>();
+        this.availabilities = new HashSet<Availability>();
+        this.prices = new HashSet<Price>();
     }
 
     public void addFlight(Flight flight) {

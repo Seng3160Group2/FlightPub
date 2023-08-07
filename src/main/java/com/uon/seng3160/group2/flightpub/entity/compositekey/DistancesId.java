@@ -15,17 +15,17 @@ public class DistancesId implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "DestinationCode", referencedColumnName = "DestinationCode")
-    private Destination destinationCode1;
+    private Destination destination1;
 
     @ManyToOne
     @JoinColumn(name = "DestinationCode", referencedColumnName = "DestinationCode")
-    private Destination destinationCode2;
+    private Destination destination2;
 
     public DistancesId() {
     }
 
-    public DistancesId(Destination destinationCode1, Destination destinationCode2) {
-        this.destinationCode1 = destinationCode1;
-        this.destinationCode2 = destinationCode2;
+    public DistancesId(Destination destination1, Destination destination2) {
+        this.destination1 = destination1;
+        this.destination2 = destination2;
     }
 }

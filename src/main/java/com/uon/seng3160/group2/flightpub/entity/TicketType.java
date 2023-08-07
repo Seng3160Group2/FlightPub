@@ -1,8 +1,12 @@
 package com.uon.seng3160.group2.flightpub.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,12 +19,21 @@ public class TicketType {
     @Column(columnDefinition = "VARCHAR(50)", nullable = false)
     private String name;
 
+    @OneToMany(mappedBy = "availabilityId.ticketCode")
+    private Set<Availability> availabilities;
+
+    @OneToMany(mappedBy = "price.ticketCode")
+    private Set<Price> prices;
+
+
     public TicketType() {
     }
 
     public TicketType(String ticketCode, String name) {
         this.ticketCode = ticketCode;
         this.name = name;
+        this.availabilities = new HashSet<Availability>();
+        this.prices = new HashSet<Price>();
     }
 
     public String getTicketCode() {

@@ -22,7 +22,7 @@ public class Destination {
     private String airport;
 
     @ManyToOne
-    @JoinColumn(name = "CountryCode3", referencedColumnName = "CountryCode3", nullable = false)
+    @JoinColumn(name = "CountryCode2", referencedColumnName = "CountryCode2", nullable = false)
     private Country country;
 
     @OneToMany(mappedBy = "departure")
@@ -34,6 +34,12 @@ public class Destination {
     @OneToMany(mappedBy = "destination")
     Set<Flight> arrivals;
 
+    @OneToMany(mappedBy = "distancesId.destination1")
+    Set<Distances> destination1;
+
+    @OneToMany(mappedBy = "distancesId.destination2")
+    Set<Distances> destination2;
+
     public Destination() {
     }
 
@@ -44,5 +50,7 @@ public class Destination {
         this.departures = new HashSet<Flight>();
         this.stopOvers = new HashSet<Flight>();
         this.arrivals = new HashSet<Flight>();
+        this.destination1 = new HashSet<Distances>();
+        this.destination2 = new HashSet<Distances>();
     }
 }
