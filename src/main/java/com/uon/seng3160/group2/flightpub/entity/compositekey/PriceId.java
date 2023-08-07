@@ -49,5 +49,46 @@ public class PriceId implements Serializable {
         this.classCode = classCode;
         this.ticketCode = ticketCode;
     }
+
+    public Airline getAirline() {
+        return this.airline;
+    }
+
+    public void setAirline(Airline airline) {
+        this.airline = airline;
+    }
+
+    public String getFlightNumber() {
+        return this.flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    public TicketClass getClassCode() {
+        return this.classCode;
+    }
+
+    public void setClassCode(TicketClass classCode) {
+        this.classCode = classCode;
+    }
+
+    public TicketType getTicketCode() {
+        return this.ticketCode;
+    }
+
+    public void setTicketCode(TicketType ticketCode) {
+        this.ticketCode = ticketCode;
+    }
+
+    public LocalDateTime getStartDate() {
+        return this.startDate;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
 }
 

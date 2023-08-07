@@ -80,4 +80,96 @@ public class Flight {
         this.groupFlight = groupFlight;
     }
 
+    public FlightId getFlightId() {
+        return this.flightId;
+    }
+
+    public void setFlightId(FlightId flightId) {
+        this.flightId = flightId;
+    }
+
+    public Destination getDeparture() {
+        return this.departure;
+    }
+
+    public void setDeparture(Destination departure) {
+        this.departure = departure;
+    }
+
+    public Destination getStopOver() {
+        return this.stopOver;
+    }
+
+    public void setStopOver(Destination stopOver) {
+        this.stopOver = stopOver;
+    }
+
+    public Destination getDestination() {
+        return this.destination;
+    }
+
+    public void setDestination(Destination destination) {
+        this.destination = destination;
+    }
+
+    public LocalDateTime getArrivalTimeStopOver() {
+        return this.arrivalTimeStopOver;
+    }
+
+    public void setArrivalTimeStopOver(LocalDateTime arrivalTimeStopOver) {
+        this.arrivalTimeStopOver = arrivalTimeStopOver;
+    }
+
+    public LocalDateTime getDepartureTimeStopOver() {
+        return this.departureTimeStopOver;
+    }
+
+    public void setDepartureTimeStopOver(LocalDateTime departureTimeStopOver) {
+        this.departureTimeStopOver = departureTimeStopOver;
+    }
+
+    public LocalDateTime getArrivalTime() {
+        return this.arrivalTime;
+    }
+
+    public void setArrivalTime(LocalDateTime arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
+
+    public String getPlaneCode() {
+        return this.planeCode;
+    }
+
+    public void setPlaneCode(String planeCode) {
+        this.planeCode = planeCode;
+    }
+
+    public int getDuration() {
+        return this.duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public int getDurationSecondLeg() {
+        return this.durationSecondLeg;
+    }
+
+    public void setDurationSecondLeg(int durationSecondLeg) {
+        this.durationSecondLeg = durationSecondLeg;
+    }
+
+    public boolean isGroupFlight() {
+        return this.groupFlight;
+    }
+
+    public boolean getGroupFlight() {
+        return this.groupFlight;
+    }
+
+    public void setGroupFlight(boolean groupFlight) {
+        this.groupFlight = groupFlight;
+    }
+
 }

@@ -39,40 +39,30 @@ public class FlightId implements Serializable {
         this.flightNumber = flightNumber;
         this.departureTime = departureTime;
     }
-    // what lombok overrides
 
-    // @Override
-    // public boolean equals(Object o) {
-    // if (o == this)
-    // return true;
-    // if (!(o instanceof FlightId))
-    // return false;
-    // FlightId other = (FlightId) o;
-    // boolean airlineCodeEquals = (this.airlineCode == null && other.airlineCode ==
-    // null)
-    // || (this.airlineCode != null && this.airlineCode.equals(other.airlineCode));
-    // boolean flightNumberEquals = (this.flightNumber == null && other.flightNumber
-    // == null)
-    // || (this.flightNumber != null &&
-    // this.flightNumber.equals(other.flightNumber));
-    // boolean departureTimeEquals = (this.departureTime == null &&
-    // other.departureTime == null)
-    // || (this.departureTime != null &&
-    // this.departureTime.equals(other.departureTime));
+    public Airline getAirline() {
+        return this.airline;
+    }
 
-    // return airlineCodeEquals && flightNumberEquals && departureTimeEquals;
-    // }
+    public void setAirline(Airline airline) {
+        this.airline = airline;
+    }
 
-    // @Override
-    // public int hashCode() {
-    // final int prime = 31;
-    // int result = 1;
-    // result = prime * result + ((this.airlineCode == null) ? 0 :
-    // this.airlineCode.hashCode());
-    // result = prime * result + ((this.flightNumber == null) ? 0 :
-    // this.flightNumber.hashCode());
-    // result = prime * result + ((this.departureTime == null) ? 0 :
-    // this.departureTime.hashCode());
-    // return result;
-    // }
+    public String getFlightNumber() {
+        return this.flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    public LocalDateTime getDepartureTime() {
+        return this.departureTime;
+    }
+
+    public void setDepartureTime(LocalDateTime departureTime) {
+        this.departureTime = departureTime;
+    }
+    
+
 }

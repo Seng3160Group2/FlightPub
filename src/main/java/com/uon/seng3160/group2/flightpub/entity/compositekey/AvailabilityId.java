@@ -41,6 +41,46 @@ public class AvailabilityId implements Serializable {
     public AvailabilityId() {
     }
 
+    public Airline getAirline() {
+        return this.airline;
+    }
+
+    public void setAirline(Airline airline) {
+        this.airline = airline;
+    }
+
+    public String getFlightNumber() {
+        return this.flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    public LocalDateTime getDepartureTime() {
+        return this.departureTime;
+    }
+
+    public void setDepartureTime(LocalDateTime departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    public TicketClass getClassCode() {
+        return this.classCode;
+    }
+
+    public void setClassCode(TicketClass classCode) {
+        this.classCode = classCode;
+    }
+
+    public TicketType getTicketCode() {
+        return this.ticketCode;
+    }
+
+    public void setTicketCode(TicketType ticketCode) {
+        this.ticketCode = ticketCode;
+    }
+
     public AvailabilityId(Airline airline, String flightNumber, LocalDateTime departureTime, 
     TicketClass classCode, TicketType ticketCode) {
         this.airline = airline;
@@ -50,3 +90,4 @@ public class AvailabilityId implements Serializable {
         this.ticketCode = ticketCode;
     }
 }
+

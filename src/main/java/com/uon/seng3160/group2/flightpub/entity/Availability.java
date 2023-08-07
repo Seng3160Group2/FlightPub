@@ -35,6 +35,7 @@ public class Availability {
         
     }
 
+
     public AvailabilityId getAvailabilityId() {
         return this.availabilityId;
     }
@@ -58,5 +59,6 @@ public class Availability {
     public void setNumberAvailableSeatsLeg2(int numberAvailableSeatsLeg2) {
         this.numberAvailableSeatsLeg2 = numberAvailableSeatsLeg2;
     }
+    
 
 }

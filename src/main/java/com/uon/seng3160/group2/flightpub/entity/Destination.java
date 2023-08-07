@@ -53,4 +53,70 @@ public class Destination {
         this.destination1 = new HashSet<Distances>();
         this.destination2 = new HashSet<Distances>();
     }
+
+
+    public String getDestinationCode() {
+        return this.destinationCode;
+    }
+
+    public void setDestinationCode(String destinationCode) {
+        this.destinationCode = destinationCode;
+    }
+
+    public String getAirport() {
+        return this.airport;
+    }
+
+    public void setAirport(String airport) {
+        this.airport = airport;
+    }
+
+    public Country getCountry() {
+        return this.country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public Set<Flight> getDepartures() {
+        return this.departures;
+    }
+
+    public void setDepartures(Set<Flight> departures) {
+        this.departures = departures;
+    }
+
+    public Set<Flight> getStopOvers() {
+        return this.stopOvers;
+    }
+
+    public void setStopOvers(Set<Flight> stopOvers) {
+        this.stopOvers = stopOvers;
+    }
+
+    public Set<Flight> getArrivals() {
+        return this.arrivals;
+    }
+
+    public void setArrivals(Set<Flight> arrivals) {
+        this.arrivals = arrivals;
+    }
+
+    public Set<Distances> getDestination1() {
+        return this.destination1;
+    }
+
+    public void setDestination1(Set<Distances> destination1) {
+        this.destination1 = destination1;
+    }
+
+    public Set<Distances> getDestination2() {
+        return this.destination2;
+    }
+
+    public void setDestination2(Set<Distances> destination2) {
+        this.destination2 = destination2;
+    }
+
 }

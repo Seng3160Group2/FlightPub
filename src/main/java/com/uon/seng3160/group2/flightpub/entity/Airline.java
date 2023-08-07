@@ -46,16 +46,54 @@ public class Airline {
         this.prices = new HashSet<Price>();
     }
 
-    public void addFlight(Flight flight) {
-        this.flights.add(flight);
+
+    public String getAirlineCode() {
+        return this.airlineCode;
     }
 
-    public void removeFlight(Flight flight) {
-        flights.remove(flight);
+    public void setAirlineCode(String airlineCode) {
+        this.airlineCode = airlineCode;
+    }
+
+    public String getAirlineName() {
+        return this.airlineName;
+    }
+
+    public void setAirlineName(String airlineName) {
+        this.airlineName = airlineName;
+    }
+
+    public Country getCountry() {
+        return this.country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     public Set<Flight> getFlights() {
-        return flights;
+        return this.flights;
     }
+
+    public void setFlights(Set<Flight> flights) {
+        this.flights = flights;
+    }
+
+    public Set<Availability> getAvailabilities() {
+        return this.availabilities;
+    }
+
+    public void setAvailabilities(Set<Availability> availabilities) {
+        this.availabilities = availabilities;
+    }
+
+    public Set<Price> getPrices() {
+        return this.prices;
+    }
+
+    public void setPrices(Set<Price> prices) {
+        this.prices = prices;
+    }
+    
 
 }

@@ -28,4 +28,21 @@ public class DistancesId implements Serializable {
         this.destination1 = destination1;
         this.destination2 = destination2;
     }
+
+    public Destination getDestination1() {
+        return this.destination1;
+    }
+
+    public void setDestination1(Destination destination1) {
+        this.destination1 = destination1;
+    }
+
+    public Destination getDestination2() {
+        return this.destination2;
+    }
+
+    public void setDestination2(Destination destination2) {
+        this.destination2 = destination2;
+    }
+
 }

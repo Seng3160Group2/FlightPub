@@ -36,6 +36,7 @@ public class TicketType {
         this.prices = new HashSet<Price>();
     }
 
+
     public String getTicketCode() {
         return this.ticketCode;
     }
@@ -51,5 +52,22 @@ public class TicketType {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Set<Availability> getAvailabilities() {
+        return this.availabilities;
+    }
+
+    public void setAvailabilities(Set<Availability> availabilities) {
+        this.availabilities = availabilities;
+    }
+
+    public Set<Price> getPrices() {
+        return this.prices;
+    }
+
+    public void setPrices(Set<Price> prices) {
+        this.prices = prices;
+    }
+    
     
 }

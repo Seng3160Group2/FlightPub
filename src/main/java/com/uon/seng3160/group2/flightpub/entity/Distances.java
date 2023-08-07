@@ -25,7 +25,22 @@ public class Distances {
 
         this.distancesId = new DistancesId(DestinationCode1, DestinationCode2);
         this.distancesInKms = distancesInKms;
-        
+    }
+
+    public DistancesId getDistancesId() {
+        return this.distancesId;
+    }
+
+    public void setDistancesId(DistancesId distancesId) {
+        this.distancesId = distancesId;
+    }
+
+    public int getDistancesInKms() {
+        return this.distancesInKms;
+    }
+
+    public void setDistancesInKms(int distancesInKms) {
+        this.distancesInKms = distancesInKms;
     }
     
 }
