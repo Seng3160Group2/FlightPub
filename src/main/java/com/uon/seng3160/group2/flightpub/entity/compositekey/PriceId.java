@@ -20,75 +20,33 @@ import lombok.EqualsAndHashCode;
 public class PriceId implements Serializable {
 
     @ManyToOne
-    @JoinColumn(name = "AirlineCode", referencedColumnName = "AirlineCode")
+    @JoinColumn(name = "AirlineCode", referencedColumnName = "AirlineCode", nullable = false)
     private Airline airline;
 
-    @Column(name = "FlightNumber", columnDefinition = "VARCHAR(6)")
+    @Column(columnDefinition = "VARCHAR(6)", nullable = false)
     private String flightNumber;
 
     @ManyToOne
-    @JoinColumn(name = "ClassCode", referencedColumnName = "ClassCode")
-    private TicketClass classCode;
+    @JoinColumn(name = "ClassCode", referencedColumnName = "ClassCode", nullable = false)
+    private TicketClass ticketClass;
 
     @ManyToOne
-    @JoinColumn(name = "TicketCode", referencedColumnName = "TicketCode")
-    private TicketType ticketCode;
+    @JoinColumn(name = "TicketCode", referencedColumnName = "TicketCode", nullable = false)
+    private TicketType ticketType;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "StartDate", nullable = false)
+    @Column(nullable = false)
     private LocalDateTime startDate;
 
     public PriceId() {
     }
 
-    public PriceId(Airline airline, String flightNumber, LocalDateTime startDate, 
-    TicketClass classCode, TicketType ticketCode) {
+    public PriceId(Airline airline, String flightNumber,
+            TicketClass ticketClass, TicketType ticketType, LocalDateTime startDate) {
         this.airline = airline;
         this.flightNumber = flightNumber;
-        this.startDate = startDate;
-        this.classCode = classCode;
-        this.ticketCode = ticketCode;
-    }
-
-    public Airline getAirline() {
-        return this.airline;
-    }
-
-    public void setAirline(Airline airline) {
-        this.airline = airline;
-    }
-
-    public String getFlightNumber() {
-        return this.flightNumber;
-    }
-
-    public void setFlightNumber(String flightNumber) {
-        this.flightNumber = flightNumber;
-    }
-
-    public TicketClass getClassCode() {
-        return this.classCode;
-    }
-
-    public void setClassCode(TicketClass classCode) {
-        this.classCode = classCode;
-    }
-
-    public TicketType getTicketCode() {
-        return this.ticketCode;
-    }
-
-    public void setTicketCode(TicketType ticketCode) {
-        this.ticketCode = ticketCode;
-    }
-
-    public LocalDateTime getStartDate() {
-        return this.startDate;
-    }
-
-    public void setStartDate(LocalDateTime startDate) {
+        this.ticketClass = ticketClass;
+        this.ticketType = ticketType;
         this.startDate = startDate;
     }
-
 }
-

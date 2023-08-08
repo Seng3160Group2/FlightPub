@@ -12,19 +12,32 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "TicketType")
 public class TicketType {
-    @Id 
+    @Id
     @Column(columnDefinition = "CHAR(1)")
     private String ticketCode;
 
     @Column(columnDefinition = "VARCHAR(50)", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "availabilityId.ticketCode")
+    @Column(columnDefinition = "BIT(1) default 1")
+    private boolean transferrable;
+
+    @Column(columnDefinition = "BIT(1) default 1")
+    private boolean refundable;
+
+    @Column(columnDefinition = "BIT(1) default 0")
+    private boolean exchangeable;
+
+    @Column(columnDefinition = "BIT(1) default 1")
+    private boolean frequentFlyerPoints;
+
+    // referencing tables
+
+    @OneToMany(mappedBy = "ticketType")
     private Set<Availability> availabilities;
 
-    @OneToMany(mappedBy = "price.ticketCode")
+    @OneToMany(mappedBy = "priceId.ticketType")
     private Set<Price> prices;
-
 
     public TicketType() {
     }
@@ -35,39 +48,4 @@ public class TicketType {
         this.availabilities = new HashSet<Availability>();
         this.prices = new HashSet<Price>();
     }
-
-
-    public String getTicketCode() {
-        return this.ticketCode;
-    }
-
-    public void setTicketCode(String ticketCode) {
-        this.ticketCode = ticketCode;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<Availability> getAvailabilities() {
-        return this.availabilities;
-    }
-
-    public void setAvailabilities(Set<Availability> availabilities) {
-        this.availabilities = availabilities;
-    }
-
-    public Set<Price> getPrices() {
-        return this.prices;
-    }
-
-    public void setPrices(Set<Price> prices) {
-        this.prices = prices;
-    }
-    
-    
 }

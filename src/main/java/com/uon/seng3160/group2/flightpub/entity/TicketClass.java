@@ -12,17 +12,19 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "TicketClass")
 public class TicketClass {
-    @Id 
+    @Id
     @Column(columnDefinition = "CHAR(3)")
     private String classCode;
 
     @Column(columnDefinition = "VARCHAR(20)", nullable = false)
     private String details;
 
-    @OneToMany(mappedBy = "availabilityId.classCode")
+    // referencing tables
+
+    @OneToMany(mappedBy = "ticketClass")
     private Set<Availability> availabilities;
 
-    @OneToMany(mappedBy = "price.classCode")
+    @OneToMany(mappedBy = "priceId.ticketClass")
     private Set<Price> prices;
 
     public TicketClass() {
@@ -34,39 +36,4 @@ public class TicketClass {
         this.availabilities = new HashSet<Availability>();
         this.prices = new HashSet<Price>();
     }
-
-
-    public String getClassCode() {
-        return this.classCode;
-    }
-
-    public void setClassCode(String classCode) {
-        this.classCode = classCode;
-    }
-
-    public String getDetails() {
-        return this.details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
-    }
-
-    public Set<Availability> getAvailabilities() {
-        return this.availabilities;
-    }
-
-    public void setAvailabilities(Set<Availability> availabilities) {
-        this.availabilities = availabilities;
-    }
-
-    public Set<Price> getPrices() {
-        return this.prices;
-    }
-
-    public void setPrices(Set<Price> prices) {
-        this.prices = prices;
-    }
-    
-    
 }

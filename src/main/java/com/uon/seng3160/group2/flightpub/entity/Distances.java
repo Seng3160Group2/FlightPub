@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 
 import jakarta.persistence.Table;
 
-
 @Entity
 @Table(name = "Distances")
 public class Distances {
@@ -21,26 +20,8 @@ public class Distances {
     public Distances() {
     }
 
-    public Distances(Destination DestinationCode1, Destination DestinationCode2, int distancesInKms) {
-
-        this.distancesId = new DistancesId(DestinationCode1, DestinationCode2);
+    public Distances(Destination destinationCode1, Destination destinationCode2, int distancesInKms) {
+        this.distancesId = new DistancesId(destinationCode1, destinationCode2);
         this.distancesInKms = distancesInKms;
     }
-
-    public DistancesId getDistancesId() {
-        return this.distancesId;
-    }
-
-    public void setDistancesId(DistancesId distancesId) {
-        this.distancesId = distancesId;
-    }
-
-    public int getDistancesInKms() {
-        return this.distancesInKms;
-    }
-
-    public void setDistancesInKms(int distancesInKms) {
-        this.distancesInKms = distancesInKms;
-    }
-    
 }

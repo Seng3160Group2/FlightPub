@@ -14,11 +14,11 @@ import lombok.EqualsAndHashCode;
 public class DistancesId implements Serializable {
 
     @ManyToOne
-    @JoinColumn(name = "DestinationCode", referencedColumnName = "DestinationCode")
+    @JoinColumn(name = "DestinationCode1", referencedColumnName = "DestinationCode", nullable = false)
     private Destination destination1;
 
     @ManyToOne
-    @JoinColumn(name = "DestinationCode", referencedColumnName = "DestinationCode")
+    @JoinColumn(name = "DestinationCode2", referencedColumnName = "DestinationCode", nullable = false)
     private Destination destination2;
 
     public DistancesId() {

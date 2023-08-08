@@ -22,8 +22,10 @@ public class Destination {
     private String airport;
 
     @ManyToOne
-    @JoinColumn(name = "CountryCode2", referencedColumnName = "CountryCode2", nullable = false)
+    @JoinColumn(name = "CountryCode3", referencedColumnName = "CountryCode3", nullable = false)
     private Country country;
+
+    // referencing tables
 
     @OneToMany(mappedBy = "departure")
     Set<Flight> departures;
@@ -35,10 +37,10 @@ public class Destination {
     Set<Flight> arrivals;
 
     @OneToMany(mappedBy = "distancesId.destination1")
-    Set<Distances> destination1;
+    Set<Distances> distancesFrom;
 
     @OneToMany(mappedBy = "distancesId.destination2")
-    Set<Distances> destination2;
+    Set<Distances> distancesTo;
 
     public Destination() {
     }
@@ -50,73 +52,7 @@ public class Destination {
         this.departures = new HashSet<Flight>();
         this.stopOvers = new HashSet<Flight>();
         this.arrivals = new HashSet<Flight>();
-        this.destination1 = new HashSet<Distances>();
-        this.destination2 = new HashSet<Distances>();
+        this.distancesFrom = new HashSet<Distances>();
+        this.distancesTo = new HashSet<Distances>();
     }
-
-
-    public String getDestinationCode() {
-        return this.destinationCode;
-    }
-
-    public void setDestinationCode(String destinationCode) {
-        this.destinationCode = destinationCode;
-    }
-
-    public String getAirport() {
-        return this.airport;
-    }
-
-    public void setAirport(String airport) {
-        this.airport = airport;
-    }
-
-    public Country getCountry() {
-        return this.country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
-    }
-
-    public Set<Flight> getDepartures() {
-        return this.departures;
-    }
-
-    public void setDepartures(Set<Flight> departures) {
-        this.departures = departures;
-    }
-
-    public Set<Flight> getStopOvers() {
-        return this.stopOvers;
-    }
-
-    public void setStopOvers(Set<Flight> stopOvers) {
-        this.stopOvers = stopOvers;
-    }
-
-    public Set<Flight> getArrivals() {
-        return this.arrivals;
-    }
-
-    public void setArrivals(Set<Flight> arrivals) {
-        this.arrivals = arrivals;
-    }
-
-    public Set<Distances> getDestination1() {
-        return this.destination1;
-    }
-
-    public void setDestination1(Set<Distances> destination1) {
-        this.destination1 = destination1;
-    }
-
-    public Set<Distances> getDestination2() {
-        return this.destination2;
-    }
-
-    public void setDestination2(Set<Distances> destination2) {
-        this.destination2 = destination2;
-    }
-
 }
