@@ -25,6 +25,16 @@ CREATE TABLE Airlines (
   CONSTRAINT AirlinesCountryCode2_FK FOREIGN KEY (CountryCode2) REFERENCES Country (countryCode2)
 )
 
+CREATE TABLE `PlaneType` (
+  `PlaneCode` varchar(20) NOT NULL,
+  `Details` varchar(50) NOT NULL,
+  `NumFirstClass` int(11) NOT NULL,
+  `NumBusiness` int(11) NOT NULL,
+  `NumPremiumEconomy` int(11) NOT NULL,
+  `Economy` int(11) NOT NULL,
+  PRIMARY KEY (`PlaneCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --*
 CREATE TABLE Destinations (
   DestinationCode char(3) NOT NULL,
@@ -44,6 +54,10 @@ CREATE TABLE TicketClass (
 --*
 CREATE TABLE TicketType (
   TicketCode char(1) NOT NULL,
+  `Transferrable` BIT(1) DEFAULT 1, 
+  `Refundable` BIT(1) DEFAULT 1, 
+  `Exchangeable` BIT(1) DEFAULT 0, 
+  `FrequentFlyerPoints` BIT(1) DEFAULT 1,
   Name varchar(50) NOT NULL,
   PRIMARY KEY (TicketCode)
 ) 
