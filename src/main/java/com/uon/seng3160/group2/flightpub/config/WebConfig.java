@@ -12,7 +12,6 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.uon.seng3160.group2.flightpub" })
-@EnableJpaRepositories(basePackages = { "com.uon.seng3160.group2.flightpub" })
 public class WebConfig implements WebMvcConfigurer {
 
     // Free Marker
