@@ -25,8 +25,13 @@ public class Airline {
     @JoinColumn(name = "CountryCode3", referencedColumnName = "CountryCode3", nullable = false)
     private Country country;
 
-    @OneToMany(mappedBy = "flightId.airline")
-    Set<Flight> flights;
+    // referencing tables
+
+    @OneToMany(mappedBy = "airline")
+    private Set<Flight> flights;
+
+    @OneToMany(mappedBy = "airline")
+    private Set<Price> prices;
 
     public Airline() {
     }
@@ -35,7 +40,39 @@ public class Airline {
         this.airlineCode = airlineCode;
         this.airlineName = airlineName;
         this.country = country;
+        this.country.addAirline(this);
         this.flights = new HashSet<Flight>();
+        this.prices = new HashSet<Price>();
+    }
+
+    public String getAirlineCode() {
+        return this.airlineCode;
+    }
+
+    public void setAirlineCode(String airlineCode) {
+        this.airlineCode = airlineCode;
+    }
+
+    public String getAirlineName() {
+        return this.airlineName;
+    }
+
+    public void setAirlineName(String airlineName) {
+        this.airlineName = airlineName;
+    }
+
+    public Country getCountry() {
+        return this.country;
+    }
+
+    public void setCountry(Country country) {
+        this.country.removeAirline(this);
+        this.country = country;
+        this.country.addAirline(this);
+    }
+
+    public Set<Flight> getFlights() {
+        return this.flights;
     }
 
     public void addFlight(Flight flight) {
@@ -43,11 +80,20 @@ public class Airline {
     }
 
     public void removeFlight(Flight flight) {
-        flights.remove(flight);
+        if (flight != null)
+            this.flights.remove(flight);
     }
 
-    public Set<Flight> getFlights() {
-        return flights;
+    public Set<Price> getPrices() {
+        return this.prices;
     }
 
+    public void addPrice(Price price) {
+        this.prices.add(price);
+    }
+
+    public void removePrice(Price price) {
+        if (price != null)
+            this.prices.remove(price);
+    }
 }
