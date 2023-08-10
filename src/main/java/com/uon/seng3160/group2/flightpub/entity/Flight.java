@@ -72,22 +72,149 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(String airlineCode, String flightNumber, Destination departure, Destination stopOver,
-            Destination destination, LocalDateTime departureTime, LocalDateTime arrivalTimeStopOver,
+    public Flight(FlightId flightId, Airline airline, Destination departure, Destination stopOver,
+            Destination destination, LocalDateTime arrivalTimeStopOver,
             LocalDateTime departureTimeStopOver, LocalDateTime arrivalTime, PlaneType planeType, int duration,
             int durationSecondLeg, boolean groupFlight) {
-        this.flightId = new FlightId(airlineCode, flightNumber, departureTime);
-
+        this.flightId = flightId;
+        this.airline = airline;
+        this.airline.addFlight(this);
         this.departure = departure;
+        this.departure.addDeparture(this);
         this.stopOver = stopOver;
+        this.stopOver.addStopOver(this);
         this.destination = destination;
+        this.destination.addArrival(this);
         this.arrivalTimeStopOver = arrivalTimeStopOver;
         this.departureTimeStopOver = departureTimeStopOver;
         this.arrivalTime = arrivalTime;
         this.planeType = planeType;
+        this.planeType.addFlight(this);
         this.duration = duration;
         this.durationSecondLeg = durationSecondLeg;
         this.groupFlight = groupFlight;
         this.availabilities = new HashSet<Availability>();
+    }
+
+    public FlightId getFlightId() {
+        return this.flightId;
+    }
+
+    public void setFlightId(FlightId flightId) {
+        this.flightId = flightId;
+    }
+
+    public Airline getAirline() {
+        return this.airline;
+    }
+
+    public void setAirline(Airline airline) {
+        this.airline = airline;
+        this.airline.addFlight(this);
+    }
+
+    public Destination getDeparture() {
+        return this.departure;
+    }
+
+    public void setDeparture(Destination departure) {
+        this.departure.removeDeparture(this);
+        this.departure = departure;
+        this.departure.addDeparture(this);
+    }
+
+    public Destination getStopOver() {
+        return this.stopOver;
+    }
+
+    public void setStopOver(Destination stopOver) {
+        this.stopOver.removeStopOver(this);
+        this.stopOver = stopOver;
+        this.stopOver.addStopOver(this);
+    }
+
+    public Destination getDestination() {
+        return this.destination;
+    }
+
+    public void setDestination(Destination destination) {
+        this.destination.removeArrival(this);
+        this.destination = destination;
+        this.destination.addArrival(this);
+    }
+
+    public LocalDateTime getArrivalTimeStopOver() {
+        return this.arrivalTimeStopOver;
+    }
+
+    public void setArrivalTimeStopOver(LocalDateTime arrivalTimeStopOver) {
+        this.arrivalTimeStopOver = arrivalTimeStopOver;
+    }
+
+    public LocalDateTime getDepartureTimeStopOver() {
+        return this.departureTimeStopOver;
+    }
+
+    public void setDepartureTimeStopOver(LocalDateTime departureTimeStopOver) {
+        this.departureTimeStopOver = departureTimeStopOver;
+    }
+
+    public LocalDateTime getArrivalTime() {
+        return this.arrivalTime;
+    }
+
+    public void setArrivalTime(LocalDateTime arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
+
+    public PlaneType getPlaneType() {
+        return this.planeType;
+    }
+
+    public void setPlaneType(PlaneType planeType) {
+        this.planeType.removeFlight(this);
+        this.planeType = planeType;
+        this.planeType.addFlight(this);
+    }
+
+    public int getDuration() {
+        return this.duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public int getDurationSecondLeg() {
+        return this.durationSecondLeg;
+    }
+
+    public void setDurationSecondLeg(int durationSecondLeg) {
+        this.durationSecondLeg = durationSecondLeg;
+    }
+
+    public boolean isGroupFlight() {
+        return this.groupFlight;
+    }
+
+    public boolean getGroupFlight() {
+        return this.groupFlight;
+    }
+
+    public void setGroupFlight(boolean groupFlight) {
+        this.groupFlight = groupFlight;
+    }
+
+    public Set<Availability> getAvailabilities() {
+        return this.availabilities;
+    }
+
+    public void addAvailability(Availability availability) {
+        this.availabilities.add(availability);
+    }
+
+    public void removeAvailability(Availability availability) {
+        if (availability != null)
+            this.availabilities.remove(availability);
     }
 }

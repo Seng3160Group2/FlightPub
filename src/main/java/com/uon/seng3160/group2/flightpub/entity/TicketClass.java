@@ -24,7 +24,7 @@ public class TicketClass {
     @OneToMany(mappedBy = "ticketClass")
     private Set<Availability> availabilities;
 
-    @OneToMany(mappedBy = "priceId.ticketClass")
+    @OneToMany(mappedBy = "ticketClass")
     private Set<Price> prices;
 
     public TicketClass() {
@@ -35,5 +35,47 @@ public class TicketClass {
         this.details = details;
         this.availabilities = new HashSet<Availability>();
         this.prices = new HashSet<Price>();
+    }
+
+    public String getClassCode() {
+        return this.classCode;
+    }
+
+    public void setClassCode(String classCode) {
+        this.classCode = classCode;
+    }
+
+    public String getDetails() {
+        return this.details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public Set<Availability> getAvailabilities() {
+        return this.availabilities;
+    }
+
+    public void addAvailability(Availability availability) {
+        this.availabilities.add(availability);
+    }
+
+    public void removeAvailability(Availability availability) {
+        if (availability != null)
+            this.availabilities.remove(availability);
+    }
+
+    public Set<Price> getPrices() {
+        return this.prices;
+    }
+
+    public void addPrice(Price price) {
+        this.prices.add(price);
+    }
+
+    public void removePrice(Price price) {
+        if (price != null)
+            this.prices.remove(price);
     }
 }

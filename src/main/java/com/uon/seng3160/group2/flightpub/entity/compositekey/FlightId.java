@@ -30,4 +30,28 @@ public class FlightId implements Serializable {
         this.flightNumber = flightNumber;
         this.departureTime = departureTime;
     }
+
+    public String getAirlineCode() {
+        return this.airlineCode;
+    }
+
+    public void setAirlineCode(String airlineCode) {
+        this.airlineCode = airlineCode;
+    }
+
+    public String getFlightNumber() {
+        return this.flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    public LocalDateTime getDepartureTime() {
+        return this.departureTime;
+    }
+
+    public void setDepartureTime(LocalDateTime departureTime) {
+        this.departureTime = departureTime;
+    }
 }

@@ -1,5 +1,6 @@
 package com.uon.seng3160.group2.flightpub.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -46,6 +47,67 @@ public class PlaneType {
         this.numBusiness = numBusiness;
         this.numPremiumEconomy = numPremiumEconomy;
         this.economy = economy;
+        this.flights = new HashSet<Flight>();
     }
 
+    public String getPlaneCode() {
+        return this.planeCode;
+    }
+
+    public void setPlaneCode(String planeCode) {
+        this.planeCode = planeCode;
+    }
+
+    public String getDetails() {
+        return this.details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public int getNumFirstClass() {
+        return this.numFirstClass;
+    }
+
+    public void setNumFirstClass(int numFirstClass) {
+        this.numFirstClass = numFirstClass;
+    }
+
+    public int getNumBusiness() {
+        return this.numBusiness;
+    }
+
+    public void setNumBusiness(int numBusiness) {
+        this.numBusiness = numBusiness;
+    }
+
+    public int getNumPremiumEconomy() {
+        return this.numPremiumEconomy;
+    }
+
+    public void setNumPremiumEconomy(int numPremiumEconomy) {
+        this.numPremiumEconomy = numPremiumEconomy;
+    }
+
+    public int getEconomy() {
+        return this.economy;
+    }
+
+    public void setEconomy(int economy) {
+        this.economy = economy;
+    }
+
+    public Set<Flight> getFlights() {
+        return this.flights;
+    }
+
+    public void addFlight(Flight flight) {
+        this.flights.add(flight);
+    }
+
+    public void removeFlight(Flight flight) {
+        if (flight != null)
+            this.flights.remove(flight);
+    }
 }

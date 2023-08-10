@@ -4,7 +4,6 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import com.uon.seng3160.group2.flightpub.entity.compositekey.AvailabilityId;
-import com.uon.seng3160.group2.flightpub.entity.compositekey.FlightId;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
@@ -53,11 +52,69 @@ public class Availability {
     public Availability() {
     }
 
-    public Availability(FlightId flightId, String classCode, String ticketCode, int numberAvailableSeatsLeg1,
+    public Availability(AvailabilityId availabilityId, Flight flight, TicketClass ticketClass, TicketType ticketType,
+            int numberAvailableSeatsLeg1,
             int numberAvailableSeatsLeg2) {
 
-        this.availabilityId = new AvailabilityId(flightId, classCode, ticketCode);
+        this.availabilityId = availabilityId;
+        this.flight = flight;
+        this.flight.addAvailability(this);
+        this.ticketClass = ticketClass;
+        this.ticketClass.addAvailability(this);
+        this.ticketType = ticketType;
+        this.ticketType.addAvailability(this);
         this.numberAvailableSeatsLeg1 = numberAvailableSeatsLeg1;
+        this.numberAvailableSeatsLeg2 = numberAvailableSeatsLeg2;
+    }
+
+    public AvailabilityId getAvailabilityId() {
+        return this.availabilityId;
+    }
+
+    public void setAvailabilityId(AvailabilityId availabilityId) {
+        this.availabilityId = availabilityId;
+    }
+
+    public Flight getFlight() {
+        return this.flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
+        this.flight.addAvailability(this);
+    }
+
+    public TicketClass getTicketClass() {
+        return this.ticketClass;
+    }
+
+    public void setTicketClass(TicketClass ticketClass) {
+        this.ticketClass = ticketClass;
+        this.ticketClass.addAvailability(this);
+    }
+
+    public TicketType getTicketType() {
+        return this.ticketType;
+    }
+
+    public void setTicketType(TicketType ticketType) {
+        this.ticketType = ticketType;
+        this.ticketType.addAvailability(this);
+    }
+
+    public int getNumberAvailableSeatsLeg1() {
+        return this.numberAvailableSeatsLeg1;
+    }
+
+    public void setNumberAvailableSeatsLeg1(int numberAvailableSeatsLeg1) {
+        this.numberAvailableSeatsLeg1 = numberAvailableSeatsLeg1;
+    }
+
+    public int getNumberAvailableSeatsLeg2() {
+        return this.numberAvailableSeatsLeg2;
+    }
+
+    public void setNumberAvailableSeatsLeg2(int numberAvailableSeatsLeg2) {
         this.numberAvailableSeatsLeg2 = numberAvailableSeatsLeg2;
     }
 }
