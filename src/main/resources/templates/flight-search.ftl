@@ -20,7 +20,7 @@
         <@spring.formInput "flightSearchForm.departureTime"/>
         <@spring.showErrors "<br/>"/>
 
-        <#if bindingResult.hasErrors()>
+        <#if bindingResult?? && bindingResult.hasErrors()>
             <p class="errorClass">
                 <#list bindingResult.allErrors as error>
                     ${error.defaultMessage}<br/>
