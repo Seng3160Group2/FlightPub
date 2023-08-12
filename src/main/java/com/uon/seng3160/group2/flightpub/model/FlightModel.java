@@ -1,17 +1,15 @@
 package com.uon.seng3160.group2.flightpub.model;
 
-import java.time.LocalDateTime;
-
 public class FlightModel {
     private String airlineCode;
     private String flightNumber;
     private String departureCode;
     private String stopOverCode;
     private String destinationCode;
-    private LocalDateTime departureTime;
-    private LocalDateTime arrivalTimeStopOver;
-    private LocalDateTime departureTimeStopOver;
-    private LocalDateTime arrivalTime;
+    private String departureTime;
+    private String arrivalTimeStopOver;
+    private String departureTimeStopOver;
+    private String arrivalTime;
     private String planeCode;
     private int duration;
     private int durationSecondLeg;
@@ -21,9 +19,8 @@ public class FlightModel {
     }
 
     public FlightModel(String airlineCode, String flightNumber, String departureCode, String stopOverCode,
-            String destinationCode, LocalDateTime departureTime, LocalDateTime arrivalTimeStopOver,
-            LocalDateTime departureTimeStopOver, LocalDateTime arrivalTime, String planeCode, int duration,
-            int durationSecondLeg, boolean groupFlight) {
+            String destinationCode, String departureTime, String arrivalTimeStopOver, String departureTimeStopOver,
+            String arrivalTime, String planeCode, int duration, int durationSecondLeg, boolean groupFlight) {
         this.airlineCode = airlineCode;
         this.flightNumber = flightNumber;
         this.departureCode = departureCode;
@@ -79,35 +76,35 @@ public class FlightModel {
         this.destinationCode = destinationCode;
     }
 
-    public LocalDateTime getDepartureTime() {
+    public String getDepartureTime() {
         return this.departureTime;
     }
 
-    public void setDepartureTime(LocalDateTime departureTime) {
+    public void setDepartureTime(String departureTime) {
         this.departureTime = departureTime;
     }
 
-    public LocalDateTime getArrivalTimeStopOver() {
+    public String getArrivalTimeStopOver() {
         return this.arrivalTimeStopOver;
     }
 
-    public void setArrivalTimeStopOver(LocalDateTime arrivalTimeStopOver) {
+    public void setArrivalTimeStopOver(String arrivalTimeStopOver) {
         this.arrivalTimeStopOver = arrivalTimeStopOver;
     }
 
-    public LocalDateTime getDepartureTimeStopOver() {
+    public String getDepartureTimeStopOver() {
         return this.departureTimeStopOver;
     }
 
-    public void setDepartureTimeStopOver(LocalDateTime departureTimeStopOver) {
+    public void setDepartureTimeStopOver(String departureTimeStopOver) {
         this.departureTimeStopOver = departureTimeStopOver;
     }
 
-    public LocalDateTime getArrivalTime() {
+    public String getArrivalTime() {
         return this.arrivalTime;
     }
 
-    public void setArrivalTime(LocalDateTime arrivalTime) {
+    public void setArrivalTime(String arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 
@@ -141,6 +138,10 @@ public class FlightModel {
 
     public boolean getGroupFlight() {
         return this.groupFlight;
+    }
+
+    public void setGroupFlight(boolean groupFlight) {
+        this.groupFlight = groupFlight;
     }
 
     @Override

@@ -6,7 +6,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 import org.springframework.format.Formatter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class LocalDateTimeFormatter implements Formatter<LocalDateTime> {
 
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

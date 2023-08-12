@@ -3,18 +3,15 @@ package com.uon.seng3160.group2.flightpub.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.uon.seng3160.group2.flightpub.entity.Flight;
-import com.uon.seng3160.group2.flightpub.formatter.LocalDateTimeFormatter;
-import com.uon.seng3160.group2.flightpub.mapper.FlightMapper;
 import com.uon.seng3160.group2.flightpub.model.FlightModel;
 import com.uon.seng3160.group2.flightpub.model.form.FlightSearchForm;
 import com.uon.seng3160.group2.flightpub.service.FlightSearchService;
@@ -25,17 +22,15 @@ import jakarta.validation.Valid;
 @RequestMapping("/flights")
 public class FlightController {
 
-    private FlightSearchService flightSearchService;
+    @Autowired
+    public FlightSearchService flightSearchService;
 
     @Autowired
-    public FlightController(FlightSearchService flightSearchService) {
-        this.flightSearchService = flightSearchService;
-    }
-
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        binder.addCustomFormatter(new LocalDateTimeFormatter());
-    }
+    public Converter<Flight, FlightModel> conversionService;
+    // @InitBinder
+    // public void initBinder(WebDataBinder binder) {
+    // binder.addCustomFormatter(new LocalDateTimeFormatter());
+    // }
 
     @GetMapping("/search")
     public String showSearchForm(Model model) {
@@ -62,7 +57,7 @@ public class FlightController {
             return "flight-search-results";
         }
         Flight flight = result.get();
-        FlightModel flightModel = FlightMapper.mapToModel(flight);
+        FlightModel flightModel = conversionService.convert(flight);
 
         model.addAttribute("flight", flightModel);
 

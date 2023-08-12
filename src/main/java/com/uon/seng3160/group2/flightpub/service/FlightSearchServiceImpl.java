@@ -1,7 +1,6 @@
 package com.uon.seng3160.group2.flightpub.service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +14,9 @@ import com.uon.seng3160.group2.flightpub.repository.FlightRepository;
 @Service
 @Transactional
 public class FlightSearchServiceImpl implements FlightSearchService {
-
+    @Autowired
     private final FlightRepository flightRepository;
 
-    @Autowired
     public FlightSearchServiceImpl(FlightRepository flightRepository) {
         this.flightRepository = flightRepository;
     }
