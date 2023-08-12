@@ -1,18 +1,21 @@
 package com.uon.seng3160.group2.flightpub.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
+import com.uon.seng3160.group2.flightpub.converter.FlightEntityToModelConverter;
+import com.uon.seng3160.group2.flightpub.formatter.LocalDateTimeFormatter;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.uon.seng3160.group2.flightpub" })
-@EnableJpaRepositories(basePackages = { "com.uon.seng3160.group2.flightpub" })
 public class WebConfig implements WebMvcConfigurer {
 
     // Free Marker
@@ -30,5 +33,21 @@ public class WebConfig implements WebMvcConfigurer {
         FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
         configurer.setTemplateLoaderPath("classpath:/templates");
         return configurer;
+    }
+
+    @Autowired
+    private FlightEntityToModelConverter flightEntityToModelConverter;
+
+    @Autowired
+    private LocalDateTimeFormatter localDateTimeFormatter;
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        // DateTimeFormatterRegistrar registrar = new DateTimeFormatterRegistrar();
+        // registrar.setDateTimeFormatter(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        // registrar.registerFormatters(registry);
+
+        registry.addConverter(flightEntityToModelConverter);
+        registry.addFormatter(localDateTimeFormatter);
     }
 }
