@@ -25,8 +25,6 @@ public class Destination {
     @JoinColumn(name = "CountryCode3", referencedColumnName = "CountryCode3", nullable = false)
     private Country country;
 
-    // referencing tables
-
     @OneToMany(mappedBy = "departure")
     Set<Flight> departures;
 
@@ -36,12 +34,6 @@ public class Destination {
     @OneToMany(mappedBy = "destination")
     Set<Flight> arrivals;
 
-    @OneToMany(mappedBy = "destinationFrom")
-    Set<Distance> distancesFrom;
-
-    @OneToMany(mappedBy = "destinationTo")
-    Set<Distance> distancesTo;
-
     public Destination() {
     }
 
@@ -49,102 +41,8 @@ public class Destination {
         this.destinationCode = destinationCode;
         this.airport = airport;
         this.country = country;
-        this.country.AddDestination(this);
         this.departures = new HashSet<Flight>();
         this.stopOvers = new HashSet<Flight>();
         this.arrivals = new HashSet<Flight>();
-        this.distancesFrom = new HashSet<Distance>();
-        this.distancesTo = new HashSet<Distance>();
-    }
-
-    public void setDestinationCode(String destinationCode) {
-        this.destinationCode = destinationCode;
-    }
-
-    public String getDestinationCode() {
-        return this.destinationCode;
-    }
-
-    public String getAirport() {
-        return this.airport;
-    }
-
-    public void setAirport(String airport) {
-        this.airport = airport;
-    }
-
-    public Country getCountry() {
-        return this.country;
-    }
-
-    public void setCountry(Country country) {
-        this.country.removeDestination(this);
-        this.country = country;
-        this.country.AddDestination(this);
-    }
-
-    public Set<Flight> getDepartures() {
-        return this.departures;
-    }
-
-    public void addDeparture(Flight departure) {
-        this.departures.add(departure);
-    }
-
-    public void removeDeparture(Flight departure) {
-        if (departure != null)
-            this.departures.remove(departure);
-    }
-
-    public Set<Flight> getStopOvers() {
-        return this.stopOvers;
-    }
-
-    public void addStopOver(Flight stopOver) {
-        this.stopOvers.add(stopOver);
-    }
-
-    public void removeStopOver(Flight stopOver) {
-        if (stopOver != null)
-            this.stopOvers.remove(stopOver);
-    }
-
-    public Set<Flight> getArrivals() {
-        return this.arrivals;
-    }
-
-    public void addArrival(Flight arrival) {
-        this.arrivals.add(arrival);
-    }
-
-    public void removeArrival(Flight arrival) {
-        if (arrival != null)
-            this.arrivals.remove(arrival);
-    }
-
-    public Set<Distance> getDistancesFrom() {
-        return this.distancesFrom;
-    }
-
-    public void addDistanceFrom(Distance distanceFrom) {
-        this.distancesFrom.add(distanceFrom);
-    }
-
-    public void removeDistanceFrom(Distance distanceFrom) {
-        if (distanceFrom != null)
-            this.distancesFrom.remove(distanceFrom);
-    }
-
-    public Set<Distance> getDistancesTo() {
-        return this.distancesTo;
-    }
-
-    public void AddDistanceTo(Distance distanceTo) {
-        this.distancesTo.add(distanceTo);
-    }
-
-    public void removeDistanceTo(Distance distanceTo) {
-        if (distanceTo != null)
-            this.distancesTo.remove(distanceTo);
     }
 }

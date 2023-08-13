@@ -36,8 +36,6 @@ public class Country {
     @Column
     private String motherCountryComment = "";
 
-    // referencing tables
-
     @OneToMany(mappedBy = "country")
     private Set<Airline> airlines;
 
@@ -53,83 +51,5 @@ public class Country {
         this.countryName = countryName;
         this.airlines = new HashSet<Airline>();
         this.destinations = new HashSet<Destination>();
-    }
-
-    public String getCountryCode2() {
-        return this.countryCode2;
-    }
-
-    public String getCountryCode3() {
-        return this.countryCode3;
-    }
-
-    public void setCountryCode3(String countryCode3) {
-        this.countryCode3 = countryCode3;
-    }
-
-    public String getCountryName() {
-        return this.countryName;
-    }
-
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
-    }
-
-    public String getAlternateName1() {
-        return this.alternateName1;
-    }
-
-    public void setAlternateName1(String alternateName1) {
-        this.alternateName1 = alternateName1;
-    }
-
-    public String getAlternateName2() {
-        return this.alternateName2;
-    }
-
-    public void setAlternateName2(String alternateName2) {
-        this.alternateName2 = alternateName2;
-    }
-
-    public String getMotherCountryCode3() {
-        return this.motherCountryCode3;
-    }
-
-    public void setMotherCountryCode3(String motherCountryCode3) {
-        this.motherCountryCode3 = motherCountryCode3;
-    }
-
-    public String getMotherCountryComment() {
-        return this.motherCountryComment;
-    }
-
-    public void setMotherCountryComment(String motherCountryComment) {
-        this.motherCountryComment = motherCountryComment;
-    }
-
-    public Set<Airline> getAirlines() {
-        return this.airlines;
-    }
-
-    public void addAirline(Airline airline) {
-        this.airlines.add(airline);
-    }
-
-    public void removeAirline(Airline airline) {
-        if (airline != null)
-            this.airlines.remove(airline);
-    }
-
-    public Set<Destination> getDestinations() {
-        return this.destinations;
-    }
-
-    public void AddDestination(Destination destination) {
-        this.destinations.add(destination);
-    }
-
-    public void removeDestination(Destination destination) {
-        if (destination != null)
-            this.destinations.remove(destination);
     }
 }

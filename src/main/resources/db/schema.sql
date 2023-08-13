@@ -25,17 +25,6 @@ CREATE TABLE Airlines (
   CONSTRAINT AirlinesCountryCode2_FK FOREIGN KEY (CountryCode2) REFERENCES Country (countryCode2)
 )
 
-CREATE TABLE `PlaneType` (
-  `PlaneCode` varchar(20) NOT NULL,
-  `Details` varchar(50) NOT NULL,
-  `NumFirstClass` int(11) NOT NULL,
-  `NumBusiness` int(11) NOT NULL,
-  `NumPremiumEconomy` int(11) NOT NULL,
-  `Economy` int(11) NOT NULL,
-  PRIMARY KEY (`PlaneCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---*
 CREATE TABLE Destinations (
   DestinationCode char(3) NOT NULL,
   Airport varchar(30) NOT NULL,
@@ -44,27 +33,21 @@ CREATE TABLE Destinations (
   CONSTRAINT DestinationCountryCode_FK FOREIGN KEY (CountryCode2) REFERENCES Country (countryCode2)
 ) 
 
---*
 CREATE TABLE TicketClass (
   ClassCode char(3) NOT NULL,
   Details varchar(20) NOT NULL,
   PRIMARY KEY (ClassCode)
 ) 
 
---*
 CREATE TABLE TicketType (
   TicketCode char(1) NOT NULL,
-  `Transferrable` BIT(1) DEFAULT 1, 
-  `Refundable` BIT(1) DEFAULT 1, 
-  `Exchangeable` BIT(1) DEFAULT 0, 
-  `FrequentFlyerPoints` BIT(1) DEFAULT 1,
   Name varchar(50) NOT NULL,
   PRIMARY KEY (TicketCode)
 ) 
 
 
---Flight Related Data
---*
+Flight Related Data
+
 CREATE TABLE Flights (
   AirlineCode char(2) NOT NULL,
   FlightNumber varchar(6) NOT NULL,
@@ -124,3 +107,21 @@ CREATE TABLE Price (
   CONSTRAINT PriceClassCode_FK FOREIGN KEY (ClassCode) REFERENCES TicketClass (ClassCode),
   CONSTRAINT PriceTicketCode_FK FOREIGN KEY (TicketCode) REFERENCES TicketType (TicketCode)
 ) 
+
+--User related data
+CREATE TABLE Users (
+  AirlineCode char(2) NOT NULL,
+  FlightNumber varchar(6) NOT NULL,
+  ClassCode char(3) NOT NULL,
+  TicketCode char(1) NOT NULL,
+  StartDate datetime NOT NULL,
+  EndDate datetime NOT NULL,
+  Price decimal(10,2) NOT NULL,
+  PriceLeg1 decimal(10,2) DEFAULT NULL,
+  PriceLeg2 decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (AirlineCode,FlightNumber,ClassCode,TicketCode,StartDate),
+  CONSTRAINT PriceAirlineCode_FK FOREIGN KEY (AirlineCode) REFERENCES Airlines (AirlineCode),
+  CONSTRAINT PriceClassCode_FK FOREIGN KEY (ClassCode) REFERENCES TicketClass (ClassCode),
+  CONSTRAINT PriceTicketCode_FK FOREIGN KEY (TicketCode) REFERENCES TicketType (TicketCode)
+) 
+
