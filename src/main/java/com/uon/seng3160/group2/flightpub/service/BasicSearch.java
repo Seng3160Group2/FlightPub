@@ -1,12 +1,20 @@
-
-import org.springframework.data.jpa.repository.JpaRepository;
+package com.uon.seng3160.group2.flightpub.service;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+import java.util.Set;
+
+import com.uon.seng3160.group2.flightpub.entity.Destination;
+import com.uon.seng3160.group2.flightpub.entity.Distance;
+
 
 public class BasicSearch{
     int magnitude = 4;
@@ -15,9 +23,7 @@ public class BasicSearch{
     Destination endDestination;
     List<List<Destination>> searchResults = new ArrayList<>();
 
-    public BasicSearch(DestinationBean start, DestinationBean end){
-        destinations = new DestinationRepository().getAll();
-        distances = new DistanceRepository().getAll();
+    public BasicSearch(Destination start, Destination end){
         startDestination = start;
         endDestination = end;
         createGraph();
@@ -25,15 +31,15 @@ public class BasicSearch{
 
     private void createGraph(){
         searchDestinationsList.add(startDestination);
-        Set<Distance> distances = new HashSet<Distance>;
+        Iterator<Distance> distances;
         for(int j = 0; j < searchDestinationsList.size(); j++){
-            distances = searchDestinationList.get(j).getDistancesFrom();
-            for(int i = 0; i < distances.size(); i++){
-                searchDestinationList.add(distances.get(i).getDestinationTo());
+            distances = searchDestinationsList.get(j).getDistancesFrom().iterator();
+            while(distances.hasNext()){
+                searchDestinationsList.add(distances.next().getDestinationTo());
             }
-            distances = searchDestinationList.get(i).getDistancesTo();
-            for(int i = 0; i < distances.size(); i++){
-                searchDestinationList.add(distances.get(i).getDestinationFrom());
+            distances = searchDestinationsList.get(j).getDistancesTo().iterator();
+            while(distances.hasNext()){
+                searchDestinationsList.add(distances.next().getDestinationFrom());
             }
         }
     }
@@ -44,8 +50,9 @@ public class BasicSearch{
 
         queue.add(new ArrayList<>(List.of(start)));
 
-        while(!queue.empty()){
+        while(!queue.isEmpty()){
             List<Destination> currentPath = queue.poll();
+            currentPath.get(currentPath.size()-1).setVisited(true);
             Destination lastNode = currentPath.get(currentPath.size()-1);
 
             if(lastNode == end){
@@ -53,11 +60,17 @@ public class BasicSearch{
             }
             else {
                 //get shortest distance unvisited neighbour
-                Distance[] distances = currentPath.get(currentPathNode).getDistances().toArray;
-                for(int i = 0; i < distances.length; i++){
-                    if(!distances[i].getDestination().getVisited() && !currentPath.contains(distances[i].getDestination())){
+                Iterator<Distance> distances = lastNode.getDistances().iterator();
+                while(distances.hasNext()){
+                    Distance current = distances.next();
+                    if(!current.getDestinationFrom().getVisited()){
                         List<Destination> newPath = new ArrayList<>(currentPath);
-                        newPath.add(distances[i].getDestination());
+                        newPath.add(current.getDestinationFrom());
+                        queue.add(newPath);
+                    }
+                    if(!current.getDestinationTo().getVisited()){
+                        List<Destination> newPath = new ArrayList<>(currentPath);
+                        newPath.add(current.getDestinationTo());
                         queue.add(newPath);
                     }
                 }
@@ -68,26 +81,26 @@ public class BasicSearch{
 
     public void createSearchResults(Destination[] graph, Destination start, Destination end){
         createGraph();
-        List<Destination>[] pathsList = bfs(graph, start, end).toArray();
-        int[] pathDistances = new int[pathsList.length];
+        List<List<Destination>> pathsList = bfs(graph, start, end);
+        List<Integer> pathDistances = new ArrayList<>();
         int pathDist = 0;
-        for(int i = 0; i < pathsList.length; i++){
+        for(int i = 0; i < pathsList.size(); i++){
             for(int j = 0; j < pathsList.get(i).size()-1; j++){
                 //get the distance from jth destination to j+1th destination and add to total
-                pathDist += pathsList[i].get(j).getDistanceTo(pathsList[i].get(j+1));
+                pathDist += pathsList.get(i).get(j).getDistanceTo(pathsList.get(i).get(j+1));
             }
-            pathDistances[i] = pathDist;
+            pathDistances.add(i, pathDist);
         }
-        int tempDist = pathDistances[0];
+        int tempDist = pathDistances.get(0);
         int indexOfTemp = 0;
-        while(!pathDistances.empty()){
-            for(int i = 1; i < pathDistances.length; i++){
-                if(tempDist > pathDistances[i]){
-                    tempDist = pathDistances[i];
+        while(pathDistances.size() != 0){
+            for(int i = 1; i < pathDistances.size(); i++){
+                if(tempDist > pathDistances.get(i)){
+                    tempDist = pathDistances.get(i);
                     indexOfTemp = i;
                 }
             }
-            searchResults.add(pathsList[indexOfTemp]);
+            searchResults.add(pathsList.get(indexOfTemp));
             pathsList.remove(indexOfTemp);
             pathDistances.remove(indexOfTemp);
         }
