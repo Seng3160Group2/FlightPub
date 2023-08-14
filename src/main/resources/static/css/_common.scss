@@ -1,0 +1,39 @@
+html * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+h1 {
+    margin: 0 0 2rem 0;
+}
+
+h2 {
+    margin: 0 0 1.5rem 0;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a, a:visited, a:hover, a:active {
+    color: inherit;
+}
+
+p {
+    margin: 0 0 1rem 0;
+}
+
