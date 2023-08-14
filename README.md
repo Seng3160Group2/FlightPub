@@ -54,5 +54,9 @@ A project template for development of the FlightPub app.
    - You will know its running as the terminal will spit out a bunch of spring related outputs including a big ascii banner
    - You can stop it any time by pressing `ctrl+c` whilst in the terminal that you ran the docker command in
    - The spring app is configured to include live reloading so you do not need to stop it between code changes
+  
+9. Running live sass reloader
+   - open a new terminal window (either via vscode or externally)
+   - in your project root run command `mvn sass-cli:watch`
 
 *More steps to be added soon*
