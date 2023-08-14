@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "Destinations")
@@ -43,6 +44,7 @@ public class Destination {
     @OneToMany(mappedBy = "destinationTo")
     Set<Distance> distancesTo;
 
+    @Transient
     private boolean visited = false;
 
     public Destination() {
