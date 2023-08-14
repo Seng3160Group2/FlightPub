@@ -1,6 +1,6 @@
 
-import org.springframework.data.jpa.repository.JpaRepository;
+//import org.springframework.data.jpa.repository.JpaRepository;
 
-public PriceRepository extends JpaRepository<PriceBean, char>{
+//public PriceRepository extends JpaRepository<PriceBean, char>{
 
-}
+//}
