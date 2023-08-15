@@ -1,13 +1,13 @@
 @import "fonts";
 @import "variables";
 @import "common";
-@import "c-footer";
-
 
 @import "c-button";
 @import "c-header";
+@import "c-footer";
 @import "c-login";
 @import "c-signup";
+@import "c-search-bar.scss";
 
 @import "o-section";
 @import "o-wrapper";

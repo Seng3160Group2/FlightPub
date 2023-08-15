@@ -30,4 +30,11 @@ public class StylesController {
 
         return "signup";
     }
+
+    @GetMapping("search-bar")
+    public String searchBar(Model model) {
+        model.addAttribute("example", null);
+
+        return "search-bar";
+    }
 }
