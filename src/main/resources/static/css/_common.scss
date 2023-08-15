@@ -44,12 +44,14 @@ p {
 
 // Recommendations styling
 .recommendations {
+    
     margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
 
     .recommendation {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         position: relative;
         width: 200px;
         height: 100px;
@@ -97,6 +99,7 @@ p {
     
 
         .searchbar-segment {
+            
             display: flex;
             align-items: center;
             padding: 2px; /* Add padding between segment content and border */
@@ -111,6 +114,7 @@ p {
             }
 
             .searchbar-input {
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                 height: 42px; /* Adjust the height as needed */
                 border: none;
                 padding: 5px;
@@ -125,6 +129,7 @@ p {
     }
 
     .searchbar-button {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         padding: 0px 10px;
         background-color: #27649D;
         color: #F4DCDC;
