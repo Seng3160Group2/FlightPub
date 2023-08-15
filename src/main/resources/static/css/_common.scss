@@ -41,6 +41,8 @@ p {
     margin: 0 0 1rem 0;
 }
 
+
+// Recommendations styling
 .recommendations {
     margin-top: 20px;
     display: flex;
@@ -51,7 +53,7 @@ p {
         position: relative;
         width: 200px;
         height: 100px;
-        background-color: whitesmoke; /* Rectangle color */
+        background-color: whitesmoke;
         border-radius: 15px;
         margin: 10px;
         margin-top: 30px;
@@ -59,8 +61,8 @@ p {
 
         .destination-text {
             position: absolute;
-            bottom: 10px; /* Adjust as needed for vertical position */
-            left: 10px; /* Adjust as needed for horizontal position */
+            bottom: 10px;
+            left: 10px;
             margin: 0;
             font-size: 14px;
             color: black;
@@ -75,5 +77,58 @@ p {
             color: black;
         }
     }
+}
+
+// Searchbar styling
+.searchbar-section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchbar-container {
+    display: flex;
+    align-items: center;
+    // border: 1px solid #ccc;
+    padding: 5px;
+    // background-color: white;
+    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.searchbar-segment {
+    display: flex;
+    align-items: center;
+    padding: 2px; /* Add padding between segment content and border */
+    // border-radius: 15px; /* Apply rounded border to all segments */
+    
+}
+
+.searchbar-start {
+    border-radius: 10px 0px 0px 10px;
+}
+
+.searchbar-end {
+    border-radius: 0px 10px 10px 0px;
+}
+
+.searchbar-input {
+    height: 42px; /* Adjust the height as needed */
+    border: none;
+    padding: 5px;
+    font-size: 14px;
+    font-family: 'Catamaran';
+    width: 100%; /* Expand the input to fill the available space */
+    // border-radius: 100px;
+}
+
+.searchbar-button {
+    padding: 0px 10px;
+    background-color: #27649D;
+    color: #F4DCDC;
+    border: none;
+    border-radius: 10px;
+    // margin-left: 5px;
+    height: 42px;
 }
 

@@ -24,6 +24,28 @@
         </div>
     </section>
 
+<section class="searchbar-section">
+    <div class="searchbar-container">
+        <div class="searchbar-segment">
+            <input type="text" class="searchbar-input searchbar-start" placeholder="from...">
+        </div>
+        <div class="searchbar-segment">
+            <input type="text" class="searchbar-input searchbar-middle" placeholder="to...">
+        </div>
+        <div class="searchbar-segment">
+            <input type="text" class="searchbar-input searchbar-middle" placeholder="start date...">
+        </div>
+        <div class="searchbar-segment">
+            <input type="text" class="searchbar-input searchbar-middle" placeholder="end date...">
+        </div>
+        <div class="searchbar-segment">
+            <input type="text" class="searchbar-input searchbar-end" placeholder="No. seats...">
+        </div>
+    </div>
+    <button class="searchbar-button">Search</button>
+</section>
+
+
 
     <h1>Flight Search Results</h1>
     <#if flight?has_content>
