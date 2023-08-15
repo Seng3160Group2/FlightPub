@@ -1,11 +1,30 @@
 <#import "spring.ftl" as spring>
-
+<#import "/website/head.ftl" as head>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Flight Search Results</title>
-</head>
+<@head.html title="Flight Search Results"/>
 <body>
+    <#include "/website/header.ftl">
+    <section class="rectangle-section">
+        <div class="rectangle">
+            <p class="rectangle-text">Test</p>
+            <p class="rectangle-text-right">book now</p>
+        </div>
+        <div class="rectangle">
+            <p class="rectangle-text">Test</p>
+            <p class="rectangle-text-right">book now</p>
+        </div>
+        <div class="rectangle">
+            <p class="rectangle-text">Test</p>
+            <p class="rectangle-text-right">book now</p>
+        </div>
+        <div class="rectangle">
+            <p class="rectangle-text">Test</p>
+            <p class="rectangle-text-right">book now</p>
+        </div>
+    </section>
+
+
     <h1>Flight Search Results</h1>
     <#if flight?has_content>
         <ul>
