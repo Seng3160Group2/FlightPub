@@ -47,14 +47,13 @@ p {
     margin: 0 0 1rem 0;
 }
 
-input, select {
-.rectangle-section {
+.recommendations {
     margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
 
-    .rectangle {
+    .recommendation {
         position: relative;
         width: 200px;
         height: 100px;
@@ -64,7 +63,7 @@ input, select {
         margin-top: 30px;
         
 
-        .rectangle-text {
+        .destination-text {
             position: absolute;
             bottom: 10px; /* Adjust as needed for vertical position */
             left: 10px; /* Adjust as needed for horizontal position */
@@ -73,7 +72,7 @@ input, select {
             color: black;
         }
 
-        .rectangle-text-right {
+        .booking-text {
             position: absolute;
             bottom: 10px;
             right: 10px;

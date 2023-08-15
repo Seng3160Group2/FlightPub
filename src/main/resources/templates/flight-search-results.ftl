@@ -5,22 +5,22 @@
 <@head.html title="Flight Search Results"/>
 <body>
     <#include "/website/header.ftl">
-    <section class="rectangle-section">
-        <div class="rectangle">
-            <p class="rectangle-text">Test</p>
-            <p class="rectangle-text-right">book now</p>
+    <section class="recommendations">
+        <div class="recommendation">
+            <p class="destination-text">Test</p>
+            <p class="booking-text">book now</p>
         </div>
-        <div class="rectangle">
-            <p class="rectangle-text">Test</p>
-            <p class="rectangle-text-right">book now</p>
+        <div class="recommendation">
+            <p class="destination-text">Test</p>
+            <p class="booking-text">book now</p>
         </div>
-        <div class="rectangle">
-            <p class="rectangle-text">Test</p>
-            <p class="rectangle-text-right">book now</p>
+        <div class="recommendation">
+            <p class="destination-text">Test</p>
+            <p class="booking-text">book now</p>
         </div>
-        <div class="rectangle">
-            <p class="rectangle-text">Test</p>
-            <p class="rectangle-text-right">book now</p>
+        <div class="recommendation">
+            <p class="destination-text">Test</p>
+            <p class="booking-text">book now</p>
         </div>
     </section>
 
