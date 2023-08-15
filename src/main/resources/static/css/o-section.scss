@@ -1,0 +1,13 @@
+.o-section {
+    width: 100%;
+    padding: 2rem 0;
+
+    &--full-page {
+        min-height: 100vh;
+        padding: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

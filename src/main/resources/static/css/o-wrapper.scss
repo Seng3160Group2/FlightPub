@@ -1,0 +1,28 @@
+.o-wrapper {
+    width: 100%;
+    padding: 0 $gutter-mobile;
+    margin: 0 auto;
+
+    @media screen and (min-width: $screen-width-mobile) and (max-width: $screen-width-tablet) {
+        padding: 0 $gutter-tablet;
+    }
+
+    @media screen and (min-width: $screen-width-tablet) and (max-width: $screen-width-desktop) {
+        padding: 0 $gutter-desktop;
+    }
+
+    @media screen and (min-width: $screen-width-desktop) {
+        padding: 0;
+        max-width: $max-width;
+    }
+
+    &--login {
+        max-width: $screen-width-mobile;
+        padding: 1rem;
+    }
+
+    &--signup {
+        max-width: $screen-width-tablet;
+        padding: 1rem;
+    }
+}
