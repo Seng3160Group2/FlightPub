@@ -85,50 +85,78 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-}
 
-.searchbar-container {
-    display: flex;
-    align-items: center;
-    // border: 1px solid #ccc;
-    padding: 5px;
-    // background-color: white;
-    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 
-.searchbar-segment {
-    display: flex;
-    align-items: center;
-    padding: 2px; /* Add padding between segment content and border */
-    // border-radius: 15px; /* Apply rounded border to all segments */
+    .searchbar-container {
+        display: flex;
+        align-items: center;
+        // border: 1px solid #ccc;
+        padding: 5px;
+        // background-color: white;
+        // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     
+
+        .searchbar-segment {
+            display: flex;
+            align-items: center;
+            padding: 2px; /* Add padding between segment content and border */
+            // border-radius: 15px; /* Apply rounded border to all segments */
+            
+            .searchbar-start {
+                border-radius: 10px 0px 0px 10px;
+            }
+        
+            .searchbar-end {
+                border-radius: 0px 10px 10px 0px;
+            }
+
+            .searchbar-input {
+                height: 42px; /* Adjust the height as needed */
+                border: none;
+                padding: 5px;
+                font-size: 14px;
+                font-family: 'Catamaran';
+                width: 100%; /* Expand the input to fill the available space */
+                // border-radius: 100px;
+            }
+        }
+
+        
+    }
+
+    .searchbar-button {
+        padding: 0px 10px;
+        background-color: #27649D;
+        color: #F4DCDC;
+        border: none;
+        border-radius: 10px;
+        // margin-left: 5px;
+        height: 42px;
+    }
 }
 
-.searchbar-start {
-    border-radius: 10px 0px 0px 10px;
+
+// Fliters formatting
+.filters-section {
+    width: 200px; /* Adjust width as needed */
+    margin-top: auto;
+    margin-left: 10%; /* Add space from the left border */
+    background-color: #f5f5f5; /* Light grey color */
+    border-radius: 15px;
+    padding: 20px; /* Add some padding inside the filters section */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Helvetica';
+    height: 50vh;
+
+    p {
+        font-size: 80%;
+        margin: 5%;
+        margin-top: 20%;
+    }
 }
 
-.searchbar-end {
-    border-radius: 0px 10px 10px 0px;
-}
 
-.searchbar-input {
-    height: 42px; /* Adjust the height as needed */
-    border: none;
-    padding: 5px;
-    font-size: 14px;
-    font-family: 'Catamaran';
-    width: 100%; /* Expand the input to fill the available space */
-    // border-radius: 100px;
+// Results formatting
+.search-results-section {
+    /* Styles for the search results section */
 }
-
-.searchbar-button {
-    padding: 0px 10px;
-    background-color: #27649D;
-    color: #F4DCDC;
-    border: none;
-    border-radius: 10px;
-    // margin-left: 5px;
-    height: 42px;
-}
-
