@@ -80,5 +80,6 @@
 
 
     </section>
+     <#include "/website/footer.ftl">
 </body>
 </html>
