@@ -4,6 +4,10 @@ html * {
 
 body {
     margin: 0;
+    background: linear-gradient(135deg, #d9eff9, #f9d9e3);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -35,5 +39,41 @@ a, a:visited, a:hover, a:active {
 
 p {
     margin: 0 0 1rem 0;
+}
+
+.rectangle-section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    .rectangle {
+        position: relative;
+        width: 200px;
+        height: 100px;
+        background-color: whitesmoke; /* Rectangle color */
+        border-radius: 15px;
+        margin: 10px;
+        margin-top: 30px;
+        
+
+        .rectangle-text {
+            position: absolute;
+            bottom: 10px; /* Adjust as needed for vertical position */
+            left: 10px; /* Adjust as needed for horizontal position */
+            margin: 0;
+            font-size: 14px;
+            color: black;
+        }
+
+        .rectangle-text-right {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            margin: 0;
+            font-size: 14px;
+            color: black;
+        }
+    }
 }
 
