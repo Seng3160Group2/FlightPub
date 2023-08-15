@@ -16,4 +16,18 @@ public class StylesController {
 
         return "example";
     }
+
+    @GetMapping("login")
+    public String login(Model model) {
+        model.addAttribute("example", null);
+
+        return "login";
+    }
+
+    @GetMapping("signup")
+    public String signup(Model model) {
+        model.addAttribute("example", null);
+
+        return "signup";
+    }
 }
