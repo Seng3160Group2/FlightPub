@@ -101,6 +101,12 @@ public class BasicSearch{
     }
 
     public List<List<List<Flight>>> createOutputSearchResult(){
-        
+        List<Flight> flights = new ArrayList<Flight>();
+        for(int i = 0; i < searchResults.size(); i++){
+            for(int j = 0; j < searchResults.get(i).size()-1; j++){
+                flights = getFlightByDepartureAndDestination(searchResults.get(i).get(j).getDestinationCode(), searchResults.get(i).get(j+1).getDestinationCode());
+                
+            }
+        }
     }
 }
