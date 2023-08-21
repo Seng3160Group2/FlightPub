@@ -109,22 +109,23 @@ public class BasicSearch{
             for(int j = 0; j < searchResults.get(i).size()-1; j++){
                 if(j == 0){
                     flights = flightRepository.getByDepartureAndDestinationAndStopOver(searchResults.get(i).get(j).getDestinationCode(), searchResults.get(i).get(j+1).getDestinationCode(),null);
-                    flightPath.get(0).add(flights);
+                    flightPath.get(i).add(flights);
                     if(searchResults.get(i).size() > 2){
+                        flightPath.get(i+1).add(flights);
                         flights = flightRepository.getByDepartureAndDestinationAndStopOver(searchResults.get(i).get(j).getDestinationCode(), searchResults.get(i).get(j+2).getDestinationCode(),searchResults.get(i).get(j+1).getDestinationCode());
-                        flightPath.get(1).add(flights);
+                        flightPath.get(i+2).add(flights);
                     }
                 }
                 else{
                     flights = flightRepository.getByDepartureAndDestinationAndStopOver(searchResults.get(i).get(j).getDestinationCode(), searchResults.get(i).get(j+1).getDestinationCode(),null);
-                    for(int k = 0; k < flightPath.size(); k++){
+                    for(int k = 1; k < flightPath.size(); k++){
                         if(flightPath.get(k).get(flightPath.get(k).size()-1).get(0).getDestination() == flights.get(0).getDeparture()){
                             flightPath.get(k).add(flights);
                         }
                     }
                     if(j < searchResults.get(i).size()-2){
                         flights = flightRepository.getByDepartureAndDestinationAndStopOver(searchResults.get(i).get(j).getDestinationCode(), searchResults.get(i).get(j+2).getDestinationCode(),searchResults.get(i).get(j+1).getDestinationCode());
-                        for(int k = 0; k < flightPath.size(); k++){
+                        for(int k = 1; k < flightPath.size(); k++){
                             if(flightPath.get(k).get(flightPath.get(k).size()-1).get(0).getDestination() == flights.get(0).getDeparture()){
                                 flightPath.get(k).add(flights);
                             }
