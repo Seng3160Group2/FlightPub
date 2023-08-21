@@ -1,19 +1,13 @@
 package com.uon.seng3160.group2.flightpub.service;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.Set;
 
 import com.uon.seng3160.group2.flightpub.entity.Destination;
 import com.uon.seng3160.group2.flightpub.entity.Distance;
+import com.uon.seng3160.group2.flightpub.entity.Flight;
 
 
 public class BasicSearch{
@@ -79,7 +73,7 @@ public class BasicSearch{
         return pathsList;
     }
 
-    public void createSearchResults(Destination[] graph, Destination start, Destination end){
+    public void createDestinationPaths(Destination[] graph, Destination start, Destination end){
         createGraph();
         List<List<Destination>> pathsList = bfs(graph, start, end);
         List<Integer> pathDistances = new ArrayList<>();
@@ -104,5 +98,9 @@ public class BasicSearch{
             pathsList.remove(indexOfTemp);
             pathDistances.remove(indexOfTemp);
         }
+    }
+
+    public List<List<List<Flight>>> createOutputSearchResult(){
+        
     }
 }
