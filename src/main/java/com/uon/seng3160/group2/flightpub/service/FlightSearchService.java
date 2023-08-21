@@ -7,4 +7,6 @@ import com.uon.seng3160.group2.flightpub.entity.Flight;
 
 public interface FlightSearchService {
     public Optional<Flight> getFlight(String airlineCode, String flightNumber, LocalDateTime departureTime);
+    public Optional<Flight> getByDepartureAndDestinationAndStopOver(String departure, String destination, String stopOver);
+
 }

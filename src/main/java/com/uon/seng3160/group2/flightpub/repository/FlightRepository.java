@@ -9,7 +9,7 @@ import com.uon.seng3160.group2.flightpub.entity.compositekey.FlightId;
 
 public interface FlightRepository extends JpaRepository<Flight, FlightId> {
 
-    List<Flight> getByDepartureAndDestination(String departure, String destination);
+    List<Flight> getByDepartureAndDestinationAndStopOver(String departure, String destination, String stopOver);
 
 }
  

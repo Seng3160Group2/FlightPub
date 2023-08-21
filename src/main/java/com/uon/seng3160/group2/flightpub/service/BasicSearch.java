@@ -8,6 +8,7 @@ import java.util.Queue;
 import com.uon.seng3160.group2.flightpub.entity.Destination;
 import com.uon.seng3160.group2.flightpub.entity.Distance;
 import com.uon.seng3160.group2.flightpub.entity.Flight;
+import com.uon.seng3160.group2.flightpub.repository.FlightRepository;
 
 
 public class BasicSearch{
@@ -16,6 +17,7 @@ public class BasicSearch{
     Destination startDestination;
     Destination endDestination;
     List<List<Destination>> searchResults = new ArrayList<>();
+    FlightRepository flightRepository = new FlightRepository();
 
     public BasicSearch(Destination start, Destination end){
         startDestination = start;
@@ -102,10 +104,33 @@ public class BasicSearch{
 
     public List<List<List<Flight>>> createOutputSearchResult(){
         List<Flight> flights = new ArrayList<Flight>();
+        List<List<List<Flight>>> flightPath = new ArrayList<>();
         for(int i = 0; i < searchResults.size(); i++){
             for(int j = 0; j < searchResults.get(i).size()-1; j++){
-                flights = getFlightByDepartureAndDestination(searchResults.get(i).get(j).getDestinationCode(), searchResults.get(i).get(j+1).getDestinationCode());
-                
+                if(j == 0){
+                    flights = flightRepository.getByDepartureAndDestinationAndStopOver(searchResults.get(i).get(j).getDestinationCode(), searchResults.get(i).get(j+1).getDestinationCode(),null);
+                    flightPath.get(0).add(flights);
+                    if(searchResults.get(i).size() > 2){
+                        flights = flightRepository.getByDepartureAndDestinationAndStopOver(searchResults.get(i).get(j).getDestinationCode(), searchResults.get(i).get(j+2).getDestinationCode(),searchResults.get(i).get(j+1).getDestinationCode());
+                        flightPath.get(1).add(flights);
+                    }
+                }
+                else{
+                    flights = flightRepository.getByDepartureAndDestinationAndStopOver(searchResults.get(i).get(j).getDestinationCode(), searchResults.get(i).get(j+1).getDestinationCode(),null);
+                    for(int k = 0; k < flightPath.size(); k++){
+                        if(flightPath.get(k).get(flightPath.get(k).size()-1).get(0).getDestination() == flights.get(0).getDeparture()){
+                            flightPath.get(k).add(flights);
+                        }
+                    }
+                    if(j < searchResults.get(i).size()-2){
+                        flights = flightRepository.getByDepartureAndDestinationAndStopOver(searchResults.get(i).get(j).getDestinationCode(), searchResults.get(i).get(j+2).getDestinationCode(),searchResults.get(i).get(j+1).getDestinationCode());
+                        for(int k = 0; k < flightPath.size(); k++){
+                            if(flightPath.get(k).get(flightPath.get(k).size()-1).get(0).getDestination() == flights.get(0).getDeparture()){
+                                flightPath.get(k).add(flights);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
