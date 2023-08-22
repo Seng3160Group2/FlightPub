@@ -75,6 +75,7 @@
                 </ul>
             <#else>
                 <p>No flight found.</p>
+                
             </#if>
         </section>
 
