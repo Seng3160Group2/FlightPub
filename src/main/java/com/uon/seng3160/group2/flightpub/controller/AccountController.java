@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/account")
 public class AccountController {
 
-    // enter http://localhost:8080/hello/path/anton into your browser
     @GetMapping("/")
     public String exampleOne(Model model) {
         // model.addAttribute("name", name);

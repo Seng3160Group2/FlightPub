@@ -1,0 +1,21 @@
+.c-menu {
+
+    background-color: rgba(224, 224, 224, 0.6);
+    padding: 2rem; 
+
+    
+    .info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    
+    .info-category {
+        font-weight: bold;
+    }
+    
+    .info-value {
+        text-align: right;
+    }
+}
