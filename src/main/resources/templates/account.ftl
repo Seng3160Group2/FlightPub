@@ -19,12 +19,28 @@
                 <div class="info-value">30</div>
             </div>
             <div class="info">
+                <div class="info-category">Gender</div>
+                <div class="info-value">one of them idk</div>
+            </div>
+            <div class="info">
                 <div class="info-category">Email</div>
                 <div class="info-value">whatever@gmail.com</div>
             </div>
             <div class="info">
-                <div class="info-category">Age</div>
-                <div class="info-value">30</div>
+                <div class="info-category">Preferences</div>
+                <div class="info-value">idk</div>
+            </div>
+            <div class="info">
+                <div class="info-category">User type</div>
+                <div class="info-value">general</div>
+            </div>
+            <div class="info">
+                <div class="info-category">Booked flights</div>
+                <div class="info-value">[list of flights here]</div>
+            </div>
+            <div class="info">
+                <div class="info-category">Flight history</div>
+                <div class="info-value">[list of flights here]</div>
             </div>
             <table>
                 <tr>
