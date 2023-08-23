@@ -1,10 +1,11 @@
-package com.hossein.FlightBooking.services.flights;
+package com.uon.seng3160.group2.flightpub.service.flights;
 
 import java.util.List;
 
-import com.hossein.FlightBooking.controllers.viewModels.flights.FlightsViewModel;
-import com.hossein.FlightBooking.dto.flights.FlightsDto;
-import com.hossein.FlightBooking.models.flights.Flights;
+import com.uon.seng3160.group2.flightpub.controller.viewModels.flights.FlightsViewModel;
+import com.uon.seng3160.group2.flightpub.dto.flights.FlightsDto;
+import com.uon.seng3160.group2.flightpub.models.flights.Flights;
+
 
 public interface IFlightsService {
 	

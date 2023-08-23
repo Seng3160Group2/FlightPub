@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.security.config;
+package com.uon.seng3160.group2.flightpub.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,9 +14,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.hossein.FlightBooking.security.jwt.JwtAuthenticationEntryPoint;
-import com.hossein.FlightBooking.security.jwt.JwtRequestFilter;
-import com.hossein.FlightBooking.services.impl.infrastructure.FlightBookingUserDetailsService;
+import com.uon.seng3160.group2.flightpub.security.jwt.JwtAuthenticationEntryPoint;
+import com.uon.seng3160.group2.flightpub.security.jwt.JwtRequestFilter;
+import com.uon.seng3160.group2.flightpub.service.impl.infrastructure.FlightBookingUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
@@ -45,7 +45,7 @@ public class SecurityConfiguration {
 		http.csrf()
 			.disable()
 			.authorizeRequests()
-			.antMatchers("/", "index", "/css/*", "/js/*")
+			.antMatchers("/", "/index", "/css/**", "/js/**")
 			.permitAll()
 			.antMatchers("/flightBooking", "/flightBooking/signup", "/flightBooking/login")
 			.permitAll()
@@ -58,6 +58,7 @@ public class SecurityConfiguration {
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.and()
 			.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+
 		
 		return http.build();
 	}

@@ -1,13 +1,13 @@
-package com.hossein.FlightBooking.modelMapper.typeMaps.companions;
+package com.uon.seng3160.group2.flightpub.modelMapper.typeMaps.companions;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.hossein.FlightBooking.controllers.viewModels.companions.CompanionsViewModel;
-import com.hossein.FlightBooking.modelMapper.config.GenericMapper;
-import com.hossein.FlightBooking.models.companions.Companions;
+import com.uon.seng3160.group2.flightpub.controller.viewModels.companions.CompanionsViewModel;
+import com.uon.seng3160.group2.flightpub.modelMapper.config.GenericMapper;
+import com.uon.seng3160.group2.flightpub.models.companions.Companions;
 
 @Configuration
 public class EntityToViewModelCompanions extends GenericMapper {

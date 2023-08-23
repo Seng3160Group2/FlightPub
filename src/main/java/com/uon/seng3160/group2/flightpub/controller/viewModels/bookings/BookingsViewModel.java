@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.controllers.viewModels.bookings;
+package com.uon.seng3160.group2.flightpub.controller.viewModels.bookings;
 
 public class BookingsViewModel {
 

@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.exceptions;
+package com.uon.seng3160.group2.flightpub.exceptions;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

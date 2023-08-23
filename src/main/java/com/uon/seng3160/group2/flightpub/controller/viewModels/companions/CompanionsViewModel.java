@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.controllers.viewModels.companions;
+package com.uon.seng3160.group2.flightpub.controller.viewModels.companions;
 
 public class CompanionsViewModel {
 	

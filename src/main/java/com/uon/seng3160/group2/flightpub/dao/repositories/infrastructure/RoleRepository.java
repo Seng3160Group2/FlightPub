@@ -1,8 +1,8 @@
-package com.hossein.FlightBooking.dao.repositories.infrastructure;
+package com.uon.seng3160.group2.flightpub.dao.repositories.infrastructure;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.hossein.FlightBooking.models.infrastructure.Roles;
+import com.uon.seng3160.group2.flightpub.models.infrastructure.Roles;
 
 public interface RoleRepository extends JpaRepository<Roles, Long> {
 

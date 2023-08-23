@@ -1,11 +1,12 @@
-package com.hossein.FlightBooking.modelMapper.maps.infrastructure;
+package com.uon.seng3160.group2.flightpub.modelMapper.maps.infrastructure;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-import com.hossein.FlightBooking.dto.infrastructure.UserDto;
-import com.hossein.FlightBooking.modelMapper.config.GenericMapper;
-import com.hossein.FlightBooking.models.infrastructure.UserModel;
+import com.uon.seng3160.group2.flightpub.dto.infrastructure.UserDto;
+import com.uon.seng3160.group2.flightpub.modelMapper.config.GenericMapper;
+import com.uon.seng3160.group2.flightpub.models.infrastructure.UserModel;
+
 
 @Component
 public class UserMapper extends GenericMapper {

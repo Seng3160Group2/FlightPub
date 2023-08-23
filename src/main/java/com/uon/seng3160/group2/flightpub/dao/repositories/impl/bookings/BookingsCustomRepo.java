@@ -1,9 +1,10 @@
-package com.hossein.FlightBooking.dao.repositories.impl.bookings;
+package com.uon.seng3160.group2.flightpub.dao.repositories.impl.bookings;
 
 import java.util.List;
 
-import com.hossein.FlightBooking.controllers.viewModels.bookings.BookingsViewModel;
-import com.hossein.FlightBooking.dto.bookings.BookingsDto;
+import com.uon.seng3160.group2.flightpub.controller.viewModels.bookings.BookingsViewModel;
+import com.uon.seng3160.group2.flightpub.dto.bookings.BookingsDto;
+
 
 public interface BookingsCustomRepo {
 

@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.controllers.userDetails;
+package com.uon.seng3160.group2.flightpub.controller.userDetails;
 
 import java.util.List;
 
@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hossein.FlightBooking.controllers.viewModels.userDetails.UserDetailsViewModel;
-import com.hossein.FlightBooking.dto.userDetails.UserDetailsDto;
-import com.hossein.FlightBooking.modelMapper.maps.userDetails.UserDetailsMapper;
-import com.hossein.FlightBooking.services.impl.infrastructure.UserService;
-import com.hossein.FlightBooking.services.userDetails.IUserDetailsService;
+import com.uon.seng3160.group2.flightpub.controller.viewModels.userDetails.UserDetailsViewModel;
+import com.uon.seng3160.group2.flightpub.dto.userDetails.UserDetailsDto;
+import com.uon.seng3160.group2.flightpub.modelMapper.maps.userDetails.UserDetailsMapper;
+import com.uon.seng3160.group2.flightpub.service.impl.infrastructure.UserService;
+import com.uon.seng3160.group2.flightpub.service.userDetails.IUserDetailsService;
+
 
 @RestController
 @RequestMapping("/flightBooking/userDetails")

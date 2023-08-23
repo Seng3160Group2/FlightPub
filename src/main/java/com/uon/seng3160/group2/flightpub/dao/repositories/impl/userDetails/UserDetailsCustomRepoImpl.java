@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.dao.repositories.impl.userDetails;
+package com.uon.seng3160.group2.flightpub.dao.repositories.impl.userDetails;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,10 +7,11 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
-import com.hossein.FlightBooking.controllers.viewModels.userDetails.UserDetailsViewModel;
-import com.hossein.FlightBooking.dao.config.GenericRepository;
-import com.hossein.FlightBooking.dto.userDetails.UserDetailsDto;
-import com.hossein.FlightBooking.models.userDetails.UserDetailsModel;
+import com.uon.seng3160.group2.flightpub.controller.viewModels.userDetails.UserDetailsViewModel;
+import com.uon.seng3160.group2.flightpub.dao.config.GenericRepository;
+import com.uon.seng3160.group2.flightpub.dto.userDetails.UserDetailsDto;
+import com.uon.seng3160.group2.flightpub.models.userDetails.UserDetailsModel;
+
 
 @Repository
 public class UserDetailsCustomRepoImpl extends GenericRepository implements UserDetailsCustomRepo {

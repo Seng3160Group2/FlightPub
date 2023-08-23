@@ -1,13 +1,14 @@
-package com.hossein.FlightBooking.modelMapper.typeMaps.userDetails;
+package com.uon.seng3160.group2.flightpub.modelMapper.typeMaps.userDetails;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.hossein.FlightBooking.dto.userDetails.UserDetailsDto;
-import com.hossein.FlightBooking.modelMapper.config.GenericMapper;
-import com.hossein.FlightBooking.models.userDetails.UserDetailsModel;
+import com.uon.seng3160.group2.flightpub.dto.userDetails.UserDetailsDto;
+import com.uon.seng3160.group2.flightpub.modelMapper.config.GenericMapper;
+import com.uon.seng3160.group2.flightpub.models.userDetails.UserDetailsModel;
+
 
 @Configuration
 public class UserDetailsDtoToEntity extends GenericMapper {

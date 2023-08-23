@@ -1,9 +1,10 @@
-package com.hossein.FlightBooking.dao.repositories.flights;
+package com.uon.seng3160.group2.flightpub.dao.repositories.flights;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.hossein.FlightBooking.dao.repositories.impl.flights.FlightsCustomRepo;
-import com.hossein.FlightBooking.models.flights.Flights;
+import com.uon.seng3160.group2.flightpub.dao.repositories.impl.flights.FlightsCustomRepo;
+import com.uon.seng3160.group2.flightpub.models.flights.Flights;
+
 
 public interface IFlightsRepository extends JpaRepository<Flights, Long>, FlightsCustomRepo {
 

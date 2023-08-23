@@ -1,11 +1,11 @@
-package com.hossein.FlightBooking.modelMapper.maps.bookings;
+package com.uon.seng3160.group2.flightpub.modelMapper.maps.bookings;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-import com.hossein.FlightBooking.dto.bookings.BookingsDto;
-import com.hossein.FlightBooking.modelMapper.config.GenericMapper;
-import com.hossein.FlightBooking.models.bookings.Bookings;
+import com.uon.seng3160.group2.flightpub.dto.bookings.BookingsDto;
+import com.uon.seng3160.group2.flightpub.modelMapper.config.GenericMapper;
+import com.uon.seng3160.group2.flightpub.models.bookings.Bookings;
 
 @Component
 public class DBookingsMapper extends GenericMapper {

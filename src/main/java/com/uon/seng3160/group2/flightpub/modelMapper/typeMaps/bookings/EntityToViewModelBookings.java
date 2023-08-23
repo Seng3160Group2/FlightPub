@@ -1,13 +1,14 @@
-package com.hossein.FlightBooking.modelMapper.typeMaps.bookings;
+package com.uon.seng3160.group2.flightpub.modelMapper.typeMaps.bookings;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.hossein.FlightBooking.controllers.viewModels.bookings.BookingsViewModel;
-import com.hossein.FlightBooking.modelMapper.config.GenericMapper;
-import com.hossein.FlightBooking.models.bookings.Bookings;
+import com.uon.seng3160.group2.flightpub.controller.viewModels.bookings.BookingsViewModel;
+import com.uon.seng3160.group2.flightpub.modelMapper.config.GenericMapper;
+import com.uon.seng3160.group2.flightpub.models.bookings.Bookings;
+
 
 @Configuration
 public class EntityToViewModelBookings extends GenericMapper {

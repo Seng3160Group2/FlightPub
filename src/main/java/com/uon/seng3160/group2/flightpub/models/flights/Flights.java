@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.models.flights;
+package com.uon.seng3160.group2.flightpub.models.flights;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

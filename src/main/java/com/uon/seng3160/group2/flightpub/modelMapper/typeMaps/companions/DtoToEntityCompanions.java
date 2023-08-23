@@ -1,13 +1,14 @@
-package com.hossein.FlightBooking.modelMapper.typeMaps.companions;
+package com.uon.seng3160.group2.flightpub.modelMapper.typeMaps.companions;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.hossein.FlightBooking.dto.companions.CompanionsDto;
-import com.hossein.FlightBooking.modelMapper.config.GenericMapper;
-import com.hossein.FlightBooking.models.companions.Companions;
+import com.uon.seng3160.group2.flightpub.dto.companions.CompanionsDto;
+import com.uon.seng3160.group2.flightpub.modelMapper.config.GenericMapper;
+import com.uon.seng3160.group2.flightpub.models.companions.Companions;
+
 
 @Configuration
 public class DtoToEntityCompanions extends GenericMapper {

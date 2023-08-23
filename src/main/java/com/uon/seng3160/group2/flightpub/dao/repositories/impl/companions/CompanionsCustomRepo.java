@@ -1,10 +1,10 @@
-package com.hossein.FlightBooking.dao.repositories.impl.companions;
+package com.uon.seng3160.group2.flightpub.dao.repositories.impl.companions;
 
 import java.util.List;
 
-import com.hossein.FlightBooking.controllers.viewModels.companions.CompanionsViewModel;
-import com.hossein.FlightBooking.dto.companions.CompanionsDto;
-import com.hossein.FlightBooking.models.companions.Companions;
+import com.uon.seng3160.group2.flightpub.controller.viewModels.companions.CompanionsViewModel;
+import com.uon.seng3160.group2.flightpub.dto.companions.CompanionsDto;
+
 
 public interface CompanionsCustomRepo {
 

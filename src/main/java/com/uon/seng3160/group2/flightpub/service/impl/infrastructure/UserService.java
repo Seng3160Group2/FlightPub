@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.services.impl.infrastructure;
+package com.uon.seng3160.group2.flightpub.service.impl.infrastructure;
 
 import javax.transaction.Transactional;
 
@@ -10,10 +10,11 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.hossein.FlightBooking.dao.repositories.infrastructure.UserRepository;
-import com.hossein.FlightBooking.exceptions.ApplicationException;
-import com.hossein.FlightBooking.models.infrastructure.UserModel;
-import com.hossein.FlightBooking.services.infrastructure.IUserService;
+import com.uon.seng3160.group2.flightpub.dao.repositories.infrastructure.UserRepository;
+import com.uon.seng3160.group2.flightpub.exceptions.ApplicationException;
+import com.uon.seng3160.group2.flightpub.models.infrastructure.UserModel;
+import com.uon.seng3160.group2.flightpub.service.infrastructure.IUserService;
+
 
 @Service
 public class UserService implements IUserService {

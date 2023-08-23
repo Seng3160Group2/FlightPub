@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.controllers.infrastructure.signup;
+package com.uon.seng3160.group2.flightpub.controller.infrastructure.signup;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.hossein.FlightBooking.dto.infrastructure.UserDto;
-import com.hossein.FlightBooking.modelMapper.maps.infrastructure.UserMapper;
-import com.hossein.FlightBooking.services.infrastructure.IUserService;
+
+import com.uon.seng3160.group2.flightpub.dto.infrastructure.UserDto;
+import com.uon.seng3160.group2.flightpub.modelMapper.maps.infrastructure.UserMapper;
+import com.uon.seng3160.group2.flightpub.service.infrastructure.IUserService;
+
 
 @RestController
 @RequestMapping("/flightBooking")

@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.services.impl.userDetails;
+package com.uon.seng3160.group2.flightpub.service.impl.userDetails;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,12 +8,13 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hossein.FlightBooking.controllers.viewModels.userDetails.UserDetailsViewModel;
-import com.hossein.FlightBooking.dao.repositories.userDetails.IUserDetailsRepository;
-import com.hossein.FlightBooking.dto.userDetails.UserDetailsDto;
-import com.hossein.FlightBooking.modelMapper.maps.userDetails.VUserDetailsMapper;
-import com.hossein.FlightBooking.models.userDetails.UserDetailsModel;
-import com.hossein.FlightBooking.services.userDetails.IUserDetailsService;
+import com.uon.seng3160.group2.flightpub.controller.viewModels.userDetails.UserDetailsViewModel;
+import com.uon.seng3160.group2.flightpub.dao.repositories.userDetails.IUserDetailsRepository;
+import com.uon.seng3160.group2.flightpub.dto.userDetails.UserDetailsDto;
+import com.uon.seng3160.group2.flightpub.modelMapper.maps.userDetails.VUserDetailsMapper;
+import com.uon.seng3160.group2.flightpub.models.userDetails.UserDetailsModel;
+import com.uon.seng3160.group2.flightpub.service.userDetails.IUserDetailsService;
+
 
 @Service
 public class UserDetailsService implements IUserDetailsService {

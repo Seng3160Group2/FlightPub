@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.dto.userDetails;
+package com.uon.seng3160.group2.flightpub.dto.userDetails;
 
 public class UserDetailsDto {
 

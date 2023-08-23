@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.modelMapper.config;
+package com.uon.seng3160.group2.flightpub.modelMapper.config;
 
 import java.util.List;
 import java.util.stream.Collectors;

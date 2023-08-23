@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.controllers.home;
+package com.uon.seng3160.group2.flightpub.controller.home;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;

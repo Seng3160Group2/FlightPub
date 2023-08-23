@@ -1,13 +1,15 @@
-package com.hossein.FlightBooking.services.bookings;
+package com.uon.seng3160.group2.flightpub.service.bookings;
 
 import java.util.List;
 
-import com.hossein.FlightBooking.controllers.viewModels.bookings.BookingsViewModel;
-import com.hossein.FlightBooking.controllers.viewModels.companions.CompanionsViewModel;
-import com.hossein.FlightBooking.dto.bookings.BookingsDto;
-import com.hossein.FlightBooking.dto.companions.CompanionsDto;
-import com.hossein.FlightBooking.models.bookings.Bookings;
-import com.hossein.FlightBooking.models.companions.Companions;
+import com.uon.seng3160.group2.flightpub.controller.viewModels.bookings.BookingsViewModel;
+import com.uon.seng3160.group2.flightpub.controller.viewModels.companions.CompanionsViewModel;
+import com.uon.seng3160.group2.flightpub.dto.bookings.BookingsDto;
+import com.uon.seng3160.group2.flightpub.dto.companions.CompanionsDto;
+import com.uon.seng3160.group2.flightpub.models.bookings.Bookings;
+import com.uon.seng3160.group2.flightpub.models.companions.Companions;
+
+
 
 public interface IBookingsService {
 	

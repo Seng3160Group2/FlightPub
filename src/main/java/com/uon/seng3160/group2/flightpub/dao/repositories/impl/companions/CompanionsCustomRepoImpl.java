@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.dao.repositories.impl.companions;
+package com.uon.seng3160.group2.flightpub.dao.repositories.impl.companions;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,10 +7,11 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
-import com.hossein.FlightBooking.controllers.viewModels.companions.CompanionsViewModel;
-import com.hossein.FlightBooking.dao.config.GenericRepository;
-import com.hossein.FlightBooking.dto.companions.CompanionsDto;
-import com.hossein.FlightBooking.models.companions.Companions;
+import com.uon.seng3160.group2.flightpub.controller.viewModels.companions.CompanionsViewModel;
+import com.uon.seng3160.group2.flightpub.dao.config.GenericRepository;
+import com.uon.seng3160.group2.flightpub.dto.companions.CompanionsDto;
+import com.uon.seng3160.group2.flightpub.models.companions.Companions;
+
 
 @Repository
 public class CompanionsCustomRepoImpl extends GenericRepository implements CompanionsCustomRepo {

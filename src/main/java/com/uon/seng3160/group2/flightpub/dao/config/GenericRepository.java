@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class GenericRepository {
 	
-	PersistenceContexts
+	@PersistenceContexts
 	private EntityManager em;
 
 	public Session getSession() {

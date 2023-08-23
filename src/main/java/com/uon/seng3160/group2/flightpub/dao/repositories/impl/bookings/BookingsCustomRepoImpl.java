@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.dao.repositories.impl.bookings;
+package com.uon.seng3160.group2.flightpub.dao.repositories.impl.bookings;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,10 +6,11 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import com.hossein.FlightBooking.controllers.viewModels.bookings.BookingsViewModel;
-import com.hossein.FlightBooking.dao.config.GenericRepository;
-import com.hossein.FlightBooking.dto.bookings.BookingsDto;
-import com.hossein.FlightBooking.models.bookings.Bookings;
+import com.uon.seng3160.group2.flightpub.controller.viewModels.bookings.BookingsViewModel;
+import com.uon.seng3160.group2.flightpub.dao.config.GenericRepository;
+import com.uon.seng3160.group2.flightpub.dto.bookings.BookingsDto;
+import com.uon.seng3160.group2.flightpub.models.bookings.Bookings;
+
 
 @Repository
 public class BookingsCustomRepoImpl extends GenericRepository implements BookingsCustomRepo {

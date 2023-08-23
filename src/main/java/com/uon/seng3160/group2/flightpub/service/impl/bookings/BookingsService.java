@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.services.impl.bookings;
+package com.uon.seng3160.group2.flightpub.service.impl.bookings;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,19 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import com.hossein.FlightBooking.controllers.viewModels.bookings.BookingsViewModel;
-import com.hossein.FlightBooking.controllers.viewModels.companions.CompanionsViewModel;
-import com.hossein.FlightBooking.dao.repositories.bookings.IBookingsRepository;
-import com.hossein.FlightBooking.dao.repositories.companions.ICompanionsRepository;
-import com.hossein.FlightBooking.dto.bookings.BookingsDto;
-import com.hossein.FlightBooking.dto.companions.CompanionsDto;
-import com.hossein.FlightBooking.exceptions.ApplicationException;
-import com.hossein.FlightBooking.models.bookings.Bookings;
-import com.hossein.FlightBooking.models.companions.Companions;
-import com.hossein.FlightBooking.models.infrastructure.UserModel;
-import com.hossein.FlightBooking.services.bookings.IBookingsService;
-//import com.hossein.FlightBooking.services.companions.ICompanionsService;
-import com.hossein.FlightBooking.services.infrastructure.IUserService;
+import com.uon.seng3160.group2.flightpub.controller.viewModels.bookings.BookingsViewModel;
+import com.uon.seng3160.group2.flightpub.controller.viewModels.companions.CompanionsViewModel;
+import com.uon.seng3160.group2.flightpub.dao.repositories.bookings.IBookingsRepository;
+import com.uon.seng3160.group2.flightpub.dao.repositories.companions.ICompanionsRepository;
+import com.uon.seng3160.group2.flightpub.dto.bookings.BookingsDto;
+import com.uon.seng3160.group2.flightpub.dto.companions.CompanionsDto;
+import com.uon.seng3160.group2.flightpub.exceptions.ApplicationException;
+import com.uon.seng3160.group2.flightpub.models.bookings.Bookings;
+import com.uon.seng3160.group2.flightpub.models.companions.Companions;
+import com.uon.seng3160.group2.flightpub.models.infrastructure.UserModel;
+import com.uon.seng3160.group2.flightpub.service.bookings.IBookingsService;
+import com.uon.seng3160.group2.flightpub.service.infrastructure.IUserService;
+
 
 @Service
 public class BookingsService implements IBookingsService {

@@ -1,11 +1,12 @@
-package com.hossein.FlightBooking.modelMapper.maps.flights;
+package com.uon.seng3160.group2.flightpub.modelMapper.maps.flights;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-import com.hossein.FlightBooking.controllers.viewModels.flights.FlightsViewModel;
-import com.hossein.FlightBooking.modelMapper.config.GenericMapper;
-import com.hossein.FlightBooking.models.flights.Flights;
+import com.uon.seng3160.group2.flightpub.controller.viewModels.flights.FlightsViewModel;
+import com.uon.seng3160.group2.flightpub.modelMapper.config.GenericMapper;
+import com.uon.seng3160.group2.flightpub.models.flights.Flights;
+
 
 @Component
 public class VFlightsMapper extends GenericMapper {

@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.dto.companions;
+package com.uon.seng3160.group2.flightpub.dto.companions;
 
 public class CompanionsDto {
 

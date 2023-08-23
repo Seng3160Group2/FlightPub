@@ -1,4 +1,4 @@
-package com.hossein.FlightBooking.security.jwt;
+package com.uon.seng3160.group2.flightpub.security.jwt;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.hossein.FlightBooking.services.impl.infrastructure.FlightBookingUserDetailsService;
+import com.uon.seng3160.group2.flightpub.service.impl.infrastructure.FlightBookingUserDetailsService;
 
 import io.jsonwebtoken.ExpiredJwtException;
 
@@ -67,5 +67,4 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 		
 		filterChain.doFilter(request, response);
 	}
-
 }
