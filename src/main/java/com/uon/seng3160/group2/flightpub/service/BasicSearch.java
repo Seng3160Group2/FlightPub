@@ -1,9 +1,20 @@
 package com.uon.seng3160.group2.flightpub.service;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Queue;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.uon.seng3160.group2.flightpub.entity.Destination;
 import com.uon.seng3160.group2.flightpub.entity.Distance;
@@ -11,18 +22,24 @@ import com.uon.seng3160.group2.flightpub.entity.Flight;
 import com.uon.seng3160.group2.flightpub.repository.FlightRepository;
 
 
-public class BasicSearch{
+public class BasicSearch implements FlightService{
     int magnitude = 4;
     List<Destination> searchDestinationsList = new ArrayList<>();
     Destination startDestination;
     Destination endDestination;
     List<List<Destination>> searchResults = new ArrayList<>();
-    FlightRepository flightRepository = new FlightRepository();
+    Destination[] graph;
+
+    @Autowired 
+    FlightRepository flightRepository;
 
     public BasicSearch(Destination start, Destination end){
         startDestination = start;
         endDestination = end;
         createGraph();
+    }
+
+    public BasicSearch() {
     }
 
     private void createGraph(){
@@ -40,7 +57,7 @@ public class BasicSearch{
         }
     }
 
-    public List<List<Destination>> bfs(Destination[] graph, Destination start, Destination end){
+    public List<List<Destination>> bfs(Destination start, Destination end){
         List<List<Destination>> pathsList = new ArrayList<>();
         Queue<List<Destination>> queue = new LinkedList<>();
 
@@ -75,9 +92,9 @@ public class BasicSearch{
         return pathsList;
     }
 
-    public void createDestinationPaths(Destination[] graph, Destination start, Destination end){
+    public void createSearchResults(Destination start, Destination end){
         createGraph();
-        List<List<Destination>> pathsList = bfs(graph, start, end);
+        List<List<Destination>> pathsList = bfs(start, end);
         List<Integer> pathDistances = new ArrayList<>();
         int pathDist = 0;
         for(int i = 0; i < pathsList.size(); i++){
@@ -102,37 +119,48 @@ public class BasicSearch{
         }
     }
 
-    public List<List<List<Flight>>> createOutputSearchResult(){
-        List<Flight> flights = new ArrayList<Flight>();
-        List<List<List<Flight>>> flightPath = new ArrayList<>();
-        for(int i = 0; i < searchResults.size(); i++){
-            for(int j = 0; j < searchResults.get(i).size()-1; j++){
-                if(j == 0){
-                    flights = flightRepository.getByDepartureAndDestinationAndStopOver(searchResults.get(i).get(j).getDestinationCode(), searchResults.get(i).get(j+1).getDestinationCode(),null);
-                    flightPath.get(i).add(flights);
-                    if(searchResults.get(i).size() > 2){
-                        flightPath.get(i+1).add(flights);
-                        flights = flightRepository.getByDepartureAndDestinationAndStopOver(searchResults.get(i).get(j).getDestinationCode(), searchResults.get(i).get(j+2).getDestinationCode(),searchResults.get(i).get(j+1).getDestinationCode());
-                        flightPath.get(i+2).add(flights);
-                    }
-                }
-                else{
-                    flights = flightRepository.getByDepartureAndDestinationAndStopOver(searchResults.get(i).get(j).getDestinationCode(), searchResults.get(i).get(j+1).getDestinationCode(),null);
-                    for(int k = 1; k < flightPath.size(); k++){
-                        if(flightPath.get(k).get(flightPath.get(k).size()-1).get(0).getDestination() == flights.get(0).getDeparture()){
-                            flightPath.get(k).add(flights);
-                        }
-                    }
-                    if(j < searchResults.get(i).size()-2){
-                        flights = flightRepository.getByDepartureAndDestinationAndStopOver(searchResults.get(i).get(j).getDestinationCode(), searchResults.get(i).get(j+2).getDestinationCode(),searchResults.get(i).get(j+1).getDestinationCode());
-                        for(int k = 1; k < flightPath.size(); k++){
-                            if(flightPath.get(k).get(flightPath.get(k).size()-1).get(0).getDestination() == flights.get(0).getDeparture()){
-                                flightPath.get(k).add(flights);
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    public int getMagnitude() {
+        return this.magnitude;
     }
+
+    public void setMagnitude(int magnitude) {
+        this.magnitude = magnitude;
+    }
+
+    public List<Destination> getSearchDestinationsList() {
+        return this.searchDestinationsList;
+    }
+
+    public void setSearchDestinationsList(List<Destination> searchDestinationsList) {
+        this.searchDestinationsList = searchDestinationsList;
+    }
+
+    public Destination getStartDestination() {
+        return this.startDestination;
+    }
+
+    public void setStartDestination(Destination startDestination) {
+        this.startDestination = startDestination;
+    }
+
+    public Destination getEndDestination() {
+        return this.endDestination;
+    }
+
+    public void setEndDestination(Destination endDestination) {
+        this.endDestination = endDestination;
+    }
+
+    public List<List<Destination>> getSearchResults() {
+        return this.searchResults;
+    }
+
+    public void setSearchResults(List<List<Destination>> searchResults) {
+        this.searchResults = searchResults;
+    }
+
+    public void setFlightRepository(FlightRepository flightRepository) {
+        this.flightRepository = flightRepository;
+    }
+
 }
