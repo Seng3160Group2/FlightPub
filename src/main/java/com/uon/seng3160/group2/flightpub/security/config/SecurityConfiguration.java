@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -20,8 +20,7 @@ import com.uon.seng3160.group2.flightpub.service.impl.infrastructure.FlightBooki
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(prePostEnabled = true)
-
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration {
 
 	@Autowired
@@ -46,7 +45,7 @@ public class SecurityConfiguration {
 		http.csrf()
 			.disable()
 			.authorizeRequests()
-			.antMatchers("/", "/index", "/css/**", "/js/**")
+			.antMatchers("/", "index", "/css/*", "/js/*")
 			.permitAll()
 			.antMatchers("/flightBooking", "/flightBooking/signup", "/flightBooking/login")
 			.permitAll()
@@ -59,7 +58,6 @@ public class SecurityConfiguration {
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.and()
 			.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
 		
 		return http.build();
 	}

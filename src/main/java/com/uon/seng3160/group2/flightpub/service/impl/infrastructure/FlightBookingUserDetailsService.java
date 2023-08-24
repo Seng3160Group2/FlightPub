@@ -17,8 +17,12 @@ import com.uon.seng3160.group2.flightpub.models.infrastructure.UserModel;
 @Service
 public class FlightBookingUserDetailsService implements UserDetailsService {
 	
-	@Autowired
-	private UserRepository userRepo;
+	private final UserRepository userRepo;
+
+    @Autowired
+    public FlightBookingUserDetailsService(UserRepository userRepo) {
+        this.userRepo = userRepo;
+    }
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
