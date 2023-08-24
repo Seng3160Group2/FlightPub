@@ -7,12 +7,13 @@
 </head>
 <body>
     <h1>Flight Search Results</h1>
-    <#assign maxFlights = 10>
+    <#assign maxFlights = 0>
     <#if journeys?has_content>
     <#list journeys as journey>
         <ul>
             <#list journey as flight>
-                <#--if flightIndex < maxFlights-->
+                <#if maxFlights < 8>
+                    <h2>Flight ${flight.airlineCode} to ${flight.destinationCode}</h2>
                     <li><strong>Airline Code:</strong> ${flight.airlineCode}</li>
                     <li><strong>Flight Number:</strong> ${flight.flightNumber}</li>
                     <li><strong>Departure Code:</strong> ${flight.departureCode}</li>
@@ -25,10 +26,11 @@
                     <li><strong>Plane Code:</strong> ${flight.planeCode}</li>
                     <li><strong>Duration:</strong> ${flight.duration} minutes</li>
                     <li><strong>Duration (Second Leg):</strong> ${flight.durationSecondLeg} minutes</li>
-                    <li><strong>Group Flight:</strong> ${flight.groupFlight?string('yes', 'no')}</li>
-                    <hr/> 
-                <#--if-->
+                    <li><strong>Group Flight:</strong> ${flight.groupFlight?string('yes', 'no')}</li>  
+                </#if>
+                <#assign maxFlights = maxFlights + 1>  
             </#list>
+            <hr/> 
         </ul>
     </#list>
 <#else>

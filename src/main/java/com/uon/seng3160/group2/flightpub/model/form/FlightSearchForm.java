@@ -28,10 +28,10 @@ public class FlightSearchForm {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime arrivalTime;
 
-    @NotNull
+    /*@NotNull
     @NotEmpty
     @Size(max = 3)
-    @NotNull
+    @NotNull*/
     private String endDestination;
 
     @NotNull

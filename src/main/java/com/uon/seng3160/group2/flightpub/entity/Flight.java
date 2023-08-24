@@ -56,10 +56,10 @@ public class Flight {
     private PlaneType planeType;
 
     @Column(nullable = false)
-    private int duration;
+    private Integer duration;
 
     @Column
-    private int durationSecondLeg;
+    private Integer durationSecondLeg;
 
     @Column(columnDefinition = "BIT(1) default 0")
     private boolean groupFlight = false;
