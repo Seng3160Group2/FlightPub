@@ -56,10 +56,10 @@ public class Flight {
     private PlaneType planeType;
 
     @Column(nullable = false)
-    private int duration;
+    private Integer duration;
 
     @Column
-    private int durationSecondLeg;
+    private Integer durationSecondLeg = 0;
 
     @Column(columnDefinition = "BIT(1) default 0")
     private boolean groupFlight = false;
@@ -217,4 +217,24 @@ public class Flight {
         if (availability != null)
             this.availabilities.remove(availability);
     }
+
+    @Override
+    public String toString() {
+        String stopOverCode = (getStopOver() != null) ? getStopOver().getDestinationCode() : "";
+        return "{" +
+                getFlightId().getFlightNumber() +
+                // ", airline='" + getAirline() + "'" +
+                "'" + getDeparture().getDestinationCode() + " -> " + stopOverCode + " -> "
+                + getDestination().getDestinationCode() + "'" +
+                ", depTime='" + getFlightId().getDepartureTime() + "'" +
+                ", arrTimeStop='" + getArrivalTimeStopOver() + "'" +
+                ", depTimeStop='" + getDepartureTimeStopOver() + "'" +
+                ", arrTime='" + getArrivalTime() + "'" +
+                // ", planeType='" + getPlaneType() + "'" +
+                // ", duration='" + getDuration() + "'" +
+                // ", durationSecondLeg='" + getDurationSecondLeg() + "'" +
+                // ", groupFlight='" + isGroupFlight() + "'" +
+                "}";
+    }
+
 }
