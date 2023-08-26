@@ -71,7 +71,7 @@ public class FlightController {
         List<List<FlightModel>> flightModels = new ArrayList<>();
         for (int i = 0; i < result.size(); i++) {
             List<Flight> flightList = result.get(i);
-            List<FlightModel> journey = new ArrayList<FlightModel>();;
+            List<FlightModel> journey = new ArrayList<FlightModel>();
             for (int j = 0; j < flightList.size(); j++) {
                 Flight flight = flightList.get(j);
                 FlightModel flightModel = conversionService.convert(flight);
@@ -86,4 +86,9 @@ public class FlightController {
         //FlightModel flightModel = conversionService.convert(flight);
         return "flight-search-results";
     }
+    @GetMapping("/flight-search-returns")
+    public String getReturnFlight(@Valid @ModelAttribute FlightSearchForm flightSearchForm,
+            BindingResult bindingResult, Model model){
+            return "/flight-search-returns";
+            }
 }
