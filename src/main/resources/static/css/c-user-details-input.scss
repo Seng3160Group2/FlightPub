@@ -1,0 +1,27 @@
+.c-user-details-input {
+    display: flex;
+    margin-top: 20px;
+    font-family: 'Helvetica';
+    flex: 1;
+    margin-left: 15rem;
+    background-color: rgba(224, 224, 224, 0.6);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 10%;
+}
+.c-user-details-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.c-user-details-summary{
+    display: flex;
+    margin-top: 20px;
+    flex-grow: 0.5;
+    background-color: rgba(224, 224, 224, 0.6);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
