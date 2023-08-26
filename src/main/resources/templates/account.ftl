@@ -48,6 +48,9 @@
                         <div class="c-button">Edit Details</div>
                     </td>
                     <td>
+                        <div class="c-button" id="view-details">View Passenger Details Card</div>
+                    </td>
+                    <td>
                         <div class="c-button">Delete Account</div>
                     </td>
                     
@@ -56,12 +59,35 @@
                     
                 </tr>
             </table>
-            
-            
-
         </div>
     </section>
+    <div class="c-user-card" id="popup-overlay">
+        <div class="popup">
+            <h3>Passenger Details</h3>
+            <div class="details">
+                <p><strong>Name:</strong> John Doe</p>
+                <p><strong>Email:</strong> john@example.com</p>
+                <p><strong>Phone:</strong> 123-456-7890</p>
+                <p><strong>Age:</strong> 30</p>
+                <p><strong>Gender:</strong> Male</p>
+            </div>
+            <div class="c-button" id="close-details">Close</div>
+        </div>
+    </div>
+    <script>
+        const openPopupButton = document.getElementById('view-details');
+const closePopupButton = document.getElementById('close-details');
+const popupOverlay = document.getElementById('popup-overlay');
 
+openPopupButton.addEventListener('click', () => {
+    popupOverlay.style.display = 'block'; // Show the overlay
+});
+
+closePopupButton.addEventListener('click', () => {
+    popupOverlay.style.display = 'none'; // Hide the overlay
+});
+    </script>
      <#include "/website/footer.ftl">
 </body>
 </html>
+
