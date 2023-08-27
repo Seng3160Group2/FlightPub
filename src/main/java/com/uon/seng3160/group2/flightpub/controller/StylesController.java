@@ -44,4 +44,11 @@ public class StylesController {
 
         return "booking-progress";
     }
+
+    @GetMapping("flight-summary")
+    public String flightSummary(Model model) {
+        model.addAttribute("example", null);
+
+        return "flight-summary";
+    }
 }

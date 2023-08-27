@@ -61,6 +61,10 @@
             flex-grow: 0;
             width: 100%;
         }
+
+        &--gap {
+            gap: 1rem;
+        }
     }
 
     &__text {
@@ -85,6 +89,7 @@
         border: 0;
         border-top: 2px solid $color-off-white-darker;
         padding: 0;
+        margin: 0;
     }
 
     &__button {
