@@ -1,0 +1,15 @@
+.c-booking-progress {
+    background-color: $color-navy;
+
+    &__progress-bar {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    &__checkpoint {
+        width: fit-content;
+    }
+}
