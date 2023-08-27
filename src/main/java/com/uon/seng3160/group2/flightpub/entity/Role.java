@@ -18,11 +18,7 @@ public class Role
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-<<<<<<< HEAD
-    private Long roleId;
-=======
     private Long id;
->>>>>>> f475bf0 (Login and registration completed)
 
     @Column(nullable=false, unique=true)
     private String name;
