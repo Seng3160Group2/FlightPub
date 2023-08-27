@@ -2,11 +2,16 @@
 @import "variables";
 @import "common";
 
-
 @import "c-button";
 @import "c-header";
+@import "c-footer";
 @import "c-login";
 @import "c-signup";
+@import "c-search-bar.scss";
+@import "c-menu.scss";
+@import "c-searchresultsfilter.scss";
+@import "c-user-card.scss";
+@import "c-user-details-input.scss";
 
 @import "o-section";
 @import "o-wrapper";

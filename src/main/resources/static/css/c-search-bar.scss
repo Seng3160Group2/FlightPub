@@ -1,0 +1,68 @@
+// Searchbar styling
+.c-search-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    align-items: center;
+
+    &__input-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        align-items: center;
+        border-radius: 10px;
+    }
+
+    &__input {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border: none;
+        padding: 1rem 2rem;
+        font-family: 'Catamaran';
+        width: 100%;
+        flex: 1;
+
+        &--clamp {
+            width: auto;
+        }
+    }
+
+    &__button {
+        width: auto;
+    }
+
+}
+
+    .searchbar-container {
+        display: flex;
+        align-items: center;
+        // border: 1px solid #ccc;
+        padding: 5px;
+        // background-color: white;
+        // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+
+        .searchbar-segment {
+            
+            display: flex;
+            align-items: center;
+            padding: 2px; /* Add padding between segment content and border */
+            // border-radius: 15px; /* Apply rounded border to all segments */
+            
+            .searchbar-start {
+                border-radius: 10px 0px 0px 10px;
+            }
+        
+            .searchbar-end {
+                border-radius: 0px 10px 10px 0px;
+            }
+
+            .searchbar-input {
+                 /* Expand the input to fill the available space */
+                // border-radius: 100px;
+            }
+        }
+
+        
+    }

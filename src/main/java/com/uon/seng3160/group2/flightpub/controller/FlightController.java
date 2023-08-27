@@ -63,4 +63,10 @@ public class FlightController {
 
         return "flight-search-results";
     }
+
+    @GetMapping("/passenger-info")
+    public String exampleOne(Model model) {
+        return "passenger-info";
+    }
+
 }
