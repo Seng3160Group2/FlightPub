@@ -51,6 +51,8 @@ public class FlightSearchServiceImpl implements FlightSearchService {
         List<List<List<Flight>>> results = new ArrayList<List<List<Flight>>>();
 
         if (depResult.isEmpty() || destResult.isEmpty()) {
+            results.add(new ArrayList<List<Flight>>());
+            results.add(new ArrayList<List<Flight>>());
             return results;
         }
 

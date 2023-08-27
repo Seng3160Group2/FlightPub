@@ -10,4 +10,8 @@
         flex-direction: column;
         justify-content: center;
     }
+
+    &--empty {
+        flex: 1;
+    }
 }

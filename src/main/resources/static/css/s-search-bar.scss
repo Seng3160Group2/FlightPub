@@ -1,26 +1,27 @@
 // Searchbar styling
-.c-search-bar {
+.s-search-bar {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.25rem;
     align-items: center;
-    border-radius: 20px;
 
-    &__input {
+    > input {
         // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         border: none;
         padding: 1rem 2rem;
         font-family: 'Catamaran';
-        width: 100%;
+        width: fit-content;
         flex: 1;
 
-        &--clamp {
-            width: auto;
+        &:first-of-type {
+            border-radius: 10px 0 0 10px;
         }
     }
 
     &__button {
         width: auto;
+        padding: 1rem;
+        border-radius: 0 10px 10px 0;
     }
 }

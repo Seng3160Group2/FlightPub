@@ -19,15 +19,23 @@ public class FlightEntityToModelConverter implements Converter<Flight, FlightMod
 
     @Override
     public FlightModel convert(Flight flight) {
+        String stopOverCode = (flight.getStopOver() != null) ? flight.getStopOver().getDestinationCode() : "";
+        String arrivalTimeStopOver = (flight.getArrivalTimeStopOver() != null)
+                ? formatter.print(flight.getArrivalTimeStopOver(), Locale.ENGLISH)
+                : "";
+        String departureTimeStopOver = (flight.getDepartureTimeStopOver() != null)
+                ? formatter.print(flight.getDepartureTimeStopOver(), Locale.ENGLISH)
+                : "";
+
         return new FlightModel(
                 flight.getFlightId().getAirlineCode(),
                 flight.getFlightId().getFlightNumber(),
                 flight.getDeparture().getDestinationCode(),
-                flight.getStopOver().getDestinationCode(),
+                stopOverCode,
                 flight.getDestination().getDestinationCode(),
                 formatter.print(flight.getFlightId().getDepartureTime(), Locale.ENGLISH),
-                formatter.print(flight.getArrivalTimeStopOver(), Locale.ENGLISH),
-                formatter.print(flight.getDepartureTimeStopOver(), Locale.ENGLISH),
+                arrivalTimeStopOver,
+                departureTimeStopOver,
                 formatter.print(flight.getArrivalTime(), Locale.ENGLISH),
                 flight.getPlaneType().getPlaneCode(),
                 flight.getDuration(),

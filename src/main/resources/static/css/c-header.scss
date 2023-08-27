@@ -1,17 +1,15 @@
 .c-header {
-    height: auto; /* Allow the footer to adjust its height based on content */
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem; 
-
-    background-color: whitesmoke;
+    background-color: $color-off-white;
+    &__container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
 
     &__logo {
         font-family: 'Fira Sans';
-        font-size: 40px;
+        font-size: 32px;
     }
 
     &__navbar {
@@ -20,15 +18,11 @@
         gap: 1rem;
         justify-content: flex-end;
         align-items: center;
-
-        // background-color: green;
     }
 
     &__navbar-item {
-        font-family: 'Fira Sans';
-        font-size: 20px;
-
-        // background-color: purple;
+        font-family: 'Telex';
+        font-size: 16px;
     }
 }
     
