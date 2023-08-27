@@ -37,4 +37,11 @@ public class StylesController {
 
         return "flight-card";
     }
+
+    @GetMapping("booking-progress")
+    public String bookingProgress(Model model) {
+        model.addAttribute("example", null);
+
+        return "booking-progress";
+    }
 }
