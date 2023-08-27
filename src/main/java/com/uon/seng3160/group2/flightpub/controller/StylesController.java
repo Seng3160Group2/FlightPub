@@ -30,4 +30,11 @@ public class StylesController {
 
         return "signup";
     }
+
+    @GetMapping("flight-card")
+    public String flightCard(Model model) {
+        model.addAttribute("example", null);
+
+        return "flight-card";
+    }
 }
