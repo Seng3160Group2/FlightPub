@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.uon.seng3160.group2.flightpub.dto.UserDto;
-import com.uon.seng3160.group2.flightpub.service.UserService;
+import com.uon.seng3160.group2.flightpub.service.AccountService;
 import com.uon.seng3160.group2.flightpub.entity.Account;
 import com.uon.seng3160.group2.flightpub.entity.User;
 
@@ -19,9 +19,9 @@ import java.util.List;
 @Controller
 public class AuthController {
 
-    private UserService userService;
+    private AccountService userService;
 
-    public AuthController(UserService userService) {
+    public AuthController(AccountService userService) {
         this.userService = userService;
     }
 
@@ -56,13 +56,13 @@ public class AuthController {
             model.addAttribute("user", user);
             return "register";
         }
-        userService.saveUser(user);
+        userService.saveAccount(user);
         return "redirect:/register?success";
     }
 
     @GetMapping("/users")
     public String listRegisteredUsers(Model model) {
-        List<UserDto> users = userService.findAllUsers();
+        List<UserDto> users = userService.findAllAccounts();
         model.addAttribute("users", users);
         return "users";
     }
