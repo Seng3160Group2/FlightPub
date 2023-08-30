@@ -1,9 +1,7 @@
 package com.uon.seng3160.group2.flightpub.service.impl;
 
-import com.uon.seng3160.group2.flightpub.dto.UserDto;
+import com.uon.seng3160.group2.flightpub.model.UserModel;
 import com.uon.seng3160.group2.flightpub.entity.Account;
-
-import com.uon.seng3160.group2.flightpub.repository.RoleRepository;
 import com.uon.seng3160.group2.flightpub.repository.AccountRepository;
 import com.uon.seng3160.group2.flightpub.service.AccountService;
 
@@ -12,6 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.Arrays;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -22,21 +22,20 @@ public class AccountServiceImpl implements AccountService {
     private PasswordEncoder passwordEncoder;
 
     public AccountServiceImpl(AccountRepository accountRepository,
-            RoleRepository roleRepository,
             PasswordEncoder passwordEncoder) {
         this.accountRepository = accountRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void saveAccount(UserDto userDto) {
+    public void saveAccount(UserModel userModel) {
         Account account = new Account();
         // TODO: why arent these two separate in the db?
-        account.setName(userDto.getFirstName() + " " + userDto.getLastName());
-        account.setEmail(userDto.getEmail());
+        account.setName(userModel.getFirstName() + " " + userModel.getLastName());
+        account.setEmail(userModel.getEmail());
 
         // encrypt the password once we integrate spring security
         // user.setPassword(userDto.getPassword());
-        account.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        account.setPassword(passwordEncoder.encode(userModel.getPassword()));
 
         accountRepository.save(account);
     }
@@ -47,7 +46,18 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<Account> findAllAccounts() {
-        return accountRepository.findAll();
+    public List<UserModel> findAllAccounts() {
+        List<Account> accounts = accountRepository.findAll();
+        return accounts.stream().map((account) -> convertEntityToModel(account)).collect(Collectors.toList());
     }
+
+    private Object convertEntityToModel(Account account) {
+        UserModel userModel = new UserModel();
+        String[] name = account.getName().split(" ");
+        userModel.setFirstName(name[0]);
+        userModel.setLastName(name[1]);
+        userModel.setEmail(account.getEmail());
+        return userModel;
+    }
+
 }

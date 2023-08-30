@@ -7,10 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.uon.seng3160.group2.flightpub.dto.UserDto;
 import com.uon.seng3160.group2.flightpub.service.AccountService;
 import com.uon.seng3160.group2.flightpub.entity.Account;
-import com.uon.seng3160.group2.flightpub.entity.User;
+import com.uon.seng3160.group2.flightpub.model.UserModel;
 
 import jakarta.validation.Valid;
 
@@ -19,14 +18,14 @@ import java.util.List;
 @Controller
 public class AuthController {
 
-    private AccountService userService;
+    private AccountService accountService;
 
-    public AuthController(AccountService userService) {
-        this.userService = userService;
+    public AuthController(AccountService accountService) {
+        this.accountService = accountService;
     }
 
     @GetMapping("index")
-    public String home() {
+    public String home(){
         return "index";
     }
 
@@ -37,18 +36,18 @@ public class AuthController {
 
     // handler method to handle user registration request
     @GetMapping("register")
-    public String showRegistrationForm(Model model) {
-        UserDto user = new UserDto();
+    public String showRegistrationForm(Model model){
+        UserModel user = new UserModel();
         model.addAttribute("user", user);
         return "register";
     }
 
     // handler method to handle register user form submit request
     @PostMapping("/register/save")
-    public String registration(@Valid @ModelAttribute("user") UserDto user,
-            BindingResult result,
-            Model model) {
-        Account existing = userService.findByEmail(user.getEmail());
+    public String registration(@Valid @ModelAttribute("user") UserModel user,
+                               BindingResult result,
+                               Model model){
+        Account existing = accountService.findByEmail(user.getEmail());
         if (existing != null) {
             result.rejectValue("email", null, "There is already an account registered with that email");
         }
@@ -56,13 +55,13 @@ public class AuthController {
             model.addAttribute("user", user);
             return "register";
         }
-        userService.saveAccount(user);
+        accountService.saveUser(user);
         return "redirect:/register?success";
     }
 
     @GetMapping("/users")
-    public String listRegisteredUsers(Model model) {
-        List<UserDto> users = userService.findAllAccounts();
+    public String listRegisteredUsers(Model model){
+        List<UserModel> users = accountService.findAllUsers();
         model.addAttribute("users", users);
         return "users";
     }
