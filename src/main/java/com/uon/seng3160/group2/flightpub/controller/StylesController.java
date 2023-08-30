@@ -30,4 +30,25 @@ public class StylesController {
 
         return "signup";
     }
+
+    @GetMapping("flight-card")
+    public String flightCard(Model model) {
+        model.addAttribute("example", null);
+
+        return "flight-card";
+    }
+
+    @GetMapping("booking-progress")
+    public String bookingProgress(Model model) {
+        model.addAttribute("example", null);
+
+        return "booking-progress";
+    }
+
+    @GetMapping("flight-summary")
+    public String flightSummary(Model model) {
+        model.addAttribute("example", null);
+
+        return "flight-summary";
+    }
 }
