@@ -51,11 +51,10 @@ public class AccountServiceImpl implements AccountService {
         return accounts.stream().map((account) -> convertEntityToModel(account)).collect(Collectors.toList());
     }
 
-    private Object convertEntityToModel(Account account) {
+    private UserModel convertEntityToModel(Account account) {
         UserModel userModel = new UserModel();
-        String[] name = account.getName().split(" ");
-        userModel.setFirstName(name[0]);
-        userModel.setLastName(name[1]);
+        userModel.setFirstName(account.getFirstName());
+        userModel.setLastName(account.getLastName());
         userModel.setEmail(account.getEmail());
         return userModel;
     }

@@ -6,10 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,7 +21,10 @@ public class Account {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String firstName;
+
+    @Column(nullable = false)
+    private String lastName;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -37,10 +36,10 @@ public class Account {
     public String toString() {
         return "{" +
                 " id='" + getId() + "'" +
-                ", name='" + getName() + "'" +
+                ", firstName='" + getFirstName() + "'" +
+                ", lastName='" + getLastName() + "'" +
                 ", email='" + getEmail() + "'" +
                 ", password='" + getPassword() + "'" +
                 "}";
     }
-
 }
