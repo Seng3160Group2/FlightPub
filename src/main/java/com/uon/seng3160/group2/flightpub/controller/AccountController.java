@@ -13,10 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/account")
 public class AccountController {
 
-    @GetMapping("/")
+    @GetMapping("")
     public String exampleOne(Model model) {
         // model.addAttribute("name", name);
 
         return "account";
+    }
+
+    @GetMapping("/flight-history")
+    public String flightHistory(Model model) {
+        return "flight-history";
     }
 }

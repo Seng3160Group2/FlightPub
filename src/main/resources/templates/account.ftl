@@ -38,14 +38,17 @@
                 <div class="info-category">Booked flights</div>
                 <div class="info-value">[list of flights here]</div>
             </div>
-            <div class="info">
+            <#--  <div class="info">
                 <div class="info-category">Flight history</div>
                 <div class="info-value">[list of flights here]</div>
-            </div>
+            </div>  -->
             <table>
                 <tr>
                     <td>
                         <div class="c-button">Edit Details</div>
+                    </td>
+                    <td>
+                        <div class="c-button"><a href="/account/flight-history">View Flight History</a></div>
                     </td>
                     <#--  <td>
                         <div class="c-button" id="view-details">View Passenger Details Card</div>
