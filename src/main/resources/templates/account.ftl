@@ -47,9 +47,9 @@
                     <td>
                         <div class="c-button">Edit Details</div>
                     </td>
-                    <td>
+                    <#--  <td>
                         <div class="c-button" id="view-details">View Passenger Details Card</div>
-                    </td>
+                    </td>  -->
                     <td>
                         <div class="c-button">Delete Account</div>
                     </td>
@@ -61,7 +61,7 @@
             </table>
         </div>
     </section>
-    <div class="c-user-card" id="popup-overlay">
+    <#--  <div class="c-user-card" id="popup-overlay">
         <div class="popup">
             <h3>Passenger Details</h3>
             <div class="details">
@@ -86,7 +86,7 @@ openPopupButton.addEventListener('click', () => {
 closePopupButton.addEventListener('click', () => {
     popupOverlay.style.display = 'none'; // Hide the overlay
 });
-    </script>
+    </script>  -->
      <#include "/website/footer.ftl">
 </body>
 </html>
