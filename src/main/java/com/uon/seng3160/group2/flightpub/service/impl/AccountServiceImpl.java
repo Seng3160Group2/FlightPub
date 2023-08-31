@@ -27,7 +27,6 @@ public class AccountServiceImpl implements AccountService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @Override
     public void saveUser(UserModel userModel) {
         Account account = new Account();
         // TODO: why arent these two separate in the db?
@@ -54,8 +53,9 @@ public class AccountServiceImpl implements AccountService {
 
     private UserModel convertEntityToModel(Account account) {
         UserModel userModel = new UserModel();
-        userModel.setFirstName(account.getFirstName());
-        userModel.setLastName(account.getLastName());
+        String[] name = account.getName().split(" ");
+        userModel.setFirstName(name[0]);
+        userModel.setLastName(name[1]);
         userModel.setEmail(account.getEmail());
         return userModel;
     }
