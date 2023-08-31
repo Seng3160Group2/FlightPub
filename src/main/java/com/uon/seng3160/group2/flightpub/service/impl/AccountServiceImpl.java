@@ -27,6 +27,7 @@ public class AccountServiceImpl implements AccountService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @Override
     public void saveUser(UserModel userModel) {
         Account account = new Account();
         // TODO: why arent these two separate in the db?
