@@ -1,8 +1,8 @@
 package com.uon.seng3160.group2.flightpub.service.impl;
 
-import com.uon.seng3160.group2.flightpub.dto.UserDto;
 import com.uon.seng3160.group2.flightpub.entity.Role;
 import com.uon.seng3160.group2.flightpub.entity.User;
+import com.uon.seng3160.group2.flightpub.model.UserModel;
 import com.uon.seng3160.group2.flightpub.repository.RoleRepository;
 import com.uon.seng3160.group2.flightpub.repository.UserRepository;
 import com.uon.seng3160.group2.flightpub.service.UserService;
@@ -29,13 +29,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveUser(UserDto userDto) {
+    public void saveUser(UserModel userDto) {
         User user = new User();
         user.setName(userDto.getFirstName() + " " + userDto.getLastName());
         user.setEmail(userDto.getEmail());
 
-        //encrypt the password once we integrate spring security
-        //user.setPassword(userDto.getPassword());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         Role role = roleRepository.findByName("ROLE_ADMIN");
         if(role == null){
@@ -51,14 +49,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> findAllUsers() {
+    public List<UserModel> findAllUsers() {
         List<User> users = userRepository.findAll();
         return users.stream().map((user) -> convertEntityToDto(user))
                 .collect(Collectors.toList());
     }
 
-    private UserDto convertEntityToDto(User user){
-        UserDto userDto = new UserDto();
+    private UserModel convertEntityToDto(User user){
+        UserModel userDto = new UserModel();
         String[] name = user.getName().split(" ");
         userDto.setFirstName(name[0]);
         userDto.setLastName(name[1]);

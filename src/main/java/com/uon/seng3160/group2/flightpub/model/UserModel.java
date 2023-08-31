@@ -1,4 +1,4 @@
-package com.uon.seng3160.group2.flightpub.dto;
+package com.uon.seng3160.group2.flightpub.model;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto
+public class UserModel
 {
     private Long id;
     @NotEmpty

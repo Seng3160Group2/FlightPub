@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.uon.seng3160.group2.flightpub.dto.UserDto;
 import com.uon.seng3160.group2.flightpub.service.UserService;
 import com.uon.seng3160.group2.flightpub.entity.User;
+import com.uon.seng3160.group2.flightpub.model.UserModel;
 
 import jakarta.validation.Valid;
 
@@ -37,14 +37,14 @@ public class AuthController {
     // handler method to handle user registration request
     @GetMapping("register")
     public String showRegistrationForm(Model model){
-        UserDto user = new UserDto();
+        UserModel user = new UserModel();
         model.addAttribute("user", user);
         return "register";
     }
 
     // handler method to handle register user form submit request
     @PostMapping("/register/save")
-    public String registration(@Valid @ModelAttribute("user") UserDto user,
+    public String registration(@Valid @ModelAttribute("user") UserModel user,
                                BindingResult result,
                                Model model){
         User existing = userService.findByEmail(user.getEmail());
@@ -61,7 +61,7 @@ public class AuthController {
 
     @GetMapping("/users")
     public String listRegisteredUsers(Model model){
-        List<UserDto> users = userService.findAllUsers();
+        List<UserModel> users = userService.findAllUsers();
         model.addAttribute("users", users);
         return "users";
     }
