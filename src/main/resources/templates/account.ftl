@@ -48,6 +48,9 @@
                         <div class="c-button">Edit Details</div>
                     </td>
                     <td>
+                        <div class="c-button"><a href="/account/current-bookings">View Bookings</a></div>
+                    </td>
+                    <td>
                         <div class="c-button"><a href="/account/flight-history">View Flight History</a></div>
                     </td>
                     <#--  <td>

@@ -24,4 +24,9 @@ public class AccountController {
     public String flightHistory(Model model) {
         return "flight-history";
     }
+
+    @GetMapping("/current-bookings")
+    public String currentBookings(Model model) {
+        return "current-bookings";
+    }
 }
