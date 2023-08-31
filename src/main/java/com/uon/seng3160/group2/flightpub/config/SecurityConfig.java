@@ -28,7 +28,8 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authorize) -> authorize
                 .requestMatchers("/register/**").permitAll()
-                .requestMatchers("/index").permitAll())
+                .requestMatchers("/index").permitAll()
+                .requestMatchers("/hello").permitAll()) // Permit access to the /hello endpoint
                 .formLogin(
                         form -> form
                                 .loginPage("/login")
