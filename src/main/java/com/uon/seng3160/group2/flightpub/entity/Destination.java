@@ -1,6 +1,7 @@
 package com.uon.seng3160.group2.flightpub.entity;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -10,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "Destinations")
@@ -41,6 +43,9 @@ public class Destination {
 
     @OneToMany(mappedBy = "destinationTo")
     Set<Distance> distancesTo;
+
+    @Transient
+    private boolean visited = false;
 
     public Destination() {
     }
@@ -139,12 +144,64 @@ public class Destination {
         return this.distancesTo;
     }
 
+    
     public void AddDistanceTo(Distance distanceTo) {
         this.distancesTo.add(distanceTo);
     }
-
+    
     public void removeDistanceTo(Distance distanceTo) {
         if (distanceTo != null)
-            this.distancesTo.remove(distanceTo);
+        this.distancesTo.remove(distanceTo);
+    }
+
+    public Set<Distance> getDistances(){
+        Set<Distance> orderedDistances = new HashSet<>();
+        Set<Distance> distances = distancesTo;
+        Iterator<Distance> distFromIterator = distancesFrom.iterator();
+        while(distFromIterator.hasNext()){
+            distances.add(distFromIterator.next());
+        }
+        while(!distances.isEmpty()){
+            Iterator<Distance> distanceIterator = distances.iterator();
+            Distance currentDistance;
+            Distance tempDistance = distanceIterator.next();
+            while(distanceIterator.hasNext()){
+                currentDistance = distanceIterator.next();
+                if(currentDistance.getDistancesInKms() < tempDistance.getDistancesInKms()){
+                    tempDistance = currentDistance;
+                }
+            }
+            orderedDistances.add(tempDistance);
+            distances.remove(tempDistance);
+        }
+        return orderedDistances;
+    }
+
+    public int getDistanceTo(Destination destination) {
+        Set<Distance> distances = distancesTo;
+        Iterator<Distance> distFromIterator = distancesFrom.iterator();
+        while(distFromIterator.hasNext()){
+            distances.add(distFromIterator.next());
+        }
+        Iterator<Distance> distanceIterator = distances.iterator();
+        Distance currentDistance;
+        while(distanceIterator.hasNext()){
+            currentDistance = distanceIterator.next();
+            if(currentDistance.getDestinationFrom() == destination){
+                return currentDistance.getDistancesInKms();
+            }
+            if(currentDistance.getDestinationTo() == destination){
+                return currentDistance.getDistancesInKms();
+            }
+        }
+        return 0;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
+    public boolean getVisited() {
+        return this.visited;
     }
 }
