@@ -6,9 +6,9 @@ import com.uon.seng3160.group2.flightpub.entity.Account;
 import java.util.List;
 
 public interface AccountService {
-    void saveAccount(UserModel userModel);
+    void saveUser(UserModel userModel);
 
     Account findByEmail(String email);
 
-    List<UserModel> findAllAccounts();
+    List<UserModel> findAllUsers();
 }
