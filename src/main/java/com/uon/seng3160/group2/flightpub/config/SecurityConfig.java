@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,9 +28,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authorize) -> authorize
-                .requestMatchers("/flights/**").hasAnyRole("USER")
+                .requestMatchers("/static/**").permitAll()
                 .requestMatchers("/register/**").permitAll()
-                .requestMatchers("/index").permitAll())
+                .requestMatchers("/index").permitAll()
+                .requestMatchers("/flights/**").hasAnyRole("USER")).csrf(AbstractHttpConfigurer::disable)
                 // Permit access to the /hello endpoint
                 .formLogin(
                         form -> form

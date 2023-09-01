@@ -9,7 +9,7 @@
             <div class="o-wrapper o-wrapper--login">
                 <section class="c-login">
                     <h2 class="c-login__heading">Login</h2>
-                    <form action="/login" method="post" class="c-login__form">
+                    <form action="/authenticate" method="post" class="c-login__form">
                         <input type="text" id="username" name="username" placeholder="username" required class="c-login__input">
 
                         <input type="password" id="password" name="password" placeholder="password" required class="c-login__input">
@@ -18,7 +18,7 @@
                     </form>
                     <div class="c-login__divider"></div>
                     <p class="c-login__message">
-                        Don't have an account? <a href="">Signup</a>
+                        Don't have an account? <a href="/register">Signup</a>
                     </p>
                 </section>
             </div>

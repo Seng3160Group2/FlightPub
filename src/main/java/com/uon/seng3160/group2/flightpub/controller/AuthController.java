@@ -38,8 +38,6 @@ public class AuthController {
     // handler method to handle user registration request
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
-        UserModel user = new UserModel();
-        model.addAttribute("user", user);
         return "register";
     }
 
