@@ -2,41 +2,54 @@ package com.uon.seng3160.group2.flightpub.service.impl;
 
 import com.uon.seng3160.group2.flightpub.model.UserModel;
 import com.uon.seng3160.group2.flightpub.entity.Account;
+import com.uon.seng3160.group2.flightpub.entity.Role;
 import com.uon.seng3160.group2.flightpub.repository.AccountRepository;
+import com.uon.seng3160.group2.flightpub.repository.RoleRepository;
 import com.uon.seng3160.group2.flightpub.service.AccountService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Arrays;
 
+@Transactional
 @Service
 public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
+    private RoleRepository roleRepository;
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     public AccountServiceImpl(AccountRepository accountRepository,
-            PasswordEncoder passwordEncoder) {
+            PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
         this.accountRepository = accountRepository;
+        this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     public void saveUser(UserModel userModel) {
         Account account = new Account();
-        // TODO: why arent these two separate in the db?
-        account.setName(userModel.getFirstName() + " " + userModel.getLastName());
+        account.setFirstName(userModel.getFirstName());
+        account.setLastName(userModel.getLastName());
         account.setEmail(userModel.getEmail());
 
         // encrypt the password once we integrate spring security
-        // user.setPassword(userDto.getPassword());
+        //
+
         account.setPassword(passwordEncoder.encode(userModel.getPassword()));
 
+        Role role = roleRepository.findByName("ROLE_ADMIN");
+        if (role == null) {
+            role = this.checkRoleExist();
+        }
+        account.setRoles(Arrays.asList(role));
         accountRepository.save(account);
     }
 
@@ -53,11 +66,16 @@ public class AccountServiceImpl implements AccountService {
 
     private UserModel convertEntityToModel(Account account) {
         UserModel userModel = new UserModel();
-        String[] name = account.getName().split(" ");
-        userModel.setFirstName(name[0]);
-        userModel.setLastName(name[1]);
+        userModel.setFirstName(account.getFirstName());
+        userModel.setLastName(account.getLastName());
         userModel.setEmail(account.getEmail());
         return userModel;
+    }
+
+    private Role checkRoleExist() {
+        Role role = new Role();
+        role.setName("ROLE_USER");
+        return roleRepository.save(role);
     }
 
 }

@@ -27,9 +27,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authorize) -> authorize
+                .requestMatchers("/flights/**").hasAnyRole("USER")
                 .requestMatchers("/register/**").permitAll()
-                .requestMatchers("/index").permitAll()
-                .requestMatchers("/hello").permitAll()) // Permit access to the /hello endpoint
+                .requestMatchers("/index").permitAll())
+                // Permit access to the /hello endpoint
                 .formLogin(
                         form -> form
                                 .loginPage("/login")
@@ -45,7 +46,6 @@ public class SecurityConfig {
 
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .userDetailsService(userDetailsService);
+        auth.userDetailsService(userDetailsService);
     }
 }

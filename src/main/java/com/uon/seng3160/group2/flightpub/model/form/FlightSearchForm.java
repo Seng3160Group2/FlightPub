@@ -4,22 +4,20 @@ import java.time.LocalDateTime;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.uon.seng3160.group2.flightpub.entity.Destination;
-
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class FlightSearchForm {
 
-    //@NotNull
-    //@NotEmpty
-    //@Size(min = 2, max = 2)
+    // @NotNull
+    // @NotEmpty
+    // @Size(min = 2, max = 2)
     private String airlineCode;
 
-    //@NotNull
-    //@NotEmpty
-    //@Size(max = 6)
+    // @NotNull
+    // @NotEmpty
+    // @Size(max = 6)
     private String flightNumber;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -28,10 +26,15 @@ public class FlightSearchForm {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime arrivalTime;
 
-    /*@NotNull
-    @NotEmpty
-    @Size(max = 3)
-    @NotNull*/
+    /*
+     * @NotNull
+     * 
+     * @NotEmpty
+     * 
+     * @Size(max = 3)
+     * 
+     * @NotNull
+     */
     private String endDestination;
 
     @NotNull
@@ -53,7 +56,8 @@ public class FlightSearchForm {
         this.returnFlight = true;
     }
 
-    public FlightSearchForm(String startDestination, String endDestination, LocalDateTime departureTime, LocalDateTime arrivalTime, boolean returnFlight) {
+    public FlightSearchForm(String startDestination, String endDestination, LocalDateTime departureTime,
+            LocalDateTime arrivalTime, boolean returnFlight) {
         this.startDestination = startDestination;
         this.endDestination = endDestination;
         this.departureTime = departureTime;
@@ -66,8 +70,6 @@ public class FlightSearchForm {
         this.flightNumber = flightNumber;
         this.departureTime = departureTime;
     }
-
-
 
     public String getAirlineCode() {
         return this.airlineCode;
@@ -128,8 +130,6 @@ public class FlightSearchForm {
     public void setReturnFlight(boolean returnFlight) {
         this.returnFlight = returnFlight;
     }
-    
-
 
     @Override
     public String toString() {

@@ -26,7 +26,7 @@ public class AuthController {
     }
 
     @GetMapping("index")
-    public String home(){
+    public String home() {
         return "index";
     }
 
@@ -36,8 +36,8 @@ public class AuthController {
     }
 
     // handler method to handle user registration request
-    @GetMapping("register")
-    public String showRegistrationForm(Model model){
+    @GetMapping("/register")
+    public String showRegistrationForm(Model model) {
         UserModel user = new UserModel();
         model.addAttribute("user", user);
         return "register";
@@ -46,8 +46,8 @@ public class AuthController {
     // handler method to handle register user form submit request
     @PostMapping("/register/save")
     public String registration(@Valid @ModelAttribute("user") UserModel user,
-                               BindingResult result,
-                               Model model){
+            BindingResult result,
+            Model model) {
         System.out.println("Registration method called"); // Debug statement
 
         Account existing = accountService.findByEmail(user.getEmail());
@@ -72,7 +72,7 @@ public class AuthController {
     }
 
     @GetMapping("/users")
-    public String listRegisteredUsers(Model model){
+    public String listRegisteredUsers(Model model) {
         List<UserModel> users = accountService.findAllUsers();
         model.addAttribute("users", users);
         return "users";
