@@ -32,7 +32,6 @@ public class SecurityConfig {
                 .requestMatchers("/register/**").permitAll()
                 .requestMatchers("/index").permitAll()
                 .requestMatchers("/flights/**").hasAnyRole("USER")).csrf(AbstractHttpConfigurer::disable)
-                // Permit access to the /hello endpoint
                 .formLogin(
                         form -> form
                                 .loginPage("/login")

@@ -45,7 +45,7 @@ public class AccountServiceImpl implements AccountService {
 
         account.setPassword(passwordEncoder.encode(userModel.getPassword()));
 
-        Role role = roleRepository.findByName("ROLE_ADMIN");
+        Role role = roleRepository.findByName("ROLE_USER");
         if (role == null) {
             role = this.checkRoleExist();
         }
