@@ -49,7 +49,7 @@
             <table>
                 <tr>
                     <td>
-                        <div class="c-button">Edit Details</div>
+                        <div class="c-button"><a href="/account/edit-details">Edit Details</a></div>
                     </td>
                     <td>
                         <div class="c-button"><a href="/account/current-bookings">View Bookings</a></div>

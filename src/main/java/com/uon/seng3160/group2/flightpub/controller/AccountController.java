@@ -23,6 +23,14 @@ public class AccountController {
         return "account";
     }
 
+    @GetMapping("edit-details")
+    public String editDetails(Model model) {
+        // model.addAttribute("name", name);
+        UserModel user = new UserModel();
+        model.addAttribute("account", user);
+        return "edit-details";
+    }
+
     @GetMapping("/flight-history")
     public String flightHistory(Model model) {
         return "flight-history";
