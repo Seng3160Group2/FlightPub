@@ -7,19 +7,23 @@
     <#include "/website/header.ftl">
     <section class="recommendations">
         <div class="recommendation">
-            <p class="destination-text">Test</p>
+            <img src="https://en.wikipedia.org/wiki/File:View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_(cropped).jpg" alt="New York"/>
+            <p class="destination-text">New York</p>
             <p class="booking-text">book now</p>
         </div>
         <div class="recommendation">
-            <p class="destination-text">Test</p>
+            <img src="" alt="Hong Kong"/>
+            <p class="destination-text">Hong Kong</p>
             <p class="booking-text">book now</p>
         </div>
         <div class="recommendation">
-            <p class="destination-text">Test</p>
+            <img src="" alt="Dubai"/>
+            <p class="destination-text">Dubai</p>
             <p class="booking-text">book now</p>
         </div>
         <div class="recommendation">
-            <p class="destination-text">Test</p>
+            <img src="" alt="Paris"/>
+            <p class="destination-text">Paris</p>
             <p class="booking-text">book now</p>
         </div>
     </section>
