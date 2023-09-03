@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.ArrayList;
 
 @Transactional
 @Service
@@ -42,13 +44,10 @@ public class AccountServiceImpl implements AccountService {
 
         // encrypt the password once we integrate spring security
         //
+        Role role = this.getRole("ROLE_USER");
 
         account.setPassword(passwordEncoder.encode(userModel.getPassword()));
 
-        Role role = roleRepository.findByName("ROLE_USER");
-        if (role == null) {
-            role = this.checkRoleExist();
-        }
         account.setRoles(Arrays.asList(role));
         accountRepository.save(account);
     }
@@ -72,10 +71,14 @@ public class AccountServiceImpl implements AccountService {
         return userModel;
     }
 
-    private Role checkRoleExist() {
-        Role role = new Role();
-        role.setName("ROLE_USER");
-        return roleRepository.save(role);
+    private Role getRole(String role) {
+        Role roleObj = roleRepository.findByName(role);
+        if (roleObj == null) {
+            roleObj = new Role();
+            roleObj.setName(role);
+            roleRepository.save(roleObj);
+        }
+        return roleObj;
     }
 
 }
