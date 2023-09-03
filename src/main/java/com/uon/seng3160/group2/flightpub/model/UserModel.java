@@ -43,5 +43,5 @@ public class UserModel {
     private LocalDate dob = LocalDate.of(1990, 1, 1);
 
     @NotEmpty(message = "Please select a gender")
-    private String gender = "Unspecified";
+    private String gender = "other";
 }
