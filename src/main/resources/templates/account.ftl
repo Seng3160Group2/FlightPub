@@ -67,7 +67,7 @@
                 </tr>
                 <tr>
                 <td>
-                    <div class="c-button"><a href="login">Log out</a></div>
+                    <div class="c-button"><a href="/styles/login">Log out</a></div>
                     </td>
                 </tr>
             </table>
