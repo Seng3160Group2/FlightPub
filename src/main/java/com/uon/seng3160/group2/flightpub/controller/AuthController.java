@@ -69,16 +69,5 @@ public class AuthController {
         return "redirect:/register?success";
     }
 
-    @GetMapping("/users")
-    public String listRegisteredUsers(Model model) {
-        List<UserModel> users = accountService.findAllUsers();
-        model.addAttribute("users", users);
-        return "users";
-    }
-
-    @GetMapping("/hello")
-    @ResponseBody
-    public String helloWorld() {
-        return "Hello, World!";
-    }
+   
 }

@@ -6,6 +6,15 @@
     <title>Flight Search</title>
 </head>
 <body>
+    <#if userFirstName?has_content>
+        <h1>Hello ${userFirstName} ${userLastName}</h1>
+        <h1>Email: ${userEmail}</h1>
+        <form action="/logout" method="post">
+        <input type="submit" value="Logout">
+    </form>
+    <#else>
+        <h1>Hello Guest</h1>
+    </#if>
     <h1>Flight Search</h1>
     <form action="/flights/search-results" method="get">
         <label for="airlineCode">Airline Code:</label>

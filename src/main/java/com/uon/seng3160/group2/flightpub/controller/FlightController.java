@@ -1,5 +1,6 @@
 package com.uon.seng3160.group2.flightpub.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.uon.seng3160.group2.flightpub.entity.Account;
 import com.uon.seng3160.group2.flightpub.entity.Flight;
 import com.uon.seng3160.group2.flightpub.model.FlightModel;
 import com.uon.seng3160.group2.flightpub.model.form.FlightSearchForm;
+import com.uon.seng3160.group2.flightpub.service.AccountService;
 import com.uon.seng3160.group2.flightpub.service.BasicSearch;
 import com.uon.seng3160.group2.flightpub.service.FlightSearchService;
 
@@ -34,12 +37,45 @@ public class FlightController {
     @Autowired
     public Converter<Flight, FlightModel> conversionService;
 
+    @Autowired
+    private AccountService accountService;
+
     @GetMapping("/search")
-    public String showSearchForm(Model model) {
+    public String showSearchForm(Model model, Principal principal) {
+        String userFirstName = ""; // Initialize with an empty string
+        String userLastName = ""; // Initialize with an empty string
+        String userEmail = ""; // Initialize with an empty string
+
+        // Check if a user is logged in
+        if (principal != null) {
+            // Get the currently logged-in user's username (typically email or username)
+            String username = principal.getName();
+
+            // Use your account service to fetch user details by username or email
+            // Replace "accountService.findByEmail(username)" with your actual method
+            Account userAccount = accountService.findByEmail(username);
+
+            // Check if the user account was found
+            if (userAccount != null) {
+                // Retrieve the user's first name from the account object
+                userFirstName = userAccount.getFirstName();
+                userLastName = userAccount.getLastName();
+                userEmail = userAccount.getEmail();
+            }
+        }
+
+        // Add the user's first name to the model
+        model.addAttribute("userFirstName", userFirstName);
+        model.addAttribute("userLastName", userLastName);
+        model.addAttribute("userEmail", userEmail);
+
+        // Add the flight search form to the model as well
         model.addAttribute("flightSearchForm", new FlightSearchForm());
+
         return "flight-search";
-        
     }
+
+        
 
     @GetMapping("/search-results")
     public String getFlightById(@Valid @ModelAttribute FlightSearchForm flightSearchForm,
@@ -86,6 +122,7 @@ public class FlightController {
         //FlightModel flightModel = conversionService.convert(flight);
         return "flight-search-results";
     }
+    
     @GetMapping("/flight-search-returns")
     public String getReturnFlight(@Valid @ModelAttribute FlightSearchForm flightSearchForm,
             BindingResult bindingResult, Model model){
