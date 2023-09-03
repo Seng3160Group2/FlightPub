@@ -54,7 +54,12 @@
                 <div class="info-value">3</div>
             </div>
         </div>
+
+        <div class="c-button" style="margin:1rem; width:3rem"><a href="/account">Back</a></div>
+
+        
     </section>
+     
 
         <#include "/website/footer.ftl">
         <#include "/website/scripts.ftl">
