@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .requestMatchers("/register/**").permitAll()
                 .requestMatchers("/index").permitAll()
                 .requestMatchers("/test-session").permitAll()
-                .requestMatchers("/flights/**").hasAnyRole("USER")).csrf(AbstractHttpConfigurer::disable)
+                .requestMatchers("/flights/**", "/api/account/**").hasAnyRole("USER")).csrf(AbstractHttpConfigurer::disable)
                 .formLogin(
                         form -> form
                                 .loginPage("/login")

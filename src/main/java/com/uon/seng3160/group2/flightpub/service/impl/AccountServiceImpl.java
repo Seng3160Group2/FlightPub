@@ -1,5 +1,6 @@
 package com.uon.seng3160.group2.flightpub.service.impl;
 
+import com.uon.seng3160.group2.flightpub.model.BookingModel;
 import com.uon.seng3160.group2.flightpub.model.UserModel;
 import com.uon.seng3160.group2.flightpub.entity.Account;
 import com.uon.seng3160.group2.flightpub.entity.Role;
@@ -8,6 +9,7 @@ import com.uon.seng3160.group2.flightpub.repository.RoleRepository;
 import com.uon.seng3160.group2.flightpub.service.AccountService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -79,6 +81,66 @@ public class AccountServiceImpl implements AccountService {
             roleRepository.save(roleObj);
         }
         return roleObj;
+    }
+
+    @Override
+    public UserModel getAccountDetails(String username) {
+        // Retrieve the user account based on the provided username (email)
+        Account account = accountRepository.findByEmail(username);
+        if (account == null) {
+            throw new UsernameNotFoundException("User not found: " + username);
+        }
+
+        // Convert the Account entity to a UserModel
+        return convertEntityToModel(account);
+    }
+
+    @Override
+    public UserModel updateAccountDetails(String username, UserModel updatedUserModel) {
+        // Retrieve the user account based on the provided username (email)
+        Account account = accountRepository.findByEmail(username);
+        if (account == null) {
+            throw new UsernameNotFoundException("User not found: " + username);
+        }
+
+        // Update the user's details with the provided UserModel
+        account.setFirstName(updatedUserModel.getFirstName());
+        account.setLastName(updatedUserModel.getLastName());
+        account.setEmail(updatedUserModel.getEmail());
+
+        // Save the updated user account
+        accountRepository.save(account);
+
+        // Convert the updated Account entity to a UserModel and return it
+        return convertEntityToModel(account);
+    }
+
+    @Override
+    public boolean deleteAccount(String username) {
+        // Retrieve the user account based on the provided username (email)
+        Account account = accountRepository.findByEmail(username);
+        if (account == null) {
+            throw new UsernameNotFoundException("User not found: " + username);
+        }
+
+        // Delete the user account from the database
+        accountRepository.delete(account);
+
+        // Check if the account was deleted successfully (account should no longer exist)
+        return !accountRepository.existsById(account.getId());
+    }
+
+    @Override
+    public List<BookingModel> getUserBookings(String username) {
+        // Implement logic to retrieve the bookings associated with the user based on username
+        // You may need to create a BookingRepository and implement the necessary database queries
+        // Return a list of BookingModel objects representing the user's bookings
+        // Example:
+        // List<Booking> bookings = bookingRepository.findByUserEmail(username);
+        // return bookings.stream().map(this::convertBookingEntityToModel).collect(Collectors.toList());
+
+        // For now, return an empty list as an example
+        return Collections.emptyList();
     }
 
 }
