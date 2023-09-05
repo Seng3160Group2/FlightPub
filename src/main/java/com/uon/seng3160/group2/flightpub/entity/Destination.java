@@ -47,7 +47,7 @@ public class Destination {
     Set<Distance> distancesTo;
 
     @Transient
-    private boolean visited = false;
+    private boolean illegal = false;
 
     public Destination() {
     }
@@ -183,12 +183,12 @@ public class Destination {
         return 0;
     }
 
-    public void setVisited(boolean visited) {
-        this.visited = visited;
+    public void setIllegal(boolean illegal) {
+        this.illegal = illegal;
     }
 
-    public boolean getVisited() {
-        return this.visited;
+    public boolean isIllegal() {
+        return this.illegal;
     }
 
     @Override

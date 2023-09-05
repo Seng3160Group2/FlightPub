@@ -1,18 +1,26 @@
-package com.uon.seng3160.group2.flightpub.service;
+package com.uon.seng3160.group2.flightpub.service.impl;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.uon.seng3160.group2.flightpub.entity.Destination;
+import com.uon.seng3160.group2.flightpub.entity.DestinationMatrix;
 import com.uon.seng3160.group2.flightpub.entity.Flight;
 import com.uon.seng3160.group2.flightpub.entity.compositekey.FlightId;
 import com.uon.seng3160.group2.flightpub.repository.FlightRepository;
+import com.uon.seng3160.group2.flightpub.service.DestinationService;
+import com.uon.seng3160.group2.flightpub.service.FlightAlgorithm;
+import com.uon.seng3160.group2.flightpub.service.FlightSearchService;
+import com.uon.seng3160.group2.flightpub.service.PathAlgorithm;
+import com.uon.seng3160.group2.flightpub.service.PathAlgorithmRevised;
 
 @Service
 @Transactional
@@ -24,17 +32,26 @@ public class FlightSearchServiceImpl implements FlightSearchService {
     private final DestinationService destinationService;
 
     @Autowired
-    private final PathAlgorithm pathAlgorithm;
+    private final PathAlgorithmRevised pathAlgorithmRevised;
 
     @Autowired
     private final FlightAlgorithm flightAlgorithm;
 
+    @Autowired
+    private final PathService pathService;
+
+    @Autowired
+    final DestinationMatrix destinationMatrix;
+
     public FlightSearchServiceImpl(FlightRepository flightRepository, DestinationService destinationService,
-            FlightAlgorithm flightAlgorithm, PathAlgorithm pathAlgorithm) {
+            FlightAlgorithm flightAlgorithm, PathAlgorithmRevised pathAlgorithmRevised, PathService pathService,
+            DestinationMatrix destinationMatrix) {
         this.flightRepository = flightRepository;
         this.destinationService = destinationService;
         this.flightAlgorithm = flightAlgorithm;
-        this.pathAlgorithm = pathAlgorithm;
+        this.pathAlgorithmRevised = pathAlgorithmRevised;
+        this.pathService = pathService;
+        this.destinationMatrix = destinationMatrix;
     }
 
     public Optional<Flight> getFlight(String airlineCode, String flightNumber, LocalDateTime departureTime) {
@@ -58,14 +75,16 @@ public class FlightSearchServiceImpl implements FlightSearchService {
 
         Destination departure = depResult.get();
         Destination destination = destResult.get();
+        departure = this.destinationMatrix.getNode(departure.getDestinationCode()).get();
+        destination = this.destinationMatrix.getNode(destination.getDestinationCode()).get();
 
-        List<List<Flight>> departureJourneys = this.findAllFlights(departure, destination, departureTime, 5);
+        List<List<Flight>> departureJourneys = this.findAllFlights(departure, destination, departureTime, 3);
         results.add(departureJourneys);
 
         if (!isReturn)
             return results;
 
-        List<List<Flight>> returnJourneys = this.findAllFlights(destination, departure, returnTime, 5);
+        List<List<Flight>> returnJourneys = this.findAllFlights(destination, departure, returnTime, 3);
 
         results.add(returnJourneys);
 
@@ -75,32 +94,30 @@ public class FlightSearchServiceImpl implements FlightSearchService {
     public List<List<Flight>> findAllFlights(Destination departure, Destination destination,
             LocalDateTime departureTime, int numPaths) {
         List<List<Destination>> paths = new ArrayList<List<Destination>>();
-        List<List<Flight>> journeys = new ArrayList<List<Flight>>();
+        Set<List<Flight>> journeys = new HashSet<List<Flight>>();
 
-        paths = this.pathAlgorithm.YensShortestPaths(departure, destination, numPaths);
-        int tries = 0;
-        while (paths.isEmpty()) {
-            if (tries == 3)
-                return journeys;
+        paths = pathService.getPaths(departure, destination);
 
-            paths = this.pathAlgorithm.YensShortestPaths(departure, destination, numPaths);
-            tries++;
-            numPaths += 2;
-        }
-
-        for (List<Destination> path : paths) {
-            this.pathAlgorithm.printPath(path);
-        }
-
+        int layoverExpansions;
+        int maxLayover;
         int pathExpansions = 0;
-        int layoverExpansions = 0;
-        int maxLayover = 12;
         List<List<Flight>> newJourneys = new ArrayList<List<Flight>>();
-        while (journeys.size() < 2) {
-            if (pathExpansions == 3)
-                return journeys;
+        List<List<Destination>> oldPaths = new ArrayList<List<Destination>>();
+        while (journeys.size() < 3 && pathExpansions < 2) {
+            if (pathExpansions != 0) {
+                oldPaths.addAll(paths);
+                paths = this.pathAlgorithmRevised.YensShortestPaths(departure, destination, numPaths);
+                paths.removeAll(oldPaths);
+            }
 
-            while (journeys.size() < 2 && layoverExpansions < 3) {
+            // for (List<Destination> path : paths) {
+            // pathAlgorithmRevised.printPath(path);
+            // }
+            // System.out.println("------");
+
+            layoverExpansions = 0;
+            maxLayover = 24;
+            while (journeys.size() < 3 && layoverExpansions < 3) {
                 for (List<Destination> path : paths) {
                     newJourneys = this.flightAlgorithm.makeJourneys(new ArrayList<Flight>(), path, 0, 1, 1, maxLayover,
                             departureTime);
@@ -109,13 +126,13 @@ public class FlightSearchServiceImpl implements FlightSearchService {
                 maxLayover *= 2;
                 layoverExpansions++;
             }
-            numPaths += 2;
+            numPaths += 5;
             pathExpansions++;
         }
 
         for (List<Flight> journey : journeys) {
             this.flightAlgorithm.printJourney(journey);
         }
-        return journeys;
+        return new ArrayList<List<Flight>>(journeys);
     }
 }

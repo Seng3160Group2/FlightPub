@@ -81,7 +81,7 @@ public class Distance {
      * array, the destinations will be switched, thus requiring the method below.
      */
     public Destination getOtherDestination(Destination departure) {
-        if (this.destinationTo != departure)
+        if (this.destinationTo != departure) // may need to check if reference equality is the way to go
             return this.destinationTo;
         return this.destinationFrom;
     }

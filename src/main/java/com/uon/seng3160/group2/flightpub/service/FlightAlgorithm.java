@@ -26,9 +26,10 @@ public class FlightAlgorithm {
 
     public List<List<Flight>> makeJourneys(List<Flight> journey, List<Destination> path, int u, int v, int minLayover,
             int maxLayover, LocalDateTime startTime) {
-        System.out.println("path\n" + path);
-        System.out.println(String.format("u: %d, v: %d, startTime: %s", u, v, startTime));
-        System.out.println(journey);
+        // System.out.println("path\n" + path);
+        // System.out.println(String.format("u: %d, v: %d, startTime: %s", u, v,
+        // startTime));
+        // System.out.println(journey);
         List<List<Flight>> journeys = new ArrayList<List<Flight>>();
 
         if (journey.size() > 0) {
@@ -56,10 +57,11 @@ public class FlightAlgorithm {
             upperTime = startTime.plusHours(maxLayover);
             startTime = startTime.plusHours(minLayover);
         }
-        System.out.println(String.format("u = %s, v = %s, start = %s, upper = %s", path.get(u), path.get(v), startTime,
-                upperTime));
+        // System.out.println(String.format("u = %s, v = %s, start = %s, upper = %s",
+        // path.get(u), path.get(v), startTime,
+        // upperTime));
         List<Flight> flights = flightRepository.findFlightsBetweenTimes(path.get(u), path.get(v), startTime, upperTime);
-        System.out.println("flights\n" + flights);
+        // System.out.println("flights\n" + flights);
         for (Flight flight : flights) {
             List<Flight> newJourney = new ArrayList<>(journey);
             newJourney.add(flight);
