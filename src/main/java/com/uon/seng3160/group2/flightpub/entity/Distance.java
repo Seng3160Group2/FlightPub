@@ -70,4 +70,30 @@ public class Distance {
     public void setDistancesInKms(int distancesInKms) {
         this.distancesInKms = distancesInKms;
     }
+
+    /*
+     * A destination is mapped to another only one way so when looking at a
+     * destinations distances to another destination, sometimes some of those are
+     * in the distanesTo list and the distancesFrom list. Thus we must look over
+     * both
+     * distance arrays to find all the destination a destination is connected to.
+     * But in the distancesTo
+     * array, the destinations will be switched, thus requiring the method below.
+     */
+    public Destination getOtherDestination(Destination departure) {
+        if (this.destinationTo != departure) // may need to check if reference equality is the way to go
+            return this.destinationTo;
+        return this.destinationFrom;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                " distanceId='" + getDistanceId() + "'" +
+                ", destinationFrom='" + getDestinationFrom().getDestinationCode() + "'" +
+                ", destinationTo='" + getDestinationTo().getDestinationCode() + "'" +
+                ", distancesInKms='" + getDistancesInKms() + "'" +
+                "}";
+    }
+
 }

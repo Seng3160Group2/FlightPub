@@ -31,6 +31,13 @@ public class StylesController {
         return "signup";
     }
 
+    @GetMapping("search-bar")
+    public String searchBar(Model model) {
+        model.addAttribute("example", null);
+
+        return "search-bar";
+    }
+
     @GetMapping("flight-card")
     public String flightCard(Model model) {
         model.addAttribute("example", null);

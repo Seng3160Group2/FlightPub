@@ -6,85 +6,52 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 public class FlightSearchForm {
 
-    // @NotNull
-    // @NotEmpty
-    // @Size(min = 2, max = 2)
-    private String airlineCode;
+    @NotNull
+    @NotEmpty
+    private String departure;
 
-    // @NotNull
-    // @NotEmpty
-    // @Size(max = 6)
-    private String flightNumber;
+    @NotNull
+    @NotEmpty
+    private String destination;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime departureTime;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime arrivalTime;
-
-    /*
-     * @NotNull
-     * 
-     * @NotEmpty
-     * 
-     * @Size(max = 3)
-     * 
-     * @NotNull
-     */
-    private String endDestination;
-
-    @NotNull
-    @NotEmpty
-    @Size(max = 3)
-    @NotNull
-    private String startDestination;
-
-    @NotNull
-    private boolean returnFlight;
+    private LocalDateTime returnTime;
 
     public FlightSearchForm() {
-        this.airlineCode = "AA";
-        this.flightNumber = "123456";
-        this.departureTime = LocalDateTime.now();
-        this.arrivalTime = LocalDateTime.now();
-        this.startDestination = "AUS";
-        this.endDestination = "ARG";
-        this.returnFlight = true;
+        this.departure = "Adelaide";
+        this.destination = "Sydney";
+        this.departureTime = LocalDateTime.of(2014, 9, 23, 0, 0, 0, 0);
+        this.returnTime = LocalDateTime.of(2014, 9, 27, 0, 0, 0, 0);
     }
 
-    public FlightSearchForm(String startDestination, String endDestination, LocalDateTime departureTime,
-            LocalDateTime arrivalTime, boolean returnFlight) {
-        this.startDestination = startDestination;
-        this.endDestination = endDestination;
+    public FlightSearchForm(String departure, String destination, LocalDateTime departureTime,
+            LocalDateTime returnTime) {
+        this.departure = departure;
+        this.destination = destination;
         this.departureTime = departureTime;
-        this.arrivalTime = arrivalTime;
-        this.returnFlight = returnFlight;
+        this.returnTime = returnTime;
     }
 
-    public FlightSearchForm(String airlineCode, String flightNumber, LocalDateTime departureTime) {
-        this.airlineCode = airlineCode;
-        this.flightNumber = flightNumber;
-        this.departureTime = departureTime;
+    public String getDeparture() {
+        return this.departure;
     }
 
-    public String getAirlineCode() {
-        return this.airlineCode;
+    public void setDeparture(String departure) {
+        this.departure = departure;
     }
 
-    public void setAirlineCode(String airlineCode) {
-        this.airlineCode = airlineCode;
+    public String getDestination() {
+        return this.destination;
     }
 
-    public String getFlightNumber() {
-        return this.flightNumber;
-    }
-
-    public void setFlightNumber(String flightNumber) {
-        this.flightNumber = flightNumber;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
     public LocalDateTime getDepartureTime() {
@@ -95,49 +62,11 @@ public class FlightSearchForm {
         this.departureTime = departureTime;
     }
 
-    public LocalDateTime getArrivalTime() {
-        return this.arrivalTime;
+    public LocalDateTime getReturnTime() {
+        return this.returnTime;
     }
 
-    public void setArrivalTime(LocalDateTime arrivalTime) {
-        this.arrivalTime = arrivalTime;
+    public void setReturnTime(LocalDateTime returnTime) {
+        this.returnTime = returnTime;
     }
-
-    public String getEndDestination() {
-        return this.endDestination;
-    }
-
-    public void setEndDestination(String endDestination) {
-        this.endDestination = endDestination;
-    }
-
-    public String getStartDestination() {
-        return this.startDestination;
-    }
-
-    public void setStartDestination(String startDestination) {
-        this.startDestination = startDestination;
-    }
-
-    public boolean isReturnFlight() {
-        return this.returnFlight;
-    }
-
-    public boolean getReturnFlight() {
-        return this.returnFlight;
-    }
-
-    public void setReturnFlight(boolean returnFlight) {
-        this.returnFlight = returnFlight;
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-                " flightNumber='" + getFlightNumber() + "'" +
-                ", airlineCode='" + getAirlineCode() + "'" +
-                ", departureTime='" + getDepartureTime() + "'" +
-                "}";
-    }
-
 }

@@ -1,15 +1,19 @@
-.c-header {
-    background-color: $color-off-white;
+.c-footer {
+    background-color: rgb(7, 9, 28);
+
     &__container {
+        width: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
+        gap: 2rem;
+
+        color: $color-grey;
     }
 
     &__logo {
         font-family: 'Fira Sans';
-        font-size: 32px;
     }
 
     &__navbar {
@@ -21,8 +25,6 @@
     }
 
     &__navbar-item {
-        font-family: 'Telex';
-        font-size: 16px;
+        font-family: 'Fira Sans';
     }
 }
-    

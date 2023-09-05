@@ -1,0 +1,35 @@
+.c-user-details-input {
+    // display: flex;
+    margin-top: 20px;
+    font-family: 'Helvetica';
+    flex: 1;
+    margin-left: 15rem;
+    background-color: rgba(224, 224, 224, 0.6);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 10%;
+    
+}
+.c-user-details-wrapper {
+    display: flex; /* Use flex to position sections side by side */
+    align-items: flex-start; /* Align sections at the top */
+}
+
+.c-user-details-summary{
+    // display: flex;
+    margin-top: 20px;
+    flex-grow: 0.5;
+    background-color: rgba(224, 224, 224, 0.6);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-flight-details {
+    // Existing styles for flight details summary
+    // ...
+    border-left: 1px solid #ccc; /* Add a faint grey border on the left side */
+    padding-left: 20px; /* Add padding on the left side for spacing */
+    margin-left: 20px; /* Add margin to separate from the main input section */
+}

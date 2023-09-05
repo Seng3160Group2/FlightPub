@@ -12,9 +12,11 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "Destinations")
+@EqualsAndHashCode
 public class Destination {
     @Id // nullable = false is implicit with @id
     @Column(columnDefinition = "CHAR(3)")
@@ -45,7 +47,7 @@ public class Destination {
     Set<Distance> distancesTo;
 
     @Transient
-    private boolean visited = false;
+    private boolean illegal = false;
 
     public Destination() {
     }
@@ -144,64 +146,44 @@ public class Destination {
         return this.distancesTo;
     }
 
-    
     public void AddDistanceTo(Distance distanceTo) {
         this.distancesTo.add(distanceTo);
     }
-    
+
     public void removeDistanceTo(Distance distanceTo) {
         if (distanceTo != null)
-        this.distancesTo.remove(distanceTo);
+            this.distancesTo.remove(distanceTo);
     }
 
-    public Set<Distance> getDistances(){
-        Set<Distance> orderedDistances = new HashSet<>();
-        Set<Distance> distances = distancesTo;
-        Iterator<Distance> distFromIterator = distancesFrom.iterator();
-        while(distFromIterator.hasNext()){
-            distances.add(distFromIterator.next());
-        }
-        while(!distances.isEmpty()){
-            Iterator<Distance> distanceIterator = distances.iterator();
-            Distance currentDistance;
-            Distance tempDistance = distanceIterator.next();
-            while(distanceIterator.hasNext()){
-                currentDistance = distanceIterator.next();
-                if(currentDistance.getDistancesInKms() < tempDistance.getDistancesInKms()){
-                    tempDistance = currentDistance;
-                }
-            }
-            orderedDistances.add(tempDistance);
-            distances.remove(tempDistance);
-        }
-        return orderedDistances;
+    public Set<Distance> getDistances() {
+        HashSet<Distance> allDistances = new HashSet<>();
+        allDistances.addAll(this.getDistancesFrom());
+        allDistances.addAll(this.getDistancesTo());
+
+        return allDistances;
     }
 
-    public int getDistanceTo(Destination destination) {
-        Set<Distance> distances = distancesTo;
-        Iterator<Distance> distFromIterator = distancesFrom.iterator();
-        while(distFromIterator.hasNext()){
-            distances.add(distFromIterator.next());
-        }
-        Iterator<Distance> distanceIterator = distances.iterator();
-        Distance currentDistance;
-        while(distanceIterator.hasNext()){
-            currentDistance = distanceIterator.next();
-            if(currentDistance.getDestinationFrom() == destination){
-                return currentDistance.getDistancesInKms();
-            }
-            if(currentDistance.getDestinationTo() == destination){
-                return currentDistance.getDistancesInKms();
-            }
-        }
-        return 0;
+    public void setIllegal(boolean illegal) {
+        this.illegal = illegal;
     }
 
-    public void setVisited(boolean visited) {
-        this.visited = visited;
+    public boolean isIllegal() {
+        return this.illegal;
     }
 
-    public boolean getVisited() {
-        return this.visited;
+    @Override
+    public String toString() {
+        return "{" +
+                "'" + getDestinationCode() + "'" +
+                // ", airport='" + getAirport() + "'" +
+                // ", country='" + getCountry() + "'" +
+                // ", departures='" + getDepartures() + "'" +
+                // ", stopOvers='" + getStopOvers() + "'" +
+                // ", arrivals='" + getArrivals() + "'" +
+                // ", distancesFrom='" + getDistancesFrom() + "'" +
+                // ", distancesTo='" + getDistancesTo() + "'" +
+                // ", visited='" + getVisited() + "'" +
+                "}";
     }
+
 }
