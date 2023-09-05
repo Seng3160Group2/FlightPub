@@ -2,6 +2,7 @@ package com.uon.seng3160.group2.flightpub.entity;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.uon.seng3160.group2.flightpub.entity.compositekey.FlightId;
@@ -10,6 +11,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToMany;
@@ -68,6 +70,9 @@ public class Flight {
 
     @OneToMany(mappedBy = "flight")
     private Set<Availability> availabilities;
+
+    @ManyToMany(mappedBy = "flights")
+    private List<Account> users;
 
     public Flight() {
     }
@@ -216,6 +221,10 @@ public class Flight {
     public void removeAvailability(Availability availability) {
         if (availability != null)
             this.availabilities.remove(availability);
+    }
+
+    public void addUser(Account user) {
+        this.users.add(user);
     }
 
     @Override

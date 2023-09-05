@@ -38,7 +38,20 @@ public class Account {
     @JoinTable(name = "UserRoles", joinColumns = {
             @JoinColumn(name = "UserId", referencedColumnName = "Id") }, inverseJoinColumns = {
                     @JoinColumn(name = "RoleId", referencedColumnName = "Id") })
-    private List<Role> roles = new ArrayList<>();
+    private List<Role> roles = new ArrayList<Role>();
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
+    @JoinTable(name = "UserFlights", joinColumns = {
+            @JoinColumn(name = "UserId", referencedColumnName = "Id") }, inverseJoinColumns = {
+                    @JoinColumn(name = "AirlineCode", referencedColumnName = "AirlineCode", columnDefinition = "CHAR(2)"),
+                    @JoinColumn(name = "FlightNumber", referencedColumnName = "FlightNumber", columnDefinition = "VARCHAR(6)"),
+                    @JoinColumn(name = "DepartureTime", referencedColumnName = "DepartureTime", columnDefinition = "DATETIME"),
+            })
+    private List<Flight> flights = new ArrayList<Flight>();
+
+    public void addFlights(List<Flight> flights) {
+        this.flights.addAll(flights);
+    }
 
     @Override
     public String toString() {

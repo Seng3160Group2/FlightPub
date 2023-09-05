@@ -23,6 +23,7 @@ import com.uon.seng3160.group2.flightpub.model.form.FlightSearchForm;
 import com.uon.seng3160.group2.flightpub.model.form.FlightSearchFormExample;
 import com.uon.seng3160.group2.flightpub.service.FlightSearchService;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -75,7 +76,7 @@ public class FlightController {
 
     @GetMapping("/search-results")
     public String departureResults(@Valid @ModelAttribute FlightSearchForm flightSearchForm,
-            BindingResult bindingResult, Model model) {
+            BindingResult bindingResult, Model model, HttpSession session) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("bindingResult", bindingResult);
             return "flight-search";
@@ -89,6 +90,8 @@ public class FlightController {
 
         List<List<List<FlightModel>>> resultAsModel = entityToModel(result);
         System.out.println(resultAsModel);
+
+        session.setAttribute("flights", resultAsModel);
 
         model.addAttribute("departures", resultAsModel.get(0));
 
