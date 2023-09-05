@@ -38,8 +38,7 @@ public class AccountController {
     @PutMapping("/updatedetails")
     public ResponseEntity<UserModel> updateAccountDetails(
             Authentication authentication,
-            @RequestBody UserModel updatedUserModel
-    ) {
+            @RequestBody UserModel updatedUserModel) {
         String username = authentication.getName();
         UserModel updatedModel = accountService.updateAccountDetails(username, updatedUserModel);
         return ResponseEntity.ok(updatedModel);
@@ -61,5 +60,23 @@ public class AccountController {
         String username = authentication.getName();
         List<BookingModel> bookings = accountService.getUserBookings(username);
         return ResponseEntity.ok(bookings);
+    }
+
+    @GetMapping("edit-details")
+    public String editDetails(Model model) {
+        // model.addAttribute("name", name);
+        UserModel user = new UserModel();
+        model.addAttribute("account", user);
+        return "edit-details";
+    }
+
+    @GetMapping("/flight-history")
+    public String flightHistory(Model model) {
+        return "flight-history";
+    }
+
+    @GetMapping("/current-bookings")
+    public String currentBookings(Model model) {
+        return "current-bookings";
     }
 }

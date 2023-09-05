@@ -12,56 +12,68 @@
         <div class="c-menu">
             <div class="info">
                 <div class="info-category">Name</div>
-                <div class="info-value">John Doe</div>
+                <div class="info-value">${account.firstName} ${account.middleName} ${account.lastName}</div>
             </div>
             <div class="info">
-                <div class="info-category">Age</div>
-                <div class="info-value">30</div>
+                <div class="info-category">Date of birth</div>
+                <div class="info-value">${account.dob}</div>
             </div>
             <div class="info">
                 <div class="info-category">Gender</div>
-                <div class="info-value">one of them idk</div>
+                <div class="info-value">${account.gender}</div>
             </div>
             <div class="info">
                 <div class="info-category">Email</div>
-                <div class="info-value">whatever@gmail.com</div>
+                <div class="info-value">${account.email}</div>
             </div>
             <div class="info">
                 <div class="info-category">Preferences</div>
-                <div class="info-value">idk</div>
+                <div class="info-value">None</div>
             </div>
-            <div class="info">
+           <div class="info">
+                <div class="info-category">Phone number</div>
+                <div class="info-value">${account.phone}</div>
+            </div>
+            <#--  <div class="info">
                 <div class="info-category">User type</div>
                 <div class="info-value">general</div>
             </div>
             <div class="info">
                 <div class="info-category">Booked flights</div>
                 <div class="info-value">[list of flights here]</div>
-            </div>
-            <div class="info">
+            </div>  -->
+            <#--  <div class="info">
                 <div class="info-category">Flight history</div>
                 <div class="info-value">[list of flights here]</div>
-            </div>
+            </div>  -->
             <table>
                 <tr>
                     <td>
-                        <div class="c-button">Edit Details</div>
+                        <div class="c-button"><a href="/account/edit-details">Edit Details</a></div>
                     </td>
                     <td>
-                        <div class="c-button" id="view-details">View Passenger Details Card</div>
+                        <div class="c-button"><a href="/account/current-bookings">View Bookings</a></div>
                     </td>
+                    <td>
+                        <div class="c-button"><a href="/account/flight-history">View Flight History</a></div>
+                    </td>
+                    <#--  <td>
+                        <div class="c-button" id="view-details">View Passenger Details Card</div>
+                    </td>  -->
                     <td>
                         <div class="c-button">Delete Account</div>
                     </td>
                     
                 </tr>
                 <tr>
-                    
+                <td>
+                    <div class="c-button"><a href="/styles/login">Log out</a></div>
+                    </td>
                 </tr>
             </table>
         </div>
     </section>
-    <div class="c-user-card" id="popup-overlay">
+    <#--  <div class="c-user-card" id="popup-overlay">
         <div class="popup">
             <h3>Passenger Details</h3>
             <div class="details">
@@ -86,7 +98,7 @@ openPopupButton.addEventListener('click', () => {
 closePopupButton.addEventListener('click', () => {
     popupOverlay.style.display = 'none'; // Hide the overlay
 });
-    </script>
+    </script>  -->
      <#include "/website/footer.ftl">
 </body>
 </html>
