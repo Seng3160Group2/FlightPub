@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Flight Search Results</h1>
+    <form action="/flight-search-returns" method="post">
     <#assign maxFlights = 0>
     <#if journeys?has_content>
     <#list journeys as journey>
@@ -29,12 +30,14 @@
                     <li><strong>Group Flight:</strong> ${flight.groupFlight?string('yes', 'no')}</li>  
                 </#if>
                 <#assign maxFlights = maxFlights + 1>  
-            </#list>
+            </#list>`
             <hr/> 
         </ul>
     </#list>
 <#else>
     <p>No flights found.</p>
 </#if>
+<button type="submit">Book Flight</button>
+    </form>
 </body>
 </html>

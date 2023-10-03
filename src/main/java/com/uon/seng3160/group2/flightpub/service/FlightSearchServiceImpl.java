@@ -53,4 +53,8 @@ public class FlightSearchServiceImpl implements FlightSearchService {
         return flights;
 
     }
+    public List<List<Flight>> getReturnFlight(String start, boolean returnFlight){
+        List<List<Flight>> flights = new ArrayList<List<Flight>>();
+        return flights;
+    };
 }

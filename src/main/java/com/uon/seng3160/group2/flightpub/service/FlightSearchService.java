@@ -10,6 +10,7 @@ import com.uon.seng3160.group2.flightpub.entity.Flight;
 public interface FlightSearchService {
     public Optional<Flight> getFlight(String airlineCode, String flightNumber, LocalDateTime departureTime);
     public List<List<Flight>> getFlight(String start, String end, LocalDateTime departureTime, LocalDateTime arrivalTime, boolean returnFlight);
+    public List<List<Flight>> getReturnFlight(String start, boolean returnFlight);
     //public Optional<Flight> getByDepartureAndDestinationAndStopOver(String departure, String destination, String stopOver);
 
 }

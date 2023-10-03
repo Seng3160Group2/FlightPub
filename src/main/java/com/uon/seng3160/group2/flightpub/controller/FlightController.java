@@ -19,6 +19,7 @@ import com.uon.seng3160.group2.flightpub.model.form.FlightSearchForm;
 import com.uon.seng3160.group2.flightpub.service.BasicSearch;
 import com.uon.seng3160.group2.flightpub.service.FlightSearchService;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -43,14 +44,13 @@ public class FlightController {
 
     @GetMapping("/search-results")
     public String getFlightById(@Valid @ModelAttribute FlightSearchForm flightSearchForm,
-            BindingResult bindingResult, Model model) {
+            BindingResult bindingResult, Model model, HttpSession session) {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("bindingResult", bindingResult);
             return "flight-search";
         }
 
-        //Optional<Flight> result = 
         List<List<Flight>> result = flightSearchService.getFlight(
                 flightSearchForm.getStartDestination(),
                 flightSearchForm.getEndDestination(),
@@ -58,10 +58,6 @@ public class FlightController {
                 flightSearchForm.getArrivalTime(),
                 false);
 
-        //flightSearchForm.getDepartureDestination();
-        //flightSearchForm.getStopOverDestination();
-                
-        
         if (result.isEmpty()) {
             model.addAttribute("flight", null);
 
@@ -82,13 +78,19 @@ public class FlightController {
         } 
         
         model.addAttribute("journeys", flightModels);
-        //Flight flight = result.get(1);
-        //FlightModel flightModel = conversionService.convert(flight);
+        session.setAttribute("selectedDepartureFlight", result);
         return "flight-search-results";
     }
     @GetMapping("/flight-search-returns")
-    public String getReturnFlight(@Valid @ModelAttribute FlightSearchForm flightSearchForm,
-            BindingResult bindingResult, Model model){
+    public String returnFlight(@Valid @ModelAttribute FlightSearchForm flightSearchForm,
+            BindingResult bindingResult, Model model, HttpSession session){
+            
+            List<FlightModel> returnFlightOptions = flightSearchService.getReturnFlight(session.getAttribute("selectedDepartureFlight"), true);
+
+            model.addAttribute("selectedDepartureFlight", getReturnFlight(session.getAttribute("selectedDepartureFlight")));
+            model.addAttribute("returnFlightOptions", returnFlightOptions);
+
+
             return "/flight-search-returns";
             }
 }
