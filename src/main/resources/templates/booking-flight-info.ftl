@@ -26,7 +26,7 @@
                 </ul>
                 <hr/>
             </#list>   
-            <a href="/bookings/book-flight">select</a>          
+            <a class="c-button" href="/bookings/book-flight">book</a>          
         </div>
     </section>
     <#include "/website/footer.ftl">

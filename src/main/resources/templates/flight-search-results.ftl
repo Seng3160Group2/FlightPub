@@ -11,7 +11,7 @@
             <form action="/booking/save-flights/" method="get">
                 
                 <#list departures as flightsList>
-                    <a href="/bookings/save-flights?journeyIndex=${flightsList?index}">select</a>
+                    <a class="c-button" href="/bookings/save-flights?journeyIndex=${flightsList?index}">view</a>
                     <ul>
                         <#list flightsList as flight>
                             <ul>
@@ -33,8 +33,6 @@
                         <hr/>
                     </ul>
                 </#list>
-
-                <button type="submit" class="s-search-bar__button c-button">Search</button>
 
                 <#if departures?size == 0>
                 <p>No flights found.</p>

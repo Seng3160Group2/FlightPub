@@ -12,15 +12,15 @@
         <div class="c-menu">
             <div class="info">
                 <div class="info-category">Name</div>
-                <div class="info-value">${account.firstName} ${account.middleName} ${account.lastName}</div>
+                <div class="info-value">${account.firstName} ${account.lastName}</div>
             </div>
-            <div class="info">
+            <#--  <div class="info">
                 <div class="info-category">Date of birth</div>
                 <div class="info-value">${account.dob}</div>
             </div>
             <div class="info">
                 <div class="info-category">Gender</div>
-                <div class="info-value">${account.gender}</div>
+                <div class="info-value">${account.gender}</div>  -->
             </div>
             <div class="info">
                 <div class="info-category">Email</div>
@@ -30,10 +30,10 @@
                 <div class="info-category">Preferences</div>
                 <div class="info-value">None</div>
             </div>
-           <div class="info">
+           <#--  <div class="info">
                 <div class="info-category">Phone number</div>
                 <div class="info-value">${account.phone}</div>
-            </div>
+            </div>  -->
             <#--  <div class="info">
                 <div class="info-category">User type</div>
                 <div class="info-value">general</div>
@@ -67,7 +67,7 @@
                 </tr>
                 <tr>
                 <td>
-                    <div class="c-button"><a href="/styles/login">Log out</a></div>
+                    <div class="c-button"><a href="/logout">Log out</a></div>
                     </td>
                 </tr>
             </table>

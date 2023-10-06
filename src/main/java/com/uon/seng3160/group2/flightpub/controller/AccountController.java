@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,7 +19,7 @@ import com.uon.seng3160.group2.flightpub.model.UserModel;
 import com.uon.seng3160.group2.flightpub.service.AccountService;
 
 @Controller
-@RequestMapping("/api/account")
+@RequestMapping("/account")
 public class AccountController {
 
     private final AccountService accountService;
@@ -28,11 +29,13 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    @GetMapping("/getdetails")
-    public ResponseEntity<UserModel> getAccountDetails(Authentication authentication) {
+    @GetMapping()
+    public String getAccountDetails(Authentication authentication, Model model) {
         String username = authentication.getName();
         UserModel userModel = accountService.getAccountDetails(username);
-        return ResponseEntity.ok(userModel);
+        model.addAttribute("account", userModel);
+
+        return "account";
     }
 
     @PutMapping("/updatedetails")
@@ -79,4 +82,5 @@ public class AccountController {
     public String currentBookings(Model model) {
         return "current-bookings";
     }
+
 }

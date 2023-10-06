@@ -18,7 +18,7 @@
                     </form>
                     <div class="c-login__divider"></div>
                     <p class="c-login__message">
-                        Don't have an account? <a href="/register">Signup</a>
+                        Don't have an account? <a href="/register">Register</a>
                     </p>
                 </section>
             </div>

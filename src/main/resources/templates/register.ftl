@@ -35,7 +35,7 @@
                     </form>
                     <div class="c-signup__divider"></div>
                     <p class="c-signup__message">
-                        Don't have an account? <a href="">Signup</a>
+                        Already have an account? <a href="/login">login</a>
                     </p>
                 </section>
             </div>
