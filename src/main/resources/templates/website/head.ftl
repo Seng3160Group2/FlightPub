@@ -6,6 +6,7 @@
 
         <!-- CSS files -->
         <link rel="stylesheet" href="/static/css/project.css">
+        <link rel="stylesheet" href="/static/css/fontawesome/css/all.css">
         
         <!-- JavaScript files -->
         <script src=""></script>

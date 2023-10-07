@@ -6,49 +6,52 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 public class FlightSearchForm {
 
     @NotNull
     @NotEmpty
-    @Size(min = 2, max = 2)
-    private String airlineCode;
+    private String departure;
 
     @NotNull
     @NotEmpty
-    @Size(max = 6)
-    private String flightNumber;
+    private String destination;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime departureTime;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime returnTime;
+
     public FlightSearchForm() {
-        this.airlineCode = "AA";
-        this.flightNumber = "123456";
-        this.departureTime = LocalDateTime.now();
+        this.departure = "Adelaide";
+        this.destination = "Sydney";
+        this.departureTime = LocalDateTime.of(2014, 9, 23, 0, 0, 0, 0);
+        this.returnTime = LocalDateTime.of(2014, 9, 27, 0, 0, 0, 0);
     }
 
-    public FlightSearchForm(String airlineCode, String flightNumber, LocalDateTime departureTime) {
-        this.airlineCode = airlineCode;
-        this.flightNumber = flightNumber;
+    public FlightSearchForm(String departure, String destination, LocalDateTime departureTime,
+            LocalDateTime returnTime) {
+        this.departure = departure;
+        this.destination = destination;
         this.departureTime = departureTime;
+        this.returnTime = returnTime;
     }
 
-    public String getAirlineCode() {
-        return this.airlineCode;
+    public String getDeparture() {
+        return this.departure;
     }
 
-    public void setAirlineCode(String airlineCode) {
-        this.airlineCode = airlineCode;
+    public void setDeparture(String departure) {
+        this.departure = departure;
     }
 
-    public String getFlightNumber() {
-        return this.flightNumber;
+    public String getDestination() {
+        return this.destination;
     }
 
-    public void setFlightNumber(String flightNumber) {
-        this.flightNumber = flightNumber;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
     public LocalDateTime getDepartureTime() {
@@ -59,13 +62,11 @@ public class FlightSearchForm {
         this.departureTime = departureTime;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                " flightNumber='" + getFlightNumber() + "'" +
-                ", airlineCode='" + getAirlineCode() + "'" +
-                ", departureTime='" + getDepartureTime() + "'" +
-                "}";
+    public LocalDateTime getReturnTime() {
+        return this.returnTime;
     }
 
+    public void setReturnTime(LocalDateTime returnTime) {
+        this.returnTime = returnTime;
+    }
 }

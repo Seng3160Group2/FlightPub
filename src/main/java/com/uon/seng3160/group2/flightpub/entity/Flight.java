@@ -2,6 +2,7 @@ package com.uon.seng3160.group2.flightpub.entity;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.uon.seng3160.group2.flightpub.entity.compositekey.FlightId;
@@ -10,6 +11,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToMany;
@@ -56,10 +58,10 @@ public class Flight {
     private PlaneType planeType;
 
     @Column(nullable = false)
-    private int duration;
+    private Integer duration;
 
     @Column
-    private int durationSecondLeg;
+    private Integer durationSecondLeg = 0;
 
     @Column(columnDefinition = "BIT(1) default 0")
     private boolean groupFlight = false;
@@ -68,6 +70,9 @@ public class Flight {
 
     @OneToMany(mappedBy = "flight")
     private Set<Availability> availabilities;
+
+    @ManyToMany(mappedBy = "flights")
+    private List<Account> users;
 
     public Flight() {
     }
@@ -217,4 +222,28 @@ public class Flight {
         if (availability != null)
             this.availabilities.remove(availability);
     }
+
+    public void addUser(Account user) {
+        this.users.add(user);
+    }
+
+    @Override
+    public String toString() {
+        String stopOverCode = (getStopOver() != null) ? getStopOver().getDestinationCode() : "";
+        return "{" +
+                getFlightId().getFlightNumber() +
+                // ", airline='" + getAirline() + "'" +
+                "'" + getDeparture().getDestinationCode() + " -> " + stopOverCode + " -> "
+                + getDestination().getDestinationCode() + "'" +
+                ", depTime='" + getFlightId().getDepartureTime() + "'" +
+                ", arrTimeStop='" + getArrivalTimeStopOver() + "'" +
+                ", depTimeStop='" + getDepartureTimeStopOver() + "'" +
+                ", arrTime='" + getArrivalTime() + "'" +
+                // ", planeType='" + getPlaneType() + "'" +
+                // ", duration='" + getDuration() + "'" +
+                // ", durationSecondLeg='" + getDurationSecondLeg() + "'" +
+                // ", groupFlight='" + isGroupFlight() + "'" +
+                "}";
+    }
+
 }

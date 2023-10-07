@@ -1,6 +1,7 @@
 package com.uon.seng3160.group2.flightpub.entity;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -10,9 +11,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "Destinations")
+@EqualsAndHashCode
 public class Destination {
     @Id // nullable = false is implicit with @id
     @Column(columnDefinition = "CHAR(3)")
@@ -41,6 +45,9 @@ public class Destination {
 
     @OneToMany(mappedBy = "destinationTo")
     Set<Distance> distancesTo;
+
+    @Transient
+    private boolean illegal = false;
 
     public Destination() {
     }
@@ -147,4 +154,36 @@ public class Destination {
         if (distanceTo != null)
             this.distancesTo.remove(distanceTo);
     }
+
+    public Set<Distance> getDistances() {
+        HashSet<Distance> allDistances = new HashSet<>();
+        allDistances.addAll(this.getDistancesFrom());
+        allDistances.addAll(this.getDistancesTo());
+
+        return allDistances;
+    }
+
+    public void setIllegal(boolean illegal) {
+        this.illegal = illegal;
+    }
+
+    public boolean isIllegal() {
+        return this.illegal;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "'" + getDestinationCode() + "'" +
+                // ", airport='" + getAirport() + "'" +
+                // ", country='" + getCountry() + "'" +
+                // ", departures='" + getDepartures() + "'" +
+                // ", stopOvers='" + getStopOvers() + "'" +
+                // ", arrivals='" + getArrivals() + "'" +
+                // ", distancesFrom='" + getDistancesFrom() + "'" +
+                // ", distancesTo='" + getDistancesTo() + "'" +
+                // ", visited='" + getVisited() + "'" +
+                "}";
+    }
+
 }

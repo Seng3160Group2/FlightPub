@@ -1,0 +1,29 @@
+.c-booking-checkpoint {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+
+    color: $color-off-white;
+
+    &__text-section {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    &__heading {
+        margin: 0.25rem 0 0 0;
+    }
+
+    &__subtext {
+        display: block;
+
+    }
+
+    &--passed {
+        color: $color-grey; 
+    }
+}
