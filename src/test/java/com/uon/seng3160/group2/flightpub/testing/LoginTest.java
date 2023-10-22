@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,9 +17,12 @@ public class LoginTest {
 
     @BeforeEach
     public void setup() {
-        // Set the path to your ChromeDriver executable
+        // Set the path to your Chrome/Edge/Firefox/Safari Driver executable
         System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\chromedriver.exe");
         driver = new ChromeDriver();
+        // driver = new EdgeDriver();
+        // driver = new FirefoxDriver();
+        // driver = new SafariDriver();
     }
 
     @Test
