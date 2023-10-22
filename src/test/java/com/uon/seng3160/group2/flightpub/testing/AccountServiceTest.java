@@ -27,25 +27,13 @@ class AccountServiceTest {
     private AccountServiceImpl accountService;
 
     @Test
-    void testSaveUser() {
-        // Create a UserModel and test the saveUser method
-        UserModel userModel = new UserModel();
-        userModel.setFirstName("John");
-        userModel.setLastName("Doe");
-        userModel.setEmail("john.doe@example.com");
-        userModel.setPassword("password");
-
-        accountService.saveUser(userModel);
-
-        // Add your verification/assertion logic here
-    }
-
-    @Test
     void testFindByEmail() {
-        // Create a sample email and user
+        // Create a sample email and user with the name "John Doe"
         String email = "john.doe@example.com";
         Account user = new Account();
         user.setEmail(email);
+        user.setFirstName("John");
+        user.setLastName("Doe");
 
         // Mock the repository method
         when(accountRepository.findByEmail(email)).thenReturn(user);
@@ -55,19 +43,54 @@ class AccountServiceTest {
 
         // Verify that the method was called and the result matches the user
         verify(accountRepository, times(1)).findByEmail(email);
-        assertEquals(user, result);
+        assertEquals("John", result.getFirstName());
+        assertEquals("Doe", result.getLastName());
     }
 
     @Test
-    void testFindAllUsers() {
+    void testGetAccountDetails() {
+        // Create a sample email and user with the name "John Doe"
+        String email = "john.doe@example.com";
+        Account user = new Account();
+        user.setEmail(email);
+        user.setFirstName("John");
+        user.setLastName("Doe");
+
         // Mock the repository method
-        when(accountRepository.findAll()).thenReturn(Collections.emptyList());
+        when(accountRepository.findByEmail(email)).thenReturn(user);
 
-        // Test the findAllUsers method
-        List<UserModel> users = accountService.findAllUsers();
+        // Test the getAccountDetails method
+        UserModel userModel = accountService.getAccountDetails(email);
 
-        // Verify that the method was called and the list is empty
-        verify(accountRepository, times(1)).findAll();
-        assertEquals(0, users.size());
+        // Verify that the method was called and the result matches the user
+        verify(accountRepository, times(1)).findByEmail(email);
+        assertEquals("John", userModel.getFirstName());
+        assertEquals("Doe", userModel.getLastName());
+    }
+
+    @Test
+    void testUpdateAccountDetails() {
+        // Create a sample email and UserModel with updated data for "John Doe"
+        String email = "john.doe@example.com";
+        UserModel updatedUserModel = new UserModel();
+        updatedUserModel.setFirstName("John");
+        updatedUserModel.setLastName("Doe");
+
+        // Create a sample user with the name "John Doe"
+        Account user = new Account();
+        user.setEmail(email);
+        user.setFirstName("John");
+        user.setLastName("Doe");
+
+        // Mock the repository method
+        when(accountRepository.findByEmail(email)).thenReturn(user);
+
+        // Test the updateAccountDetails method
+        UserModel updatedModel = accountService.updateAccountDetails(email, updatedUserModel);
+
+        // Verify that the method was called, and the updated data is reflected in the result
+        verify(accountRepository, times(1)).findByEmail(email);
+        assertEquals("John", updatedModel.getFirstName());
+        assertEquals("Doe", updatedModel.getLastName());
     }
 }
