@@ -18,7 +18,7 @@ public class Country {
     @Column(columnDefinition = "CHAR(2)")
     private String countryCode2;
 
-    @Column(columnDefinition = "CHAR(3)", nullable = false)
+    @Column(columnDefinition = "CHAR(3)", nullable = false, unique = true)
     private String countryCode3;
 
     @Column(columnDefinition = "VARCHAR(80) default ''", nullable = false)

@@ -30,7 +30,8 @@ public class PathAlgorithmRevised {
     @Autowired
     private DestinationMatrix destinationMatrix;
 
-    public PathAlgorithmRevised() {
+    public PathAlgorithmRevised(DestinationMatrix destinationMatrix) {
+        this.destinationMatrix = destinationMatrix;
     }
 
     public List<List<Destination>> YensShortestPaths(Destination start, Destination end, int K) {

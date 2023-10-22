@@ -15,7 +15,6 @@ import com.uon.seng3160.group2.flightpub.converter.FlightEntityToModelConverter;
 import com.uon.seng3160.group2.flightpub.formatter.LocalDateTimeFormatter;
 
 @Configuration
-@EnableWebMvc
 @ComponentScan(basePackages = { "com.uon.seng3160.group2.flightpub" })
 public class WebConfig implements WebMvcConfigurer {
 

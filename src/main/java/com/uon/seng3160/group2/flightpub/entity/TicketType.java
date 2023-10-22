@@ -3,7 +3,10 @@ package com.uon.seng3160.group2.flightpub.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.hibernate.type.NumericBooleanConverter;
+
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -19,17 +22,17 @@ public class TicketType {
     @Column(columnDefinition = "VARCHAR(50)", nullable = false)
     private String name;
 
-    @Column(columnDefinition = "BIT(1) default 1")
-    private boolean transferrable;
+    @Convert(converter = NumericBooleanConverter.class)
+    private Boolean transferrable = true;
 
-    @Column(columnDefinition = "BIT(1) default 1")
-    private boolean refundable;
+    @Convert(converter = NumericBooleanConverter.class)
+    private Boolean refundable = false;
 
-    @Column(columnDefinition = "BIT(1) default 0")
-    private boolean exchangeable;
+    @Convert(converter = NumericBooleanConverter.class)
+    private Boolean exchangeable = true;
 
-    @Column(columnDefinition = "BIT(1) default 1")
-    private boolean frequentFlyerPoints;
+    @Convert(converter = NumericBooleanConverter.class)
+    private Boolean frequentFlyerPoints = true;
 
     // referencing tables
 

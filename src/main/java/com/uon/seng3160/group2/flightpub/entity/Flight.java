@@ -5,9 +5,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.type.NumericBooleanConverter;
+
 import com.uon.seng3160.group2.flightpub.entity.compositekey.FlightId;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -63,8 +67,9 @@ public class Flight {
     @Column
     private Integer durationSecondLeg = 0;
 
-    @Column(columnDefinition = "BIT(1) default 0")
-    private boolean groupFlight = false;
+    @Column(nullable = true)
+    @Convert(converter = NumericBooleanConverter.class)
+    private Boolean groupFlight = false;
 
     // referencing tables
 
